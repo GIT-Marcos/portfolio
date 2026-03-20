@@ -1,6 +1,6 @@
 # Portfolio SPA — Cyber-Minimalist
 
-Personal portfolio for **Juan Carlos Fernández**, built with React, TypeScript (strict mode), Vite, and TailwindCSS.
+Personal portfolio for **Marcos**, built with React, TypeScript (strict mode), Vite, and TailwindCSS.
 
 All UI data comes from a **single JSON source**. You never need to touch any component file to update your information. This guide explains exactly how.
 
