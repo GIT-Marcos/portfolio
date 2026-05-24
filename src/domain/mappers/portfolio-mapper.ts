@@ -1,3 +1,5 @@
+import { generateId } from '../../utils/id';
+
 import type {
   Portfolio,
   PersonalInfo,
@@ -102,7 +104,7 @@ function mapPersonalInfo(raw: Record<string, unknown>): PersonalInfo {
 // ── Map Single Project ──
 function mapProject(raw: Record<string, unknown>): Project {
   return {
-    id: safeString(raw.id, crypto.randomUUID()),
+    id: safeString(raw.id, generateId()),
     name: safeString(raw.name, 'Untitled Project'),
     type: isSystemType(raw.type) ? raw.type : 'cloud',
     status: isProjectStatus(raw.status) ? raw.status : 'completed',

@@ -5,7 +5,7 @@ export const rawUserData = {
   personal_info: {
     name: "Marcos",
     role: "Analista de Sistemas / Backend Developer",
-    focus: ["Java", "SQL", "Troubleshooting", "AI", "QA"],
+    focus: ["Java", "Spring Boot", "SQL", "Troubleshooting", "AI", "QA"],
     bio: "Analista de sistemas con experiencia en procesos de desarrollo. Especializado en POO concretamente Java y Spring, análisis de requerimientos, pruebas e implementación de soluciones enfocadas en calidad de código y buenas prácticas.",
     contact: {
       email: "zcneqb@vffq.rqh.ne",
@@ -21,11 +21,22 @@ export const rawUserData = {
   },
   projects: [
     {
-      id: "p3",
-      name: "Simple Task Frontend (AI-Assisted)",
+      id: "p4",
+      name: "Flashcards API",
       type: "cloud",
       is_ai_built: true,
       status: "in-development",
+      links: { github: "https://github.com/GIT-Marcos/flashcards" },
+      stack: ["Spring Boot 4.0.6", "Java 21", "PostgreSQL 15", "Flyway", "Spring Security", "JWT", "Bucket4j", "Micrometer", "TestContainers", "Docker", "OpenCode AI Agent"],
+      description: "API RESTful para estudio con tarjetas flash usando el algoritmo SM-2 de spaced repetition. Incluye autenticación JWT, rate limiting, notificaciones por email, métricas con Prometheus, asistencia para desarrollo con OpenCode AI Agent.",
+      technical_focus: ["Algoritmo SM-2", "Autenticación JWT con refresh tokens", "Rate limiting con Bucket4j", "370+ tests con TestContainers", "Optimistic Locking", "Perfiles de despliegue (dev/prod/free)", "Uso de Skills y MCPs con OpenCode"],
+    },
+    {
+      id: "p3",
+      name: "Simple Task Frontend",
+      type: "cloud",
+      is_ai_built: true,
+      status: "completed",
       links: {
         demo: "https://simple-tasks-front.vercel.app/",
         github: "https://github.com/GIT-Marcos/simple-tasks-front",
@@ -38,7 +49,7 @@ export const rawUserData = {
       id: "p2",
       name: "Simple Task API",
       type: "cloud",
-      status: "in-development",
+      status: "completed",
       links: { github: "https://github.com/GIT-Marcos/task-api-springboot" },
       stack: ["Spring Boot", "PostgreSQL", "OpenAPI (Swagger UI)", "Postman", "Flyway"],
       description: "API RESTful simple para gestionar tareas con operaciones básicas. Está orientada a entender el proceso de desarrollo y conocer estándares backend profesionales.",
@@ -56,8 +67,8 @@ export const rawUserData = {
     },
   ],
   skills: {
-    core: ["Java", "SQL", "Spring Boot", "Hibernate"],
-    ai_tools: ["Prompt Engineering", "AI-Assisted Debugging"],
-    testing: ["QA Manual", "Zephyr", "Jira"],
+    core: ["Java", "SQL", "Spring Boot", "Hibernate", "PostgreSQL", "Flyway", "Spring Security", "Docker"],
+    ai_tools: ["Prompt Engineering", "AI-Assisted Debugging", "OpenCode AI Agent"],
+    testing: ["QA Manual", "Zephyr", "Jira", "TestContainers"],
   },
 } as const;
