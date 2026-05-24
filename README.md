@@ -135,18 +135,20 @@ Open `src/data/user-data.ts` and find the `projects` array. Add a new object at 
 
 ### What Each Field Does in the UI
 
-| Field | Required | What Happens in the UI |
-|---|---|---|
-| `id` | ✅ Yes | Unique identifier. Must not repeat. Use `"p4"`, `"p5"`, etc. |
-| `name` | ✅ Yes | Shown as the card title. |
-| `type` | ✅ Yes | **Must be `"desktop"` or `"cloud"`**. Controls the card's glow color: `"cloud"` → blue glow, `"desktop"` → emerald/green glow. |
-| `status` | ✅ Yes | **Must be `"completed"` or `"in-development"`**. If `"in-development"`, a yellow **WIP** badge appears. |
-| `stack` | ✅ Yes | Array of technology names. Shown as colored pills on the card. |
-| `description` | ✅ Yes | Shown as the card's body text. |
-| `links` | ✅ Yes | Object with optional `github` and/or `demo` URLs. Use `{}` if no links. Icons appear only when a link is provided. |
-| `technical_focus` | ❌ Optional | Array of strings. Shown as bullet points on the card. Omit entirely if not needed. |
-| `features` | ❌ Optional | Array of strings. Shown as bullet points below technical focus. Omit entirely if not needed. |
-| `is_ai_built` | ❌ Optional | Set to `true` to show a purple **AI-Optimized** badge. Omit or set `false` to hide it. |
+
+| Field             | Required   | What Happens in the UI                                                                                                         |
+| ----------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `id`              | ✅ Yes      | Unique identifier. Must not repeat. Use `"p4"`, `"p5"`, etc.                                                                   |
+| `name`            | ✅ Yes      | Shown as the card title.                                                                                                       |
+| `type`            | ✅ Yes      | **Must be `"desktop"` or `"cloud"`**. Controls the card's glow color: `"cloud"` → blue glow, `"desktop"` → emerald/green glow. |
+| `status`          | ✅ Yes      | **Must be `"completed"` or `"in-development"`**. If `"in-development"`, a yellow **WIP** badge appears.                        |
+| `stack`           | ✅ Yes      | Array of technology names. Shown as colored pills on the card.                                                                 |
+| `description`     | ✅ Yes      | Shown as the card's body text.                                                                                                 |
+| `links`           | ✅ Yes      | Object with optional `github` and/or `demo` URLs. Use `{}` if no links. Icons appear only when a link is provided.             |
+| `technical_focus` | ❌ Optional | Array of strings. Shown as bullet points on the card. Omit entirely if not needed.                                             |
+| `features`        | ❌ Optional | Array of strings. Shown as bullet points below technical focus. Omit entirely if not needed.                                   |
+| `is_ai_built`     | ❌ Optional | Set to `true` to show a purple **AI-Optimized** badge. Omit or set `false` to hide it.                                         |
+
 
 ### Choosing `type` — Visual Impact
 
@@ -226,17 +228,19 @@ personal_info: {
 
 ### What Each Field Does
 
-| Field | Required | What Happens in the UI |
-|---|---|---|
-| `name` | ✅ Yes | Large heading at the very top of the page. |
-| `role` | ✅ Yes | Subtitle under your name. |
-| `focus` | ✅ Yes | Array of strings. Shown as rounded pills below the role. |
-| `bio` | ✅ Yes | Paragraph text below the focus pills. |
-| `email` | ✅ Yes | Clickable link with a mail icon. Opens the user's email client (`mailto:`). |
-| `phone` | ❌ Optional | Clickable link with a phone icon. Opens the phone dialer (`tel:`). Remove the line entirely to hide it. |
-| `location` | ❌ Optional | Shown with a map pin icon. Non-clickable. Remove the line entirely to hide it. |
-| `availability` | ❌ Optional | Highlighted in **emerald green** with an animated pulsing dot. Remove the line entirely to hide it. |
-| `links` | ❌ Optional | Social links shown as icon buttons. Remove the entire `links` object to hide the section. |
+
+| Field          | Required   | What Happens in the UI                                                                                  |
+| -------------- | ---------- | ------------------------------------------------------------------------------------------------------- |
+| `name`         | ✅ Yes      | Large heading at the very top of the page.                                                              |
+| `role`         | ✅ Yes      | Subtitle under your name.                                                                               |
+| `focus`        | ✅ Yes      | Array of strings. Shown as rounded pills below the role.                                                |
+| `bio`          | ✅ Yes      | Paragraph text below the focus pills.                                                                   |
+| `email`        | ✅ Yes      | Clickable link with a mail icon. Opens the user's email client (`mailto:`).                             |
+| `phone`        | ❌ Optional | Clickable link with a phone icon. Opens the phone dialer (`tel:`). Remove the line entirely to hide it. |
+| `location`     | ❌ Optional | Shown with a map pin icon. Non-clickable. Remove the line entirely to hide it.                          |
+| `availability` | ❌ Optional | Highlighted in **emerald green** with an animated pulsing dot. Remove the line entirely to hide it.     |
+| `links`        | ❌ Optional | Social links shown as icon buttons. Remove the entire `links` object to hide the section.               |
+
 
 ### Progressive Disclosure
 
@@ -316,11 +320,13 @@ skills: {
 
 ### What Each Group Does
 
-| Group | UI Label | Pill Color |
-|---|---|---|
-| `core` | **Core** | Emerald / Green |
+
+| Group      | UI Label         | Pill Color      |
+| ---------- | ---------------- | --------------- |
+| `core`     | **Core**         | Emerald / Green |
 | `ai_tools` | **AI & Tooling** | Violet / Purple |
-| `testing` | **Testing & QA** | Sky / Blue |
+| `testing`  | **Testing & QA** | Sky / Blue      |
+
 
 ### Adding a Skill
 

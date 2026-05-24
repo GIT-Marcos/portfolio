@@ -1,5 +1,6 @@
 import type { PersonalInfo } from '../../domain/entities/portfolio';
 import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-react';
+import { rot13 } from '../../utils/email';
 
 interface ContactSectionProps {
   personalInfo: PersonalInfo;
@@ -7,7 +8,8 @@ interface ContactSectionProps {
 
 export function ContactSection({ personalInfo }: ContactSectionProps) {
   const { name, role, focus, bio, contact } = personalInfo;
-  const { email, phone, location, availability, links } = contact;
+  const { email: encodedEmail, phone, location, availability, links } = contact;
+  const email = rot13(encodedEmail);
 
   const hasLinks = links !== undefined &&
     (links.linkedin !== undefined || links.github !== undefined || links.portfolio !== undefined);
