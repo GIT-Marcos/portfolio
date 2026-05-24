@@ -7,7 +7,7 @@ export default function App() {
   const { personalInfo, projects, skills } = portfolio;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       {/* 1. Contact — TOP (above the fold) */}
       <ContactSection personalInfo={personalInfo} />
 
@@ -20,6 +20,6 @@ export default function App() {
       <div className="mt-12 mb-8">
         <SkillsSection skills={skills} />
       </div>
-    </div>
+    </main>
   );
 }

@@ -41,12 +41,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="text-base font-semibold text-slate-100">{name}</h3>
         <div className="flex shrink-0 items-center gap-1.5">
           {isWip && (
-            <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400 border border-amber-500/20">
+            <span aria-label="Work in progress" className="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400 border border-amber-500/20">
               WIP
             </span>
           )}
           {isAiBuilt && (
-            <span className="rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-400 border border-violet-500/20">
+            <span aria-label="Built with AI assistance" className="rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-400 border border-violet-500/20">
               AI-Optimized
             </span>
           )}
