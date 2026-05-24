@@ -8,7 +8,7 @@ export const rawUserData = {
     focus: ["Java", "SQL", "Troubleshooting", "AI", "QA"],
     bio: "Analista de sistemas con experiencia en procesos de desarrollo. Especializado en POO concretamente Java y Spring, análisis de requerimientos, pruebas e implementación de soluciones enfocadas en calidad de código y buenas prácticas.",
     contact: {
-      email: "mpardo@issd.edu.ar",
+      email: "zcneqb@vffq.rqh.ne",
       //phone: "+54 9 351 0000000",
       location: "Córdoba, Argentina",
       availability: "Open to work",
@@ -47,7 +47,7 @@ export const rawUserData = {
     {
       id: "p1",
       name: "Sistema de Gestión de taller mecánico",
-      type: "escritorio",
+      type: "desktop",
       status: "completed",
       links: { github: "https://github.com/GIT-Marcos/super-service" },
       stack: ["Java", "JavaFX", "Hibernate", "PostgreSQL", "Jira", "Confluence", "SCRUM"],

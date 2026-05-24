@@ -57,3 +57,6 @@ Desktop.ini
 
 # Vite plugin caches (keep generic)
 *.timestamp-*
+
+# opencode config with secrets (use opencode.example.jsonc as template)
+.opencode/opencode.jsonc
