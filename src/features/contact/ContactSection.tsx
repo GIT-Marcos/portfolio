@@ -25,6 +25,9 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
   return (
     <section className="w-full border-b border-slate-800 pb-10">
       <div className="mb-6">
+        <span className="mb-2 block text-xs font-medium uppercase tracking-widest text-sky-400">
+          Contact
+        </span>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight">
           {name}
         </h1>

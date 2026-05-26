@@ -43,7 +43,7 @@ function SkillGroup({ title, items, accentClass, borderClass, bgClass }: SkillGr
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
     <section className="w-full border-t border-slate-800 pt-10">
-      <h2 className="mb-6 text-xl font-semibold text-slate-100 tracking-tight">
+      <h2 className="mb-6 text-2xl font-bold tracking-tight bg-gradient-to-r from-sky-400 via-sky-300 to-sky-400 bg-clip-text text-transparent">
         Skills
       </h2>
       <div className="grid gap-8 sm:grid-cols-3">
