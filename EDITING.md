@@ -35,13 +35,17 @@ npm run build    # Production build → dist/
 ```
 src/
 ├── data/
-│   ├── user-data.ts       ← ✏️ YOU EDIT THIS FILE (your JSON data)
+│   ├── user-data.ts        ← ✏️ YOU EDIT THIS FILE (your JSON data)
+│   ├── navigation.ts       ← ✏️ YOU EDIT THIS FILE (nav section labels)
 │   └── portfolio.ts        ← Calls the mapper (DO NOT EDIT)
 ├── domain/
 │   ├── entities/
 │   │   └── portfolio.ts    ← Type definitions (DO NOT EDIT)
 │   └── mappers/
 │       └── portfolio-mapper.ts  ← Validates & transforms data (DO NOT EDIT)
+├── components/
+│   └── nav/
+│       └── SectionNav.tsx      ← Sticky navigation bar (DO NOT EDIT)
 ├── features/
 │   ├── contact/
 │   │   └── ContactSection.tsx   ← Contact UI (DO NOT EDIT)
@@ -81,6 +85,19 @@ The **mapper layer** runs automatically every time the app builds. It:
 - Converts snake_case JSON keys to camelCase domain properties
 
 You do **not** need to worry about the mapper. Just write valid JSON in `user-data.ts`.
+
+### Navigation Data
+
+The **sticky navigation bar** has its own data source: `src/data/navigation.ts`. Each item's index in the array must match the position of its corresponding `<section>` in `App.tsx`.
+
+```
+navigation.ts (nav item array)
+       │  (index position → section order in DOM)
+       ▼
+SectionNav.tsx → Highlights active section, scrolls on click
+```
+
+If you add a new page section, you must add a corresponding nav item to `navigation.ts` in the same position. The component (`SectionNav.tsx`) is read-only — only the data file should be edited.
 
 ---
 
@@ -353,6 +370,77 @@ testing: ["QA Manual", "Jira"],
 ```
 
 If you empty an entire array (`[]`), that skill group will **not render at all**.
+
+---
+
+## Customizing Navigation
+
+The sticky navigation bar at the top of the page reads its items from `src/data/navigation.ts`. You can add, remove, or rename nav items there.
+
+### Step-by-Step
+
+**Step 1** — Open `src/data/navigation.ts`.
+
+**Step 2** — Edit the `navigationItems` array.
+
+**Step 3** — Save the file.
+
+### Adding a New Nav Item
+
+```js
+// Before
+export const navigationItems = [
+  { id: 'contact', label: 'Contact' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+] as const;
+
+// After — added "Experience"
+export const navigationItems = [
+  { id: 'contact', label: 'Contact' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+] as const;
+```
+
+> ⚠️ **Positional requirement**: The nav links to sections **by index** — the first nav item maps to the first `<section>` element in `App.tsx`, the second to the second `<section>`, and so on. If you add a nav item for a new section, you **must** also add the corresponding `<section>` tag in `App.tsx` at the same position. The order must match exactly.
+
+### Renaming a Label
+
+Simply change the `label` field:
+
+```js
+{ id: 'skills', label: 'Habilidades' }
+```
+
+### Removing a Nav Item
+
+Delete the object from the array. The nav will automatically adjust:
+
+```js
+// Before
+export const navigationItems = [
+  { id: 'contact', label: 'Contact' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+] as const;
+
+// After — removed "Skills"
+export const navigationItems = [
+  { id: 'contact', label: 'Contact' },
+  { id: 'projects', label: 'Projects' },
+] as const;
+```
+
+> ⚠️ If you remove a nav item, its corresponding `<section>` will no longer be reachable via the nav bar. The section itself will still render in the page unless you also remove it from `App.tsx`.
+
+### Nav Item Fields
+
+| Field   | Required   | Description                                              |
+| ------- | ---------- | -------------------------------------------------------- |
+| `id`    | ✅ Yes      | Unique identifier. Used as React key.                    |
+| `label` | ✅ Yes      | Text shown in the sticky navigation bar.                 |
 
 ---
 

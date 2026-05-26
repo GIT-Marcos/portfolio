@@ -8,7 +8,7 @@ export const rawUserData = {
     focus: ["Java", "Spring Boot", "SQL", "Troubleshooting", "AI", "QA"],
     bio: "Analista de sistemas con experiencia en procesos de desarrollo. Especializado en POO concretamente Java y Spring, análisis de requerimientos, pruebas e implementación de soluciones enfocadas en calidad de código y buenas prácticas.",
     contact: {
-      email: "zcneqb@vffq.rqh.ne",
+      email: "mpardo@issd.edu.ar",
       //phone: "+54 9 351 0000000",
       location: "Córdoba, Argentina",
       availability: "Open to work",
