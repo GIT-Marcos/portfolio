@@ -118,11 +118,10 @@ function mapProject(raw: Record<string, unknown>): Project {
 }
 
 // ── Map Skills ──
-function mapSkills(raw: Record<string, unknown>): Skills {
+function mapSkills(techsRaw: unknown, habilidadesRaw: unknown): Skills {
   return {
-    core: safeStringArray(raw.core),
-    aiTools: safeStringArray(raw.ai_tools),
-    testing: safeStringArray(raw.testing),
+    techs: safeStringArray(techsRaw),
+    habilidades: safeStringArray(habilidadesRaw),
   };
 }
 
@@ -130,11 +129,10 @@ function mapSkills(raw: Record<string, unknown>): Skills {
 export function mapPortfolio(raw: Record<string, unknown>): Portfolio {
   const personalInfoRaw = (raw.personal_info ?? {}) as Record<string, unknown>;
   const projectsRaw = Array.isArray(raw.projects) ? raw.projects : [];
-  const skillsRaw = (raw.skills ?? {}) as Record<string, unknown>;
 
   return {
     personalInfo: mapPersonalInfo(personalInfoRaw),
     projects: projectsRaw.map((p) => mapProject(p as Record<string, unknown>)),
-    skills: mapSkills(skillsRaw),
+    skills: mapSkills(raw.techs, raw.skills),
   };
 }

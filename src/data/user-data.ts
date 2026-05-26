@@ -66,9 +66,16 @@ export const rawUserData = {
       technical_focus: ["Arquitectura MVC", "Testing", "Programación orientada a objetos"],
     },
   ],
-  skills: {
-    core: ["Java", "SQL", "Spring Boot", "Hibernate", "PostgreSQL", "Flyway", "Spring Security", "Docker"],
-    ai_tools: ["Prompt Engineering", "AI-Assisted Debugging", "OpenCode AI Agent"],
-    testing: ["QA Manual", "Zephyr", "Jira", "TestContainers"],
-  },
+  techs: [
+    "Java", "SQL", "Spring", "Hibernate", "PostgreSQL", "Flyway",
+    "Docker", "OpenCode AI Agent", "Jira",
+    "Confluence", "C#", "CSS", "Git", "HTML",
+    "Maven", "OpenAPI", "Postman", "React",
+  ],
+  skills: [
+    "Prompt Engineering", "AI-Assisted coding",
+    "QA", "Colaboración en equipo", "Resolución de problemas complejos",
+    "Pensamiento analítico", "Aprendizaje continuo",
+    "API REST / Diseño de APIs", "CI/CD", "Clean Code / SOLID",
+  ],
 } as const;

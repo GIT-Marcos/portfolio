@@ -35,45 +35,49 @@ npm run build    # Production build → dist/
 ```
 src/
 ├── data/
-│   ├── user-data.ts        ← ✏️ YOU EDIT THIS FILE (your JSON data)
-│   ├── navigation.ts       ← ✏️ YOU EDIT THIS FILE (nav section labels)
-│   └── portfolio.ts        ← Calls the mapper (DO NOT EDIT)
+│   ├── user-data.ts          ← ✏️ YOU EDIT THIS FILE (your JSON data)
+│   ├── navigation.ts         ← ✏️ YOU EDIT THIS FILE (nav section IDs — labels from sectionTitles)
+│   ├── iconMap.ts            ← Shared tech→icon mappings (DO NOT EDIT manually)
+│   ├── sectionTitles.ts      ← ✏️ YOU EDIT THIS FILE (section labels — nav + page sync automatically)
+│   └── portfolio.ts          ← Calls the mapper (DO NOT EDIT)
 ├── domain/
 │   ├── entities/
-│   │   └── portfolio.ts    ← Type definitions (DO NOT EDIT)
+│   │   └── portfolio.ts      ← Type definitions (DO NOT EDIT)
 │   └── mappers/
 │       └── portfolio-mapper.ts  ← Validates & transforms data (DO NOT EDIT)
 ├── components/
 │   └── nav/
-│       └── SectionNav.tsx      ← Sticky navigation bar (DO NOT EDIT)
+│       └── SectionNav.tsx       ← Sticky navigation bar (DO NOT EDIT)
 ├── features/
 │   ├── contact/
 │   │   └── ContactSection.tsx   ← Contact UI (DO NOT EDIT)
 │   ├── projects/
 │   │   ├── ProjectCard.tsx      ← Project card UI (DO NOT EDIT)
 │   │   └── ProjectsSection.tsx  ← Project grid (DO NOT EDIT)
-│   └── skills/
-│       └── SkillsSection.tsx    ← Skills UI (DO NOT EDIT)
-└── App.tsx                 ← Layout composition (DO NOT EDIT)
+│   ├── largetechs/
+│   │   └── LargeTechsSection.tsx ← Tech badges (card style, DO NOT EDIT)
+│   └── softskills/
+│       └── SoftSkillsSection.tsx ← Habilidad badges (subtle style, DO NOT EDIT)
+└── App.tsx                    ← Layout composition (DO NOT EDIT)
 ```
 
-> **Golden Rule**: Only edit `src/data/user-data.ts`. Everything else is handled automatically.
+> **Golden Rule**: Edit `src/data/user-data.ts` for content, and `src/data/sectionTitles.ts` for section labels. Everything else is handled automatically.
 
 ---
 
 ## How Data Flows
 
 ```
-user-data.ts (raw JSON)
+user-data.ts (raw JSON — techs[], skills[] flat arrays)
        │
        ▼
-portfolio-mapper.ts (validates URLs, checks types, handles missing fields)
+portfolio-mapper.ts (validates URLs, checks types, maps flat skills)
        │
        ▼
-portfolio.ts (clean domain entity)
+portfolio.ts (clean domain entity — Skills { techs, habilidades })
        │
        ▼
-App.tsx → ContactSection / ProjectsSection / SkillsSection
+App.tsx → ContactSection / ProjectsSection / LargeTechsSection / SoftSkillsSection
 ```
 
 The **mapper layer** runs automatically every time the app builds. It:
@@ -83,21 +87,38 @@ The **mapper layer** runs automatically every time the app builds. It:
 - Checks that `status` is either `"completed"` or `"in-development"`
 - Safely handles any missing or optional fields
 - Converts snake_case JSON keys to camelCase domain properties
+- Maps `raw.techs` → `skills.techs` and `raw.skills` → `skills.habilidades`
 
 You do **not** need to worry about the mapper. Just write valid JSON in `user-data.ts`.
 
 ### Navigation Data
 
-The **sticky navigation bar** has its own data source: `src/data/navigation.ts`. Each item's index in the array must match the position of its corresponding `<section>` in `App.tsx`.
+The **sticky navigation bar** reads its labels from a shared source: `src/data/sectionTitles.ts`. Both the nav and the page sections use the same titles, so they stay in sync automatically.
 
 ```
-navigation.ts (nav item array)
+sectionTitles.ts (single source — labels for all 4 sections)
+       │
+       ├─ navigation.ts → SectionNav.tsx (nav bar labels)
+       ├─ ContactSection.tsx
+       ├─ ProjectsSection.tsx
+       ├─ LargeTechsSection.tsx
+       └─ SoftSkillsSection.tsx
+```
+
+To change a section label, edit `sectionTitles.ts`. No other files need updating.
+
+The **nav item order** is defined in `src/data/navigation.ts`. Each item's index in the array must match the position of its corresponding `<section>` in `App.tsx`.
+
+```
+navigation.ts (nav item array — IDs and order)
        │  (index position → section order in DOM)
        ▼
 SectionNav.tsx → Highlights active section, scrolls on click
 ```
 
-If you add a new page section, you must add a corresponding nav item to `navigation.ts` in the same position. The component (`SectionNav.tsx`) is read-only — only the data file should be edited.
+If you add a new page section, you must:
+1. Add a new entry in `sectionTitles.ts`
+2. Add a corresponding nav item to `navigation.ts` in the same position
 
 ---
 
@@ -323,84 +344,99 @@ availability: "Currently employed"
 
 ## Updating Skills
 
-Skills are at the bottom of `src/data/user-data.ts`, inside the `skills` object.
+Skills are at the bottom of `src/data/user-data.ts`, as two flat arrays.
 
 ### Full Skills Structure
 
 ```js
-skills: {
-  core: ["Java", "SQL", "Spring Boot", "Hibernate"],
-  ai_tools: ["Prompt Engineering", "AI-Assisted Debugging"],
-  testing: ["QA Manual", "Zephyr", "Jira"],
-},
+techs: [
+  "Java", "SQL", "Spring", "Hibernate", "PostgreSQL", "Flyway",
+  "Docker", "OpenCode AI Agent", "Jira",
+  "Confluence", "C#", "CSS", "Git", "HTML",
+  "Maven", "OpenAPI", "Postman", "React",
+],
+skills: [
+  "Prompt Engineering", "AI-Assisted Debugging",
+  "QA Manual", "Zephyr", "TestContainers",
+],
 ```
 
-### What Each Group Does
+### What Each Array Does
 
 
-| Group      | UI Label         | Pill Color      |
-| ---------- | ---------------- | --------------- |
-| `core`     | **Core**         | Emerald / Green |
-| `ai_tools` | **AI & Tooling** | Violet / Purple |
-| `testing`  | **Testing & QA** | Sky / Blue      |
+| Array    | UI Section    | Style          | Icons                         |
+| -------- | ------------- | -------------- | ----------------------------- |
+| `techs`  | **Tecnologías** | Large card badges | Auto-mapped from `iconMap.ts` |
+| `skills` | **Habilidades** | Subtle badges    | No icons (soft skills only)   |
 
+
+### Adding a Tech
+
+Simply add the name to the `techs` array. If it has a matching icon in `src/data/iconMap.ts`, the icon appears automatically. If not, it renders as text-only.
 
 ### Adding a Skill
 
-Simply add a string to the relevant array:
+Add the string to the `skills` array.
 
-```js
-// Before
-core: ["Java", "SQL", "Spring Boot", "Hibernate"],
-
-// After — added "Kotlin"
-core: ["Java", "SQL", "Spring Boot", "Hibernate", "Kotlin"],
-```
-
-### Removing a Skill
+### Removing an Item
 
 Delete the string from the array:
 
 ```js
 // Before
-testing: ["QA Manual", "Zephyr", "Jira"],
+techs: ["Java", "SQL", "Spring", "Hibernate"],
 
-// After — removed "Zephyr"
-testing: ["QA Manual", "Jira"],
+// After — removed "Hibernate"
+techs: ["Java", "SQL", "Spring"],
 ```
 
-If you empty an entire array (`[]`), that skill group will **not render at all**.
+If you empty an entire array (`[]`), its corresponding section will **not render at all**.
 
 ---
 
 ## Customizing Navigation
 
-The sticky navigation bar at the top of the page reads its items from `src/data/navigation.ts`. You can add, remove, or rename nav items there.
+The sticky navigation bar at the top of the page reads its items from `src/data/navigation.ts`. You can add, remove, or reorder nav items there.
+
+> **Labels** are managed in `src/data/sectionTitles.ts`. If you only want to rename a section, edit `sectionTitles.ts`. If you want to add/remove/reorder sections, edit both `navigation.ts` and `sectionTitles.ts`.
 
 ### Step-by-Step
 
-**Step 1** — Open `src/data/navigation.ts`.
+**Step 1** — Open `src/data/sectionTitles.ts` to add/edit/remove a section title.
 
-**Step 2** — Edit the `navigationItems` array.
+**Step 2** — Open `src/data/navigation.ts` to add/edit/remove the corresponding nav item.
 
-**Step 3** — Save the file.
+**Step 3** — Save both files.
 
 ### Adding a New Nav Item
 
 ```js
-// Before
-export const navigationItems = [
-  { id: 'contact', label: 'Contact' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-] as const;
+// Before — sectionTitles.ts
+export const sectionTitles = {
+  contact: 'Contacto',
+  projects: 'Proyectos',
+  techs: 'Tecnologías',
+  skills: 'Habilidades',
+} as const;
 
 // After — added "Experience"
+export const sectionTitles = {
+  contact: 'Contacto',
+  projects: 'Proyectos',
+  techs: 'Tecnologías',
+  experience: 'Experiencia',
+  skills: 'Habilidades',
+} as const;
+
+// navigation.ts (labels reference sectionTitles)
+import { sectionTitles } from './sectionTitles';
+
 export const navigationItems = [
-  { id: 'contact', label: 'Contact' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: sectionTitles.contact },
+  { id: 'projects', label: sectionTitles.projects },
+  { id: 'techs', label: sectionTitles.techs },
+  { id: 'experience', label: sectionTitles.experience },
+  { id: 'skills', label: sectionTitles.skills },
 ] as const;
 ```
 
@@ -408,28 +444,39 @@ export const navigationItems = [
 
 ### Renaming a Label
 
-Simply change the `label` field:
+Edit `src/data/sectionTitles.ts`:
 
 ```js
-{ id: 'skills', label: 'Habilidades' }
+{ id: 'skills', label: 'Habilidades' }  // → change 'Habilidades' to whatever you want
 ```
+
+The navigation bar and the page section title will update automatically — they both read from the same source.
 
 ### Removing a Nav Item
 
-Delete the object from the array. The nav will automatically adjust:
+Delete the corresponding entry from both `sectionTitles.ts` and `navigation.ts`. The nav will automatically adjust:
 
 ```js
-// Before
-export const navigationItems = [
-  { id: 'contact', label: 'Contact' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-] as const;
+// Before — sectionTitles.ts
+export const sectionTitles = {
+  contact: 'Contacto',
+  projects: 'Proyectos',
+  techs: 'Tecnologías',
+  skills: 'Habilidades',
+} as const;
 
-// After — removed "Skills"
+// After — removed "techs"
+export const sectionTitles = {
+  contact: 'Contacto',
+  projects: 'Proyectos',
+  skills: 'Habilidades',
+} as const;
+
+// navigation.ts
 export const navigationItems = [
-  { id: 'contact', label: 'Contact' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: sectionTitles.contact },
+  { id: 'projects', label: sectionTitles.projects },
+  { id: 'skills', label: sectionTitles.skills },
 ] as const;
 ```
 
@@ -551,11 +598,11 @@ A: Check that the URL starts with `https://` or `http://`. The mapper validates 
 **Q: I removed `phone` but the page looks broken.**
 A: Make sure you didn't accidentally delete a comma or bracket. The JSON structure must remain valid JavaScript.
 
-**Q: Can I add a new skill category (e.g., `devops`)?**
-A: No — not without editing component files. The three categories (`core`, `ai_tools`, `testing`) are the only ones the Skills section renders. Adding a new category requires modifying `SkillsSection.tsx`.
+**Q: Can I add a new tech or skill?**
+A: Yes — just add it to the `techs[]` or `skills[]` array in `user-data.ts`. If the tech name matches an entry in `iconMap.ts`, it renders with its icon. Otherwise it renders as text-only.
 
 **Q: Can I reorder the sections (e.g., put Skills before Projects)?**
-A: No. The layout order (Contact → Projects → Skills) is a strict architectural contract enforced in `App.tsx`. Do not modify it.
+A: No. The layout order (Contact → Projects → Techs → Skills) is a strict architectural contract enforced in `App.tsx`. Do not modify it.
 
 **Q: Can I add more social link types (e.g., Twitter/X)?**
 A: No — not without editing component and type files. The supported contact links are `linkedin`, `github`, and `portfolio`. Adding more requires changes to the domain entities and `ContactSection.tsx`.
