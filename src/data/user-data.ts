@@ -73,7 +73,9 @@ export const rawUserData = {
     "Maven", "OpenAPI", "Postman", "React",
   ],
   skills: [
-    "Prompt Engineering", "AI-Assisted Debugging",
-    "QA Manual", "Zephyr", "TestContainers",
+    "Prompt Engineering", "AI-Assisted coding",
+    "QA", "Colaboración en equipo", "Resolución de problemas complejos",
+    "Pensamiento analítico", "Aprendizaje continuo",
+    "API REST / Diseño de APIs", "CI/CD", "Clean Code / SOLID",
   ],
 } as const;
