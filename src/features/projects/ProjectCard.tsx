@@ -1,6 +1,7 @@
 import type { Project } from '../../domain/entities/portfolio';
 import { cn } from '../../utils/cn';
-import { Github, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { GithubIcon } from '../../components/icons/GithubIcon';
 
 interface ProjectCardProps {
   project: Project;
@@ -127,7 +128,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   : 'text-slate-500 hover:text-emerald-400'
               )}
             >
-              <Github className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" />
             </a>
           )}
           {hasDemo && (

@@ -1,6 +1,8 @@
 import type { PersonalInfo } from '../../domain/entities/portfolio';
-import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-react';
-import { rot13 } from '../../utils/email';
+import { Mail, Phone, MapPin, Globe, Copy, Check } from 'lucide-react';
+import { LinkedinIcon } from '../../components/icons/LinkedinIcon';
+import { GithubIcon } from '../../components/icons/GithubIcon';
+import { useClipboard } from '../../hooks/useClipboard';
 
 interface ContactSectionProps {
   personalInfo: PersonalInfo;
@@ -8,8 +10,14 @@ interface ContactSectionProps {
 
 export function ContactSection({ personalInfo }: ContactSectionProps) {
   const { name, role, focus, bio, contact } = personalInfo;
-  const { email: encodedEmail, phone, location, availability, links } = contact;
-  const email = rot13(encodedEmail);
+  const { email, phone, location, availability, links } = contact;
+  const { copy, copied } = useClipboard();
+
+  const emailSvg = `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${email.length * 8 + 8}" height="18">
+      <text x="0" y="13" font-family="monospace" font-size="13" fill="#cbd5e1">${email}</text>
+    </svg>`
+  )}`;
 
   const hasLinks = links !== undefined &&
     (links.linkedin !== undefined || links.github !== undefined || links.portfolio !== undefined);
@@ -37,13 +45,22 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
       <p className="text-sm text-slate-400 leading-relaxed max-w-2xl mb-8">{bio}</p>
 
       <div className="grid gap-3 sm:grid-cols-2 max-w-2xl">
-        <a
-          href={`mailto:${email}`}
-          className="inline-flex justify-self-start w-fit items-center gap-2 text-sm text-slate-300 hover:text-sky-400 transition-colors"
-        >
-          <Mail className="h-4 w-4 shrink-0 text-sky-400" />
-          <span>{email}</span>
-        </a>
+        <div className="inline-flex justify-self-start w-fit items-center gap-2">
+          <a
+            href={`mailto:${email}`}
+            className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-sky-400 transition-colors"
+          >
+            <Mail className="h-4 w-4 shrink-0 text-sky-400" />
+            <img src={emailSvg} alt="" className="h-5" />
+          </a>
+          <button
+            onClick={() => copy(email)}
+            aria-label="Copiar email"
+            className="p-1 rounded text-slate-500 hover:text-sky-400 hover:bg-slate-800 transition-colors"
+          >
+            {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+          </button>
+        </div>
 
         {phone !== undefined && (
           <a
@@ -74,16 +91,17 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
       </div>
 
       {hasLinks && (
-        <div className="mt-6 flex items-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
           {links?.linkedin !== undefined && (
             <a
               href={links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
             >
-              <Linkedin className="h-5 w-5" />
+              <LinkedinIcon className="h-5 w-5" />
+              <span>LinkedIn</span>
             </a>
           )}
           {links?.github !== undefined && (
@@ -92,9 +110,10 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
             >
-              <Github className="h-5 w-5" />
+              <GithubIcon className="h-5 w-5" />
+              <span>GitHub</span>
             </a>
           )}
           {links?.portfolio !== undefined && (
@@ -103,9 +122,10 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Portfolio"
-              className="text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
             >
               <Globe className="h-5 w-5" />
+              <span>Portfolio</span>
             </a>
           )}
         </div>

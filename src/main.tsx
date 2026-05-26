@@ -4,7 +4,8 @@ import { ChevronUp } from "lucide-react";
 import "./index.css";
 import App from "./App";
 import { rawUserData } from "./data/user-data";
-import { rot13 } from "./utils/email";
+import { SectionNav } from "./components/nav/SectionNav";
+import { navigationItems } from "./data/navigation";
 
 // ── Item 9: JSON-LD Structured Data ──
 function injectJsonLd() {
@@ -35,7 +36,7 @@ function injectJsonLd() {
     jsonLd.address = { "@type": "PostalAddress", addressLocality: contact.location };
   }
   if (contact?.email) {
-    jsonLd.email = rot13(contact.email);
+    jsonLd.email = contact.email;
   }
   if (sameAs.length > 0) {
     jsonLd.sameAs = sameAs;
@@ -100,6 +101,7 @@ function AppShell() {
 
   return (
     <>
+      <SectionNav items={navigationItems} />
       <App />
       <BackToTop />
     </>
