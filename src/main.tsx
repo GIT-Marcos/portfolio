@@ -6,6 +6,7 @@ import App from "./App";
 import { rawUserData } from "./data/user-data";
 import { SectionNav } from "./components/nav/SectionNav";
 import { navigationItems } from "./data/navigation";
+import { ThemeProvider } from "./features/theme/ThemeProvider";
 
 // ── Item 9: JSON-LD Structured Data ──
 function injectJsonLd() {
@@ -96,11 +97,11 @@ function AppShell() {
   useScrollAnimation();
 
   return (
-    <>
+    <ThemeProvider>
       <SectionNav items={navigationItems} />
       <App />
       <BackToTop />
-    </>
+    </ThemeProvider>
   );
 }
 

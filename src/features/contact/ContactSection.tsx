@@ -14,53 +14,47 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
   const { email, phone, location, availability, links } = contact;
   const { copy, copied } = useClipboard();
 
-  const emailSvg = `data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${email.length * 8 + 8}" height="18">
-      <text x="0" y="13" font-family="monospace" font-size="13" fill="#cbd5e1">${email}</text>
-    </svg>`
-  )}`;
-
   const hasLinks = links !== undefined &&
     (links.linkedin !== undefined || links.github !== undefined || links.portfolio !== undefined);
 
   return (
-    <section className="w-full border-b border-slate-800 pb-10">
+    <section className="w-full border-b border-slate-200 pb-10 dark:border-slate-800">
       <div className="mb-6">
-        <span className="mb-2 block text-xs font-medium uppercase tracking-widest text-sky-400">
+        <span className="mb-2 block text-xs font-medium uppercase tracking-widest text-sky-600 dark:text-sky-400">
           {sectionTitles.contact}
         </span>
-        <h1 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight dark:text-slate-100">
           {name}
         </h1>
-        <p className="mt-1 text-lg text-slate-400">{role}</p>
+        <p className="mt-1 text-lg text-slate-500 dark:text-slate-400">{role}</p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-5">
         {focus.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300"
+            className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700 dark:border-slate-700 dark:text-slate-300"
           >
             {item}
           </span>
         ))}
       </div>
 
-      <p className="text-sm text-slate-400 leading-relaxed max-w-2xl mb-8">{bio}</p>
+      <p className="text-sm text-slate-500 leading-relaxed max-w-2xl mb-8 dark:text-slate-400">{bio}</p>
 
       <div className="grid gap-3 sm:grid-cols-2 max-w-2xl">
         <div className="inline-flex justify-self-start w-fit items-center gap-2">
           <a
             href={`mailto:${email}`}
-            className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-sky-400 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-700 hover:text-sky-600 transition-colors dark:text-slate-300 dark:hover:text-sky-400"
           >
-            <Mail className="h-4 w-4 shrink-0 text-sky-400" />
-            <img src={emailSvg} alt="" className="h-5" />
+            <Mail className="h-4 w-4 shrink-0 text-sky-600 dark:text-sky-400" />
+            <span className="text-sm text-slate-500 dark:text-slate-400">{email}</span>
           </a>
           <button
             onClick={() => copy(email)}
             aria-label="Copiar email"
-            className="p-1 rounded text-slate-500 hover:text-sky-400 hover:bg-slate-800 transition-colors"
+            className="p-1 rounded text-slate-400 hover:text-sky-600 hover:bg-slate-100 transition-colors dark:text-slate-500 dark:hover:text-sky-400 dark:hover:bg-slate-800"
           >
             {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
           </button>
@@ -69,7 +63,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
         {phone !== undefined && (
           <a
             href={`tel:${phone.replace(/\s/g, '')}`}
-            className="inline-flex justify-self-start w-fit items-center gap-2 text-sm text-slate-300 hover:text-sky-400 transition-colors"
+            className="inline-flex justify-self-start w-fit items-center gap-2 text-sm text-slate-700 hover:text-sky-600 transition-colors dark:text-slate-300 dark:hover:text-sky-400"
           >
             <Phone className="h-4 w-4 shrink-0 text-sky-400" />
             <span>{phone}</span>
@@ -77,7 +71,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
         )}
 
         {location !== undefined && (
-          <div className="flex items-center gap-2 text-sm text-slate-400">
+          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
             <MapPin className="h-4 w-4 shrink-0 text-sky-400" />
             <span>{location}</span>
           </div>
@@ -102,7 +96,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-sky-600 transition-colors dark:text-slate-500 dark:hover:text-sky-400"
             >
               <LinkedinIcon className="h-5 w-5" />
               <span>LinkedIn</span>
@@ -114,7 +108,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-sky-600 transition-colors dark:text-slate-500 dark:hover:text-sky-400"
             >
               <GithubIcon className="h-5 w-5" />
               <span>GitHub</span>
@@ -126,7 +120,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Portfolio"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-sky-600 transition-colors dark:text-slate-500 dark:hover:text-sky-400"
             >
               <Globe className="h-5 w-5" />
               <span>Portfolio</span>

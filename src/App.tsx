@@ -30,15 +30,15 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="border-t border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
+      <footer className="border-t border-slate-200/50 bg-white/80 backdrop-blur-md dark:border-slate-800/50 dark:bg-slate-950/80">
         <div className="mx-auto flex h-10 max-w-5xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <span className="text-xs text-slate-500">© 2026 {personalInfo.name}</span>
-          <span className="text-xs text-slate-500">Built with React + TypeScript + Vite</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">© 2026 {personalInfo.name}</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">Built with React + TypeScript + Vite</span>
           <a
             href="https://github.com/GIT-Marcos/portfolio"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-sky-400 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-sky-600 transition-colors dark:text-slate-500 dark:hover:text-sky-400"
           >
             <GithubIcon className="h-3.5 w-3.5" />
             Source
