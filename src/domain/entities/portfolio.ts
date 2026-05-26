@@ -48,9 +48,8 @@ export interface Project {
 
 // ── Skills ──
 export interface Skills {
-  core: ReadonlyArray<string>;
-  aiTools: ReadonlyArray<string>;
-  testing: ReadonlyArray<string>;
+  techs: ReadonlyArray<string>;
+  habilidades: ReadonlyArray<string>;
 }
 
 // ── Root Domain Entity ──

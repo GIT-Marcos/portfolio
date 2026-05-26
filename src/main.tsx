@@ -9,7 +9,7 @@ import { navigationItems } from "./data/navigation";
 
 // ── Item 9: JSON-LD Structured Data ──
 function injectJsonLd() {
-  const { personal_info, skills } = rawUserData;
+  const { personal_info, techs } = rawUserData;
   const contact = personal_info.contact;
   const links = contact?.links;
 
@@ -17,11 +17,7 @@ function injectJsonLd() {
   if (links?.linkedin) sameAs.push(links.linkedin);
   if (links?.github) sameAs.push(links.github);
 
-  const knowsAbout = [
-    ...skills.core,
-    ...skills.ai_tools,
-    ...skills.testing,
-  ];
+  const knowsAbout = [...techs];
 
   const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",

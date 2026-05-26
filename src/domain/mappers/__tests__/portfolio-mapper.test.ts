@@ -24,7 +24,8 @@ function minimalRaw(overrides: Record<string, unknown> = {}): Record<string, unk
       contact: { email: 'test@test.com' },
     },
     projects: [validProject()],
-    skills: { core: [], ai_tools: [], testing: [] },
+    techs: [],
+    skills: [],
     ...overrides,
   };
 }
@@ -78,16 +79,11 @@ describe('mapPortfolio — happy path', () => {
     expect(result.projects[0]!.isAiBuilt).toBe(false);
   });
 
-  it('maps all three skill groups', () => {
-    const raw = {
-      core: ['Java', 'SQL'],
-      ai_tools: ['Prompt Engineering'],
-      testing: ['QA Manual'],
-    };
-    const result = mapPortfolio(minimalRaw({ skills: raw }));
-    expect(result.skills.core).toEqual(['Java', 'SQL']);
-    expect(result.skills.aiTools).toEqual(['Prompt Engineering']);
-    expect(result.skills.testing).toEqual(['QA Manual']);
+  it('maps techs and skills as flat arrays', () => {
+    const raw = { techs: ['Java', 'SQL', 'React'], skills: ['QA Manual', 'Debugging'] };
+    const result = mapPortfolio(minimalRaw(raw));
+    expect(result.skills.techs).toEqual(['Java', 'SQL', 'React']);
+    expect(result.skills.habilidades).toEqual(['QA Manual', 'Debugging']);
   });
 });
 
@@ -213,12 +209,11 @@ describe('mapPortfolio — fallbacks', () => {
     expect(result.personalInfo.name).toBe('Unknown');
   });
 
-  it('missing skills → empty arrays', () => {
-    const raw = minimalRaw({ skills: undefined });
+  it('missing techs and skills → empty arrays', () => {
+    const raw = minimalRaw({ techs: undefined, skills: undefined });
     const result = mapPortfolio(raw);
-    expect(result.skills.core).toEqual([]);
-    expect(result.skills.aiTools).toEqual([]);
-    expect(result.skills.testing).toEqual([]);
+    expect(result.skills.techs).toEqual([]);
+    expect(result.skills.habilidades).toEqual([]);
   });
 
   it('phone omitted when empty string', () => {
@@ -260,10 +255,10 @@ describe('mapPortfolio — snake_case to camelCase', () => {
     expect(result.projects[0]!.features).toEqual(['Auth', 'Pagination']);
   });
 
-  it('ai_tools maps to aiTools', () => {
-    const raw = minimalRaw({ skills: { core: [], ai_tools: ['ChatGPT'], testing: [] } });
+  it('skills maps to habilidades', () => {
+    const raw = minimalRaw({ skills: ['ChatGPT'] });
     const result = mapPortfolio(raw);
-    expect(result.skills.aiTools).toEqual(['ChatGPT']);
+    expect(result.skills.habilidades).toEqual(['ChatGPT']);
   });
 
   it('is_ai_built maps to isAiBuilt', () => {

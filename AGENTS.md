@@ -1,7 +1,9 @@
 # AGENTS.md — portfolio-final
 
 ## Golden Rule
-Only edit `src/data/user-data.ts` for content changes. UI components under `src/features/` and `src/App.tsx` are read-only.
+- `src/data/user-data.ts` → edit for content changes
+- `src/features/` → create new components, never modify existing ones
+- `src/App.tsx` → orchestrate sections (editable)
 
 ## Commands
 - `npm run dev` — Vite dev server with HMR
@@ -12,14 +14,17 @@ Only edit `src/data/user-data.ts` for content changes. UI components under `src/
 - `src/data/user-data.ts` → raw JSON source of truth (exports `rawUserData as const`)
 - `src/domain/mappers/portfolio-mapper.ts` → validates, transforms, defaults (casts via `as unknown as Record<string, unknown>`)
 - `src/data/portfolio.ts` → exports the mapped `portfolio` domain entity
-- `src/features/{contact,projects,skills}/` → read-only UI components
-- `src/App.tsx` → fixed layout order: Contact → Projects → Skills (do not reorder)
+- `src/data/iconMap.ts` → maps tech names to icon components (shared)
+- `src/data/sectionTitles.ts` → single source of truth for section labels
+- `src/features/{contact,projects,largetechs,softskills}/` → feature components (add new features in new dirs)
+- `src/features/*/` → new sections created here as needed
+- `src/App.tsx` → orchestrates sections in fixed order: Contact → Projects → Techs → Skills (do not reorder)
 
 ## Data Constraints
 - `type`: only `"desktop"` or `"cloud"` (invalid defaults to `"cloud"`)
 - `status`: only `"completed"` or `"in-development"` (invalid defaults to `"completed"`)
 - All URLs must start with `http://` or `https://` (invalid URLs are silently dropped)
-- Skill groups: `core` (green), `ai_tools` (purple), `testing` (blue) — no other groups render
+- Skills data: `techs` (flat array, 18 icon-mapped items) and `skills` (flat array, 5 habilidad items — no icons)
 - Contact links: `linkedin`, `github`, `portfolio` only
 - Project links: `github`, `demo` only
 

@@ -2,7 +2,8 @@ import { GithubIcon } from './components/icons/GithubIcon';
 import { portfolio } from './data/portfolio';
 import { ContactSection } from './features/contact/ContactSection';
 import { ProjectsSection } from './features/projects/ProjectsSection';
-import { SkillsSection } from './features/skills/SkillsSection';
+import { LargeTechsSection } from './features/largetechs/LargeTechsSection';
+import { SoftSkillsSection } from './features/softskills/SoftSkillsSection';
 
 export default function App() {
   const { personalInfo, projects, skills } = portfolio;
@@ -18,9 +19,14 @@ export default function App() {
           <ProjectsSection projects={projects} />
         </div>
 
-        {/* 3. Skills — BOTTOM (always last) */}
+        {/* 3. Techs */}
         <div className="mt-12">
-          <SkillsSection skills={skills} />
+          <LargeTechsSection skills={skills} />
+        </div>
+
+        {/* 4. Skills — BOTTOM (always last) */}
+        <div className="mt-12">
+          <SoftSkillsSection skills={skills} />
         </div>
       </main>
 
