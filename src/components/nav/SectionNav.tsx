@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { NavItem } from '../../data/navigation';
 import { cn } from '../../utils/cn';
+import { ThemeToggle } from '../../features/theme/ThemeToggle';
 
 const NAV_HEIGHT = 40;
 
@@ -43,11 +44,15 @@ export function SectionNav({ items }: SectionNavProps) {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 h-10 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-50 h-10 border-b border-slate-200/50 bg-white/80 backdrop-blur-md dark:border-slate-800/50 dark:bg-slate-950/80"
       aria-label="Section navigation"
     >
-      <div className="mx-auto flex h-full max-w-5xl items-center justify-center gap-6 px-4 sm:gap-8 sm:px-6 lg:px-8">
-        {items.map((item, index) => {
+      <div className="mx-auto flex h-full max-w-5xl items-center px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center">
+          <ThemeToggle />
+        </div>
+        <div className="flex flex-1 items-center justify-center gap-6 sm:gap-8">
+          {items.map((item, index) => {
           const isActive = index === activeIndex;
 
           return (
@@ -67,6 +72,7 @@ export function SectionNav({ items }: SectionNavProps) {
             </button>
           );
         })}
+        </div>
       </div>
     </nav>
   );

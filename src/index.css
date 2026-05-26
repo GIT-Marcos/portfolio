@@ -4,9 +4,10 @@
 @import "@fontsource/jetbrains-mono/600.css";
 @import "@fontsource/jetbrains-mono/700.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-mono: "JetBrains Mono", monospace;
-  --color-background: #020617;
 }
 
 * {
@@ -14,12 +15,22 @@
 }
 
 body {
-  background-color: var(--color-background);
-  color: #e2e8f0;
+  background-color: #f8fafc;
+  color: #0f172a;
   min-height: 100dvh;
 }
 
+:root.dark body {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
 ::selection {
+  background-color: rgba(56, 189, 248, 0.3);
+  color: #0f172a;
+}
+
+:root.dark ::selection {
   background-color: rgba(56, 189, 248, 0.2);
   color: #e2e8f0;
 }
@@ -33,8 +44,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 3px;
+}
+
+:root.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
 }
 
 *:focus-visible {
