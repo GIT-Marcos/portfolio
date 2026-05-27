@@ -2,12 +2,14 @@ import type { Project } from '../../domain/entities/portfolio';
 import { cn } from '../../utils/cn';
 import { ExternalLink } from 'lucide-react';
 import { GithubIcon } from '../../components/icons/GithubIcon';
+import { useLocale } from '../../hooks/useLocale';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const { t } = useLocale();
   const {
     name,
     type,
@@ -42,13 +44,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">{name}</h3>
         <div className="flex shrink-0 items-center gap-1.5">
           {isWip && (
-            <span aria-label="Work in progress" className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-600 border border-amber-300 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20">
-              WIP
+            <span aria-label={t('aria.workInProgress')} className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-600 border border-amber-300 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20">
+              {t('badge.wip')}
             </span>
           )}
           {isAiBuilt && (
-            <span aria-label="Built with AI assistance" className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-600 border border-violet-300 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20">
-              AI-Optimized
+            <span aria-label={t('aria.aiBuilt')} className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-600 border border-violet-300 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20">
+              {t('badge.aiOptimized')}
             </span>
           )}
         </div>
@@ -120,7 +122,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={links.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${name} — GitHub Repository`}
+              aria-label={t('aria.githubRepo', { name })}
               className={cn(
                 'transition-colors',
                 isCloud
@@ -136,7 +138,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${name} — Live Demo`}
+              aria-label={t('aria.liveDemo', { name })}
               className={cn(
                 'transition-colors',
                 isCloud

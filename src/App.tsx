@@ -1,11 +1,12 @@
 import { GithubIcon } from './components/icons/GithubIcon';
-import { portfolio } from './data/portfolio';
+import { useLocale } from './hooks/useLocale';
 import { ContactSection } from './features/contact/ContactSection';
 import { ProjectsSection } from './features/projects/ProjectsSection';
 import { LargeTechsSection } from './features/largetechs/LargeTechsSection';
 import { SoftSkillsSection } from './features/softskills/SoftSkillsSection';
 
 export default function App() {
+  const { portfolio, t } = useLocale();
   const { personalInfo, projects, skills } = portfolio;
 
   return (
@@ -32,8 +33,8 @@ export default function App() {
 
       <footer className="border-t border-slate-200/50 bg-white/80 backdrop-blur-md dark:border-slate-800/50 dark:bg-slate-950/80">
         <div className="mx-auto flex h-10 max-w-5xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <span className="text-xs text-slate-400 dark:text-slate-500">© 2026 {personalInfo.name}</span>
-          <span className="text-xs text-slate-400 dark:text-slate-500">Built with React + TypeScript + Vite</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{t('footer.copyright', { name: personalInfo.name })}</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{t('footer.builtWith')}</span>
           <a
             href="https://github.com/GIT-Marcos/portfolio"
             target="_blank"
@@ -41,7 +42,7 @@ export default function App() {
             className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-sky-600 transition-colors dark:text-slate-500 dark:hover:text-sky-400"
           >
             <GithubIcon className="h-3.5 w-3.5" />
-            Source
+            {t('footer.source')}
           </a>
         </div>
       </footer>

@@ -1,15 +1,16 @@
 import type { PersonalInfo } from '../../domain/entities/portfolio';
-import { sectionTitles } from '../../data/sectionTitles';
 import { Mail, Phone, MapPin, Globe, Copy, Check } from 'lucide-react';
 import { LinkedinIcon } from '../../components/icons/LinkedinIcon';
 import { GithubIcon } from '../../components/icons/GithubIcon';
 import { useClipboard } from '../../hooks/useClipboard';
+import { useLocale } from '../../hooks/useLocale';
 
 interface ContactSectionProps {
   personalInfo: PersonalInfo;
 }
 
 export function ContactSection({ personalInfo }: ContactSectionProps) {
+  const { t } = useLocale();
   const { name, role, focus, bio, contact } = personalInfo;
   const { email, phone, location, availability, links } = contact;
   const { copy, copied } = useClipboard();
@@ -21,7 +22,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
     <section className="w-full border-b border-slate-200 pb-10 dark:border-slate-800">
       <div className="mb-6">
         <span className="mb-2 block text-xs font-medium uppercase tracking-widest text-sky-600 dark:text-sky-400">
-          {sectionTitles.contact}
+          {t('section.contact')}
         </span>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight dark:text-slate-100">
           {name}
@@ -53,7 +54,7 @@ export function ContactSection({ personalInfo }: ContactSectionProps) {
           </a>
           <button
             onClick={() => copy(email)}
-            aria-label="Copiar email"
+            aria-label={t('aria.copyEmail')}
             className="p-1 rounded text-slate-400 hover:text-sky-600 hover:bg-slate-100 transition-colors dark:text-slate-500 dark:hover:text-sky-400 dark:hover:bg-slate-800"
           >
             {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}

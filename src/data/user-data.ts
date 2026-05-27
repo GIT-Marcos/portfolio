@@ -27,9 +27,9 @@ export const rawUserData = {
       is_ai_built: true,
       status: "in-development",
       links: { github: "https://github.com/GIT-Marcos/flashcards" },
-      stack: ["Spring Boot 4.0.6", "Java 21", "PostgreSQL 15", "Flyway", "Spring Security", "JWT", "Bucket4j", "Micrometer", "TestContainers", "Docker", "OpenCode AI Agent"],
+      stack: ["Spring Boot 4.0.6", "Java 21", "PostgreSQL 15", "Flyway", "Spring Security", "JWT", "CI/CD", "Bucket4j", "Micrometer", "Docker", "OpenCode AI Agent"],
       description: "API RESTful para estudio con tarjetas flash usando el algoritmo SM-2 de spaced repetition. Incluye autenticación JWT, rate limiting, notificaciones por email, métricas con Prometheus, asistencia para desarrollo con OpenCode AI Agent.",
-      technical_focus: ["Algoritmo SM-2", "Autenticación JWT con refresh tokens", "Rate limiting con Bucket4j", "370+ tests con TestContainers", "Optimistic Locking", "Perfiles de despliegue (dev/prod/free)", "Uso de Skills y MCPs con OpenCode"],
+      technical_focus: ["Algoritmo SM-2", "Autenticación JWT con refresh tokens", "GitHub Actions CI/CD", "Rate limiting con Bucket4j", "370+ tests con TestContainers", "Optimistic Locking", "Perfiles de despliegue (dev/prod/free)", "Uso de Skills y MCPs con OpenCode"],
     },
     {
       id: "p3",
