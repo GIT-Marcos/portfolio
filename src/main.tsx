@@ -7,6 +7,8 @@ import { rawUserData } from "./data/user-data";
 import { SectionNav } from "./components/nav/SectionNav";
 import { navigationItems } from "./data/navigation";
 import { ThemeProvider } from "./features/theme/ThemeProvider";
+import { LocaleProvider } from "./i18n/LocaleProvider";
+import { useLocale } from "./hooks/useLocale";
 
 // ── Item 9: JSON-LD Structured Data ──
 function injectJsonLd() {
@@ -47,6 +49,7 @@ function injectJsonLd() {
 
 // ── Item 19: Back-to-Top Button ──
 function BackToTop() {
+  const { t } = useLocale();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -62,7 +65,7 @@ function BackToTop() {
         const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         window.scrollTo({ top: 0, behavior: reduced ? "instant" : "smooth" });
       }}
-      aria-label="Volver al inicio"
+      aria-label={t('aria.backToTop')}
       className={`fixed bottom-6 right-6 z-50 rounded-full border border-sky-500/30 bg-sky-500/20 p-2.5 text-sky-400 backdrop-blur-sm transition-all duration-300 hover:bg-sky-500/30 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
@@ -97,11 +100,13 @@ function AppShell() {
   useScrollAnimation();
 
   return (
-    <ThemeProvider>
-      <SectionNav items={navigationItems} />
-      <App />
-      <BackToTop />
-    </ThemeProvider>
+    <LocaleProvider>
+      <ThemeProvider>
+        <SectionNav items={navigationItems} />
+        <App />
+        <BackToTop />
+      </ThemeProvider>
+    </LocaleProvider>
   );
 }
 

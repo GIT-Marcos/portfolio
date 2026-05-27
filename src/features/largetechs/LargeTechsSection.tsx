@@ -1,6 +1,6 @@
 import type { Skills } from '@/domain/entities/portfolio';
 import { iconMap } from '@/data/iconMap';
-import { sectionTitles } from '@/data/sectionTitles';
+import { useLocale } from '@/hooks/useLocale';
 import type { ComponentType } from 'react';
 
 interface LargeTechsSectionProps {
@@ -19,6 +19,7 @@ function TechBadge({ name }: { name: string }) {
 }
 
 export function LargeTechsSection({ skills }: LargeTechsSectionProps) {
+  const { t } = useLocale();
   const allTechs = skills.techs;
 
   if (allTechs.length === 0) return null;
@@ -26,7 +27,7 @@ export function LargeTechsSection({ skills }: LargeTechsSectionProps) {
   return (
     <section className="w-full border-t border-slate-200 pt-10 dark:border-slate-800">
       <h2 className="mb-6 text-2xl font-bold tracking-tight bg-gradient-to-r from-sky-600 via-sky-500 to-sky-600 bg-clip-text text-transparent dark:from-sky-400 dark:via-sky-300 dark:to-sky-400">
-        {sectionTitles.techs}
+        {t('section.techs')}
       </h2>
       <div className="flex flex-wrap gap-4">
         {allTechs.map((tech) => (
