@@ -32,6 +32,29 @@ export const rawUserData = {
       technical_focus: ["Algoritmo SM-2", "Autenticación JWT con refresh tokens", "GitHub Actions CI/CD", "Rate limiting con Bucket4j", "370+ tests con TestContainers", "Optimistic Locking", "Perfiles de despliegue (dev/prod/free)", "Uso de Skills y MCPs con OpenCode"],
     },
     {
+      id: "p5",
+      name: "Flashcards Frontend",
+      type: "cloud",
+      is_ai_built: true,
+      status: "in-development",
+      links: {
+        demo: "https://flashcards-front-gilt.vercel.app/decks",
+        github: "https://github.com/GIT-Marcos/flashcards-front",
+      },
+      stack: ["React 19", "TypeScript", "Vite", "TailwindCSS v4", "TanStack React Query v5", "Axios", "Zod", "Recharts", "Sonner"],
+      description: "Frontend para la API de Flashcards con algoritmo SM-2. App web progresiva con autenticación JWT, estudio con spaced repetition, estadísticas detalladas y paginación por cursor. Desarrollada enteramente con asistencia de IA mediante prompting avanzado.",
+      technical_focus: [
+        "Autenticación JWT con refresh tokens y cola de reintentos",
+        "TanStack React Query con invalidación de caché",
+        "Paginación por cursor (Window pattern)",
+        "Gráficos de distribución de calidad con Recharts",
+        "SM-2 Spaced Repetition con valoración 6 nivel",
+        "Validación de formularios con Zod",
+        "Prompting avanzado para generación del 100% del código",
+        "Despliegue en Vercel",
+      ],
+    },
+    {
       id: "p3",
       name: "Simple Task Frontend",
       type: "cloud",
@@ -68,9 +91,9 @@ export const rawUserData = {
   ],
   techs: [
     "Java", "SQL", "Spring", "Hibernate", "PostgreSQL", "Flyway",
-    "Docker", "OpenCode AI Agent", "Jira",
+    "Docker", "OpenCode AI Agent", "TypeScript", "React", "Jira",
     "Confluence", "C#", "CSS", "Git", "HTML",
-    "Maven", "OpenAPI", "Postman", "React",
+    "Maven", "OpenAPI", "Postman",
   ],
   skills: [
     "Prompt Engineering", "AI-Assisted coding",

@@ -19,7 +19,7 @@ export const translations = {
     'badge.wip': 'WIP',
     'badge.aiOptimized': 'AI-Optimized',
 
-    'footer.copyright': '© 2026 {name}',
+    'footer.copyright': '2026 by {name}',
     'footer.builtWith': 'Construido con React + TypeScript + Vite',
     'footer.source': 'Código fuente',
   },
@@ -41,7 +41,7 @@ export const translations = {
     'badge.wip': 'WIP',
     'badge.aiOptimized': 'AI-Optimized',
 
-    'footer.copyright': '© 2026 {name}',
+    'footer.copyright': '2026 by {name}',
     'footer.builtWith': 'Built with React + TypeScript + Vite',
     'footer.source': 'Source',
   },

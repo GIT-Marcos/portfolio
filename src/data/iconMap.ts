@@ -7,6 +7,7 @@ import { PostgresIcon } from '@/components/icons/PostgresIcon';
 import { FlywayIcon } from '@/components/icons/FlywayIcon';
 import { DockerIcon } from '@/components/icons/DockerIcon';
 import { OpenCodeIcon } from '@/components/icons/OpenCodeIcon';
+import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
 import { JiraIcon } from '@/components/icons/JiraIcon';
 import { ConfluenceIcon } from '@/components/icons/ConfluenceIcon';
 import { CsharpIcon } from '@/components/icons/CsharpIcon';
@@ -27,6 +28,8 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   "Flyway": FlywayIcon,
   "Docker": DockerIcon,
   "OpenCode AI Agent": OpenCodeIcon,
+  "TypeScript": TypeScriptIcon,
+  "React": ReactIcon,
   "Jira": JiraIcon,
   "Confluence": ConfluenceIcon,
   "C#": CsharpIcon,
@@ -36,5 +39,4 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   "Maven": MavenIcon,
   "OpenAPI": OpenApiIcon,
   "Postman": PostmanIcon,
-  "React": ReactIcon,
 };
