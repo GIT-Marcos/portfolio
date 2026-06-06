@@ -68,9 +68,9 @@ export const rawUserData = {
   ],
   techs: [
     "Java", "SQL", "Spring", "Hibernate", "PostgreSQL", "Flyway",
-    "Docker", "OpenCode AI Agent", "Jira",
+    "Docker", "OpenCode AI Agent", "TypeScript", "React", "Jira",
     "Confluence", "C#", "CSS", "Git", "HTML",
-    "Maven", "OpenAPI", "Postman", "React",
+    "Maven", "OpenAPI", "Postman",
   ],
   skills: [
     "Prompt Engineering", "AI-Assisted coding",
