@@ -94,6 +94,7 @@ function mapPersonalInfo(raw: Record<string, unknown>): PersonalInfo {
 
   return {
     name: safeString(raw.name, 'Unknown'),
+    nameShort: safeString(raw.nameShort, 'Unknown'),
     role: safeString(raw.role, 'Developer'),
     focus: safeStringArray(raw.focus),
     bio: safeString(raw.bio),

@@ -1,6 +1,7 @@
 export const rawUserDataEn = {
   personal_info: {
-    name: "Marcos",
+    name: "Marcos Agustín Pardo Varela",
+    nameShort: "Marcos",
     role: "Systems Analyst / Backend Developer",
     focus: ["Java", "Spring Boot", "SQL", "Troubleshooting", "AI", "QA"],
     bio: "Systems analyst with experience in development processes. Specialized in OOP, specifically Java and Spring, requirements analysis, testing, and implementation of solutions focused on code quality and best practices.",

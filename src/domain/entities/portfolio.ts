@@ -26,6 +26,7 @@ export interface ContactInfo {
 // ── Personal Info ──
 export interface PersonalInfo {
   name: string;
+  nameShort: string;
   role: string;
   focus: ReadonlyArray<string>;
   bio: string;

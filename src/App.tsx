@@ -33,7 +33,7 @@ export default function App() {
 
       <footer className="border-t border-slate-200/50 bg-white/80 backdrop-blur-md dark:border-slate-800/50 dark:bg-slate-950/80">
         <div className="mx-auto flex h-10 max-w-5xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <span className="text-xs text-slate-400 dark:text-slate-500">{t('footer.copyright', { name: personalInfo.name })}</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{t('footer.copyright', { name: personalInfo.nameShort })}</span>
           <span className="text-xs text-slate-400 dark:text-slate-500">{t('footer.builtWith')}</span>
           <a
             href="https://github.com/GIT-Marcos/portfolio"
