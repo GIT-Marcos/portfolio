@@ -1,0 +1,62 @@
+---
+import { externalLinkCategories } from '../data/externalLinks';
+import type { ExternalLinkCategory } from '../data/externalLinks';
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  label?: string;
+  url: string;
+  category: ExternalLinkCategory;
+  icon?: string;
+}
+
+const { url, category, icon } = Astro.props;
+const config = externalLinkCategories[category];
+const label = Astro.props.label ?? config.defaultLabel;
+const iconSrc = icon ?? config.defaultIcon;
+// mailto:/tel: no deben abrir en pestaña nueva; solo URLs http(s)
+const isExternal = /^https?:\/\//i.test(url);
+---
+
+<a
+  class:list={['link-button', `link-button--${category}`]}
+  href={url}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+>
+  <Icon name={iconSrc} class="link-button__icon" aria-hidden="true" width={20} height={20} />
+  <span class="link-button__label">{label}</span>
+</a>
+
+<style>
+  .link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--link-button-accent);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--link-button-accent);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .link-button__icon {
+    flex-shrink: 0;
+  }
+
+  .link-button--github   { --link-button-accent: var(--color-github); }
+  .link-button--website  { --link-button-accent: var(--color-website); }
+  .link-button--whatsapp { --link-button-accent: var(--color-whatsapp); }
+  .link-button--email    { --link-button-accent: var(--color-email); }
+  .link-button--linkedin { --link-button-accent: var(--color-linkedin); }
+  .link-button--generic  { --link-button-accent: var(--color-generic); }
+
+  .link-button:hover {
+    background-color: var(--link-button-accent);
+    color: #fff;
+  }
+</style>

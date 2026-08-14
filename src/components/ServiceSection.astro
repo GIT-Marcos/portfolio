@@ -1,0 +1,92 @@
+---
+import type { Service } from '../data/services';
+import ExternalLinkButton from './ExternalLinkButton.astro';
+
+export interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<article class="service-section">
+  <div class="service-section__media">
+    <img
+      class="service-section__image"
+      src={service.image}
+      alt={service.imageAlt}
+      loading="lazy"
+    />
+  </div>
+  <div class="service-section__content">
+    <h2 class="service-section__title">{service.title}</h2>
+    <p class="service-section__description">{service.description}</p>
+    <div class="service-section__actions">
+      {service.contacts.map((contact) => (
+        <ExternalLinkButton {...contact} />
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .service-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background-color: var(--color-surface);
+    border-radius: 12px;
+  }
+
+  .service-section__media {
+    flex: 0 0 40%;
+  }
+
+  .service-section__image {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--color-bg);
+  }
+
+  .service-section__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .service-section__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+  }
+
+  .service-section__description {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .service-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  @media (max-width: 768px) {
+    .service-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .service-section__media {
+      flex: none;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .service-section__actions {
+      justify-content: center;
+    }
+  }
+</style>

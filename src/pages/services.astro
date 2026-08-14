@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import { services, servicesPageContent } from '../data/services';
+---
+
+<Layout
+  title="Portfolio | Servicios"
+  description="Desarrollo web freelance y de software en general: sitios rápidos, accesibles y sistemas con lógica sólida"
+>
+  <Header />
+  <main class="services-page">
+    <h1 class="services-page__title">{servicesPageContent.heading}</h1>
+    <p class="services-page__intro">{servicesPageContent.intro}</p>
+
+    {services.map((service) => (
+      <ServiceSection service={service} />
+    ))}
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .services-page {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .services-page__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .services-page__intro {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 60ch;
+  }
+</style>

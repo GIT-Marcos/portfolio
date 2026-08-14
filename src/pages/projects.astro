@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const freelanceProjects = projects.filter((p) => p.category === 'freelance');
+const personalAcademicProjects = projects.filter(
+  (p) => p.category === 'personal-academic'
+);
+---
+
+<Layout title="Portfolio | Proyectos" description="Proyectos freelance, personales y académicos">
+  <Header />
+  <main class="projects-page">
+    <h1 class="projects-page__title">Proyectos</h1>
+
+    <section class="projects-section">
+      <h2 class="projects-section__title">Trabajos freelance</h2>
+      {freelanceProjects.length > 0 ? (
+        freelanceProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      ) : (
+        <p class="projects-section__empty">Próximamente.</p>
+      )}
+    </section>
+
+    <section class="projects-section">
+      <h2 class="projects-section__title">Proyectos personales y académicos</h2>
+      {personalAcademicProjects.length > 0 ? (
+        personalAcademicProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      ) : (
+        <p class="projects-section__empty">Próximamente.</p>
+      )}
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .projects-page {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+  }
+
+  .projects-page__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .projects-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .projects-section__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .projects-section__empty {
+    color: var(--color-muted);
+  }
+</style>

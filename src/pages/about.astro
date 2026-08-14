@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { aboutContent } from '../data/about';
+---
+
+<Layout
+  title="Portfolio | Sobre mí"
+  description="Analista de sistemas con foco en backend Java y programación orientada a objetos"
+>
+  <Header />
+  <main class="about-page">
+    <h1 class="about-page__title">{aboutContent.heading}</h1>
+    <p class="about-page__intro">{aboutContent.intro}</p>
+
+    {aboutContent.sections.map((section) => (
+      <section class="about-section">
+        <h2 class="about-section__title">{section.title}</h2>
+        <p class="about-section__body">{section.body}</p>
+      </section>
+    ))}
+
+    <p class="about-page__cta">{aboutContent.cta}</p>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .about-page {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .about-page__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .about-page__intro {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 60ch;
+  }
+
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .about-section__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .about-section__body {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .about-page__cta {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+</style>

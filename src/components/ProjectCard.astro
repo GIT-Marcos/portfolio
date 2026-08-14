@@ -1,0 +1,223 @@
+---
+import type { Project } from '../data/projects';
+import TechItem from './TechItem.astro';
+import ExternalLinkButton from './ExternalLinkButton.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const {
+  title,
+  description,
+  technologies,
+  links,
+  isWIP = false,
+  image,
+  imageAlt,
+} = project;
+---
+
+<article class="project-card">
+  <div class="project-card__media">
+    <img
+      class="project-card__image"
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+    />
+    {isWIP && <span class="project-card__wip">Work in progress</span>}
+  </div>
+
+  <div class="project-card__content">
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{description}</p>
+
+    <div class="project-card__tech" aria-label="Tecnologías utilizadas">
+      {technologies.map((tech) => (
+        <TechItem name={tech.name} icon={tech.icon} alt={tech.alt} />
+      ))}
+    </div>
+
+    <div class="project-card__actions">
+      {links.map((link) => (
+        <ExternalLinkButton {...link} />
+      ))}
+      <button
+        class="project-card__image-trigger"
+        type="button"
+        data-project-image-button
+      >
+        Ver imagen
+      </button>
+    </div>
+  </div>
+
+  <dialog class="project-card__dialog" aria-label={`Imagen de ${title}`}>
+    <img class="project-card__dialog-image" src={image} alt={imageAlt} />
+    <button
+      class="project-card__dialog-close"
+      type="button"
+      aria-label="Cerrar imagen"
+      data-project-dialog-close
+    >
+      &times;
+    </button>
+  </dialog>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background-color: var(--color-surface);
+    border-radius: 12px;
+  }
+
+  .project-card__media {
+    flex: 0 0 40%;
+    position: relative;
+  }
+
+  .project-card__image {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--color-bg);
+  }
+
+  .project-card__wip {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-warning-bg);
+    color: var(--color-warning);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: 6px;
+  }
+
+  .project-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .project-card__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+  }
+
+  .project-card__description {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .project-card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .project-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+  }
+
+  .project-card__image-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .project-card__image-trigger:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .project-card__dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    background-color: transparent;
+    max-width: min(80vw, 800px);
+    width: 100%;
+  }
+
+  .project-card__dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .project-card__dialog-image {
+    width: 100%;
+    border-radius: 12px;
+    background-color: var(--color-bg);
+  }
+
+  .project-card__dialog-close {
+    position: absolute;
+    top: calc(-1 * var(--spacing-lg));
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .project-card {
+      flex-direction: column;
+    }
+
+    .project-card__media {
+      flex: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-project-image-button]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialog = button.closest('article')?.querySelector('dialog');
+      dialog?.showModal();
+    });
+  });
+
+  document.querySelectorAll('[data-project-dialog-close]').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.closest('dialog')?.close();
+    });
+  });
+
+  document.querySelectorAll('dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>

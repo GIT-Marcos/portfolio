@@ -1,0 +1,93 @@
+---
+import { navItems } from '../data/navigation';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header__container">
+    <a class="header__logo" href="/">Portfolio</a>
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        {navItems.map((item) => (
+          <li class="header__nav-item">
+            <a
+              class:list={[
+                'header__nav-link',
+                { 'header__nav-link--active': currentPath === item.href },
+              ]}
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .header__logo {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .header__logo:hover {
+    opacity: 0.8;
+  }
+
+  .header__nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+  }
+
+  .header__nav-link {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .header__nav-link--active {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+  }
+
+  @media (max-width: 640px) {
+    .header__container {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .header__nav-list {
+      gap: var(--spacing-md);
+    }
+  }
+</style>

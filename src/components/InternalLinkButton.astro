@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+}
+
+const { label, href, variant = 'primary' } = Astro.props;
+---
+
+<a
+  class:list={['internal-link-button', `internal-link-button--${variant}`]}
+  href={href}
+>
+  <span class="internal-link-button__label">{label}</span>
+  <Icon class="internal-link-button__arrow" name="mdi:arrow-right" aria-hidden="true" />
+</a>
+
+<style>
+  .internal-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .internal-link-button--primary {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .internal-link-button--secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
+  }
+
+  .internal-link-button--secondary:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .internal-link-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .internal-link-button__arrow {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .internal-link-button:hover .internal-link-button__arrow {
+    transform: translateX(3px);
+  }
+</style>
