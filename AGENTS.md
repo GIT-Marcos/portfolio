@@ -20,6 +20,7 @@ Definidas en `.opencode/agent/astro-planner.md` — seguirlas al construir:
 - Props de componentes con interfaces TypeScript exportadas.
 - Datos estáticos en `src/data/`.
 - Integración `@astrojs/sitemap` (ya instalada y configurada en `astro.config.mjs`).
+- Imports con alias (`@layouts/`, `@components/`, `@data/`, `@assets/`): usar alias para imports que cruzan directorios. Imports `./` entre archivos del mismo directorio son aceptables. Rutas relativas con `../` están prohibidas. Paths configurados en `tsconfig.json`.
 
 ## Estilos: arquitectura CSS
 
