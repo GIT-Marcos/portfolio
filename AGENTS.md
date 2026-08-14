@@ -16,10 +16,41 @@ Portfolio personal para un desarrollador de software. Stack: Astro 7 (SSG) + Typ
 
 Definidas en `.opencode/agent/astro-planner.md` — seguirlas al construir:
 - Componentes `.astro` puros, sin framework UI.
-- CSS con BEM y variables CSS (`--color-primary`, `--color-text`, ...) en `src/styles/global.css`.
+- Arquitectura CSS normativa (tokens + `@layer` + scoped + BEM + nesting): ver sección "Estilos: arquitectura CSS". `global.css` es la única fuente de tokens.
 - Props de componentes con interfaces TypeScript exportadas.
 - Datos estáticos en `src/data/`.
 - Integración `@astrojs/sitemap` (ya instalada y configurada en `astro.config.mjs`).
+
+## Estilos: arquitectura CSS
+
+El sitio usa **CSS nativo sin dependencias**: no hay Tailwind, SCSS, CSS-in-JS, CSS Modules ni frameworks UI. Todo estilo se escribe a mano siguiendo esta arquitectura. Está definida por decisión de arquitectura; cualquier cambio estructural requiere un plan previo.
+
+### Reglas de oro
+
+1. **Todo valor de diseño vive en tokens.** Los únicos valores permitidos en componentes son `var(--…)` o valores estructurales puros (unidades de layout: `100%`, `auto`, `clamp()`, `1px`, `calc()`). NUNCA hardcodees un color, radio, sombra, tamaño de fuente o espaciado que tenga token equivalente.
+
+2. **Tokens en `:root`, en la capa `tokens` de `src/styles/global.css`.** Escalas existentes:
+   - Colores: `--color-*` (incl. `--color-primary`, `--color-text`, `--color-bg`, `--color-surface`, `--color-muted` y los de redes `--color-github`, `--color-linkedin`, …)
+   - Tipografía: `--font-size-*`, `--font-family-sans`, `--font-family-mono`
+   - Espaciado: `--spacing-*`
+   - Formas: `--radius-*`, `--shadow-*`
+   - Breakpoints (solo referencia, ver regla 7): `--breakpoint-sm` 640, `--breakpoint-md` 768, `--breakpoint-lg` 1024
+
+3. **Cascada con `@layer`**: `global.css` declara `@layer reset, tokens, base;`. El reset universal (`*`, `img`, `a`), los tokens y los estilos base de `html`/`body` viven cada uno en su capa, en ese orden.
+
+4. **Los estilos scoped de los componentes van SIN capa (unlayered).** Es deliberado: en CSS el código sin capa siempre gana a cualquier `@layer`, así los componentes tienen prioridad natural sobre lo global, sin `!important`. NO muevas estilos de componentes a capas.
+
+5. **BEM para nombres de clase**: `bloque__elemento--modificador` (p.ej. `hero__title`, `link-button--github`). Un bloque = un componente; cada elemento lleva el prefijo de su bloque. No uses clases sueltas globales para estilizar componentes.
+
+6. **CSS nesting obligatorio** en los `<style>` scoped: estados (`&:hover`) y media queries se escriben anidados dentro de su selector. NO uses bloques `@media` de nivel superior ni selectores de estado sueltos.
+
+7. **Media queries con valores literales**: `@media (max-width: 768px)`. NUNCA uses `var(--breakpoint-*)` dentro de `@media` (CSS no lo soporta); los tokens de breakpoint solo documentan la escala.
+
+8. **`global.css` es el único CSS global** y contiene exclusivamente reset + tokens + base. Se importa una sola vez en `src/layouts/layout.astro` con `import '../styles/global.css';` en el frontmatter. NUNCA uses `<style is:global>` ni imports CSS global desde páginas.
+
+9. **No añadas dependencias de estilos** (Tailwind, SCSS, CSS-in-JS, CSS Modules) sin justificarlas en un plan: en este proyecto serían redundantes o contradictorias con la arquitectura.
+
+10. **Prohibido `!important`.** Si dos reglas chocan, la causa es estructural (BEM, capa, o un valor hardcodeado que debía ser token): corrígela en origen, no tapes el síntoma.
 
 ## Instrucciones locales obligatorias
 

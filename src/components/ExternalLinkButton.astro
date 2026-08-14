@@ -34,29 +34,10 @@ const isExternal = /^https?:\/\//i.test(url);
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
-    border: 2px solid var(--link-button-accent);
-    border-radius: 8px;
-    background-color: transparent;
-    color: var(--link-button-accent);
     font-size: var(--font-size-sm);
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .link-button__icon {
     flex-shrink: 0;
-  }
-
-  .link-button--github   { --link-button-accent: var(--color-github); }
-  .link-button--website  { --link-button-accent: var(--color-website); }
-  .link-button--whatsapp { --link-button-accent: var(--color-whatsapp); }
-  .link-button--email    { --link-button-accent: var(--color-email); }
-  .link-button--linkedin { --link-button-accent: var(--color-linkedin); }
-  .link-button--generic  { --link-button-accent: var(--color-generic); }
-
-  .link-button:hover {
-    background-color: var(--link-button-accent);
-    color: #fff;
   }
 </style>

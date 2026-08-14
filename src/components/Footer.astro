@@ -28,7 +28,6 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   .footer {
-    background-color: var(--color-surface);
     padding: var(--spacing-lg) var(--spacing-lg);
     margin-top: auto;
   }
@@ -39,6 +38,12 @@ import { Icon } from 'astro-icon/components';
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      text-align: center;
+    }
   }
 
   .footer__left {
@@ -46,28 +51,6 @@ import { Icon } from 'astro-icon/components';
     align-items: center;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
-  }
-
-  .footer__name {
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  .footer__separator {
-    color: var(--color-muted);
-  }
-
-  .footer__built {
-    color: var(--color-muted);
-  }
-
-  .footer__astro-link {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-
-  .footer__astro-link:hover {
-    text-decoration: underline;
   }
 
   .footer__social {
@@ -82,23 +65,10 @@ import { Icon } from 'astro-icon/components';
     justify-content: center;
     width: 36px;
     height: 36px;
-    transition: transform 0.2s ease;
-  }
-
-  .footer__social-link:hover {
-    transform: scale(1.1);
   }
 
   .footer__social-icon {
     width: 24px;
     height: 24px;
-  }
-
-  @media (max-width: 640px) {
-    .footer__container {
-      flex-direction: column;
-      gap: var(--spacing-md);
-      text-align: center;
-    }
   }
 </style>
