@@ -26,20 +26,24 @@
 
 @layer tokens {
   :root {
-    --color-primary: #06c;
-    --color-text: #1a1a1a;
-    --color-bg: #fff;
-    --color-surface: #f5f5f5;
-    --color-muted: #6b7280;
-    --color-warning: #b45309;
-    --color-warning-bg: #fef3c7;
-    --color-success: #16a34a;
+    --color-primary: #58a6ff;
+    --color-text: #e6edf3;
+    --color-bg: #0a0e0a;
+    --color-surface: #161b22;
+    --color-surface-raised: #21262d;
+    --color-border: #30363d;
+    --color-muted: #8b949e;
+    --color-warning: #d29922;
+    --color-warning-bg: #3a2d12;
+    --color-success: #3fb950;
+    --color-phosphor: #33ff33;
+    --color-scanline: rgb(0 0 0 / 1);
 
-    --color-github: #24292f;
+    --color-github: #c9d1d9;
     --color-website: var(--color-primary);
     --color-whatsapp: #25d366;
-    --color-email: #6b7280;
-    --color-linkedin: #0a66c2;
+    --color-email: var(--color-muted);
+    --color-linkedin: #4c9cf0;
     --color-generic: var(--color-muted);
 
     --font-size-sm: 0.875rem;
@@ -67,8 +71,7 @@
     --shadow-md: 0 4px 12px rgb(0 0 0 / 0.12);
     --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.18);
 
-    /* Referencia de escala; no usar var() dentro de @media (no soportado).
-       Las media queries de los componentes usan valores literales. */
+    /* Referencia de escala; no usar var() dentro de @media porque no lo soporta */
     --breakpoint-sm: 640px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 1024px;
@@ -82,7 +85,41 @@
 
   body {
     min-height: 100vh;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--color-scanline) 0 1px,
+        transparent 1px 3px
+      );
     display: flex;
     flex-direction: column;
+  }
+
+  /* Luces del fondo: pseudo-elementos fixed. No usar z-index: -1 en otros elementos. */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0; /* Para que cubra toda la pantalla */
+    z-index: -1; /* Coloca el efecto detrás del contenido y encima de las líneas */
+    pointer-events: none; /* Evita que el elemento reciba clicks */
+  }
+
+  body::before {
+    background-image: radial-gradient(
+      600px at 80% -10%,
+      color-mix(in srgb, var(--color-phosphor) 12%, transparent),
+      transparent 70%
+    );
+  }
+
+  body::after {
+    background-image: radial-gradient(
+      500px at 0% 50%,
+      color-mix(in srgb, var(--color-phosphor) 12%, transparent),
+      transparent 70%
+    );
   }
 }
