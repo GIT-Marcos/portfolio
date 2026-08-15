@@ -24,6 +24,35 @@ const { label, href, variant = 'primary' } = Astro.props;
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-xl);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .internal-link-button--primary {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+
+    &:hover {
+      box-shadow: 0 0 16px color-mix(in srgb, var(--color-primary) 100%, transparent);
+    }
+  }
+
+  .internal-link-button--secondary {
+    border-color: var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    &:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 100%, transparent);
+      color: var(--color-primary);
+    }
+  }
+
+  .internal-link-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   .internal-link-button__arrow {

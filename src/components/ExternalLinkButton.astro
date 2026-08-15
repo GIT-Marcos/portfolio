@@ -33,9 +33,32 @@ const isExternal = /^https?:\/\//i.test(url);
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-sm);
     font-size: var(--font-size-sm);
+    border: 1px solid var(--btn-accent);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--btn-accent);
+      box-shadow: 0 0 12px color-mix(in srgb, var(--btn-accent) 100%, transparent);
+      color: var(--btn-accent);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--btn-accent);
+      outline-offset: 2px;
+    }
   }
+
+  .link-button--github   { --btn-accent: var(--color-github); }
+  .link-button--linkedin { --btn-accent: var(--color-linkedin); }
+  .link-button--whatsapp { --btn-accent: var(--color-whatsapp); }
+  .link-button--website  { --btn-accent: var(--color-website); }
+  .link-button--email    { --btn-accent: var(--color-email); }
+  .link-button--generic  { --btn-accent: var(--color-generic); }
 
   .link-button__icon {
     flex-shrink: 0;

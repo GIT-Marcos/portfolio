@@ -26,7 +26,8 @@
 
 @layer tokens {
   :root {
-    --color-primary: #58a6ff;
+    --color-primary: #3fb950;
+    --color-secondary: #58a6ff;
     --color-text: #e6edf3;
     --color-bg: #0a0e0a;
     --color-surface: #161b22;
@@ -35,14 +36,13 @@
     --color-muted: #8b949e;
     --color-warning: #d29922;
     --color-warning-bg: #3a2d12;
-    --color-success: #3fb950;
     --color-phosphor: #33ff33;
     --color-scanline: rgb(0 0 0 / 1);
 
-    --color-github: #c9d1d9;
+    --color-github: #8534F3;
     --color-website: var(--color-primary);
     --color-whatsapp: #25d366;
-    --color-email: var(--color-muted);
+    --color-email: #C53211;
     --color-linkedin: #4c9cf0;
     --color-generic: var(--color-muted);
 
