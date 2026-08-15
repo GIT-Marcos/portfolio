@@ -52,8 +52,8 @@
     --font-size-xl: 1.25rem;
     --font-size-3xl: 2rem;
 
-    --font-family-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-family-mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+    --font-family-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-family-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
 
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -85,6 +85,7 @@
 
   body {
     min-height: 100vh;
+    font-family: var(--font-family-sans);
     color: var(--color-text);
     background-color: var(--color-bg);
     background-image:
@@ -95,6 +96,20 @@
       );
     display: flex;
     flex-direction: column;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-mono);
+  }
+
+  button,
+  a {
+    font-family: var(--font-family-mono);
   }
 
   /* Luces del fondo: pseudo-elementos fixed. No usar z-index: -1 en otros elementos. */
@@ -109,7 +124,7 @@
 
   body::before {
     background-image: radial-gradient(
-      600px at 80% -10%,
+      600px at 75% -10%,
       color-mix(in srgb, var(--color-phosphor) 12%, transparent),
       transparent 70%
     );
