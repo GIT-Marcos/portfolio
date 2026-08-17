@@ -14,59 +14,65 @@ interface Props {
 const { images, label = 'Galería de imágenes' } = Astro.props;
 ---
 
-<div class="carousel" role="region" aria-label={label}>
-  <div class="carousel__track" tabindex="0">
-    {images.map((img) => (
-      <figure class="carousel__slide">
-        <img
-          class="carousel__image"
-          src={img.src}
-          alt={img.alt}
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    ))}
-  </div>
+{images.length > 0 && (
+  <div class="carousel" role="region" aria-label={label}>
+    <div class="carousel__track" tabindex="0">
+      {images.map((img) => (
+        <figure class="carousel__slide">
+          <img
+            class="carousel__image"
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      ))}
+    </div>
 
-  <button
-    class="carousel__button carousel__button--prev"
-    type="button"
-    aria-label="Imagen anterior"
-    data-carousel-prev
-  >
-    &lsaquo;
-  </button>
-  <button
-    class="carousel__button carousel__button--next"
-    type="button"
-    aria-label="Imagen siguiente"
-    data-carousel-next
-  >
-    &rsaquo;
-  </button>
-
-  <button
-    class="carousel__button carousel__button--expand"
-    type="button"
-    aria-label="Ver imagen en grande"
-    data-carousel-expand
-  >
-    <Icon name="mdi:magnify" aria-hidden="true" width={20} height={20} />
-  </button>
-
-  <dialog class="carousel__dialog" aria-label="Imagen ampliada" data-carousel-dialog>
-    <img class="carousel__dialog-image" alt="" data-carousel-dialog-image />
     <button
-      class="carousel__dialog-close"
+      class="carousel__button carousel__button--prev"
       type="button"
-      aria-label="Cerrar imagen"
-      data-carousel-dialog-close
+      aria-label="Imagen anterior"
+      data-carousel-prev
     >
-      &times;
+      &lsaquo;
     </button>
-  </dialog>
-</div>
+    <button
+      class="carousel__button carousel__button--next"
+      type="button"
+      aria-label="Imagen siguiente"
+      data-carousel-next
+    >
+      &rsaquo;
+    </button>
+
+    <button
+      class="carousel__button carousel__button--expand"
+      type="button"
+      aria-label="Ver imagen en grande"
+      data-carousel-expand
+    >
+      <Icon name="mdi:magnify" aria-hidden="true" width={20} height={20} />
+    </button>
+
+    <dialog
+      class="carousel__dialog"
+      aria-label="Imagen ampliada"
+      data-carousel-dialog
+    >
+      <img class="carousel__dialog-image" alt="" data-carousel-dialog-image />
+      <button
+        class="carousel__dialog-close"
+        type="button"
+        aria-label="Cerrar imagen"
+        data-carousel-dialog-close
+      >
+        &times;
+      </button>
+    </dialog>
+  </div>
+)}
 
 <style>
   .carousel {
@@ -125,6 +131,7 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
     font-size: var(--font-size-xl);
     line-height: 1;
     cursor: pointer;
+    touch-action: manipulation;
 
     &:hover:not(:disabled) {
       border-color: var(--color-primary);
@@ -159,6 +166,7 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
   .carousel__dialog {
     border: none;
     margin: auto;
+    overscroll-behavior: contain;
     padding: 0;
     max-width: min(90vw, 1000px);
     width: 100%;
@@ -183,6 +191,12 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
     border: none;
     font-size: var(--font-size-xl);
     cursor: pointer;
+    touch-action: manipulation;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: var(--spacing-xs);
+    }
   }
 </style>
 
@@ -205,7 +219,11 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
       const slideWidth = slide
         ? slide.getBoundingClientRect().width
         : track.clientWidth;
-      track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({
+        left: direction * slideWidth,
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
     };
 
     prevButton?.addEventListener('click', () => scrollBySlide(-1));
