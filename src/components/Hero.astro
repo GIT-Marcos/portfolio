@@ -142,13 +142,59 @@ import { asciiArt } from '@data/ascii-art';
   }
 
   .hero__availability {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     padding: var(--spacing-xs) var(--spacing-md);
+    background-color: color-mix(in srgb, var(--color-available) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-available) 40%, transparent);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero__availability::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--color-available) 25%, transparent) 45%,
+      color-mix(in srgb, var(--color-available) 40%, transparent) 50%,
+      color-mix(in srgb, var(--color-available) 25%, transparent) 55%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: scanline 3s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .hero__availability-dot {
+    position: relative;
     width: 8px;
     height: 8px;
     flex-shrink: 0;
+    background-color: var(--color-available);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-available) 60%, transparent);
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__availability::before {
+      animation: none;
+    }
   }
 
   .hero__description {
