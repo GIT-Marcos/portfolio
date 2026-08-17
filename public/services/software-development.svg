@@ -1,0 +1,37 @@
+<svg width="800" height="520" xmlns="http://www.w3.org/2000/svg" fill="none">
+ <!-- Marco (mismo cromo que web-development) -->
+
+ <!-- Terminal -->
+ <!-- Cilindro de base de datos -->
+ <!-- Caja de servicio (UML) -->
+ <!-- Conexión servicio -> BD -->
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" stroke-width="1.5" stroke="#30363d" fill="#161b22" rx="12" height="488" width="768" y="16" x="16"/>
+  <circle id="svg_2" fill="#8b949e" r="8" cy="48" cx="48"/>
+  <circle id="svg_3" fill="#8b949e" r="8" cy="48" cx="72"/>
+  <circle id="svg_4" fill="#33ff33" r="8" cy="48" cx="96"/>
+  <line id="svg_5" stroke-width="1.5" stroke="#30363d" y2="80" x2="784" y1="80" x1="16"/>
+  <text id="svg_6" fill="#8b949e" font-size="18" font-family="monospace" text-anchor="middle" y="55" x="400">~/software — mvn clean verify</text>
+  <rect id="svg_7" stroke-width="1.5" stroke="#30363d" fill="#0a0e0a" rx="8" height="288" width="704" y="104" x="48"/>
+  <text id="svg_8" fill="#33ff33" font-size="22" font-family="monospace" y="152" x="80">$</text>
+  <text id="svg_9" fill="#e6edf3" font-size="22" font-family="monospace" y="152" x="112">mvn clean verify</text>
+  <text id="svg_10" fill="#8b949e" font-size="22" font-family="monospace" y="190" x="80">[INFO] Scanning for projects...</text>
+  <text id="svg_11" fill="#8b949e" font-size="22" font-family="monospace" y="228" x="80">[INFO] Tests run: 42, Failures: 0, Errors: 0</text>
+  <text id="svg_12" fill="#33ff33" font-size="22" font-family="monospace" y="266" x="80">[INFO] BUILD SUCCESS</text>
+  <text id="svg_13" fill="#8b949e" font-size="22" font-family="monospace" y="304" x="80">[INFO] Total time: 12.34 s</text>
+  <text id="svg_14" fill="#33ff33" font-size="22" font-family="monospace" y="356" x="80">$</text>
+  <rect id="svg_15" fill="#33ff33" height="22" width="12" y="334" x="112"/>
+  <path id="svg_16" stroke-width="2.5" stroke="#33ff33" fill="#161b22" d="m140,404l0,70a60,16 0 0 0 120,0l0,-70"/>
+  <ellipse id="svg_17" stroke-width="2.5" stroke="#33ff33" fill="#161b22" ry="16" rx="60" cy="404" cx="200"/>
+  <rect id="svg_18" fill="#30363d" rx="3" height="6" width="88" y="432.88887" x="156"/>
+  <rect id="svg_19" fill="#30363d" rx="3" height="6" width="88" y="446.88887" x="156"/>
+  <rect id="svg_20" fill="#30363d" rx="3" height="6" width="88" y="460.88887" x="156"/>
+  <rect id="svg_21" stroke-width="2" stroke="#30363d" fill="#161b22" rx="8" height="96" width="280" y="396" x="440"/>
+  <line id="svg_22" stroke-width="2" stroke="#30363d" y2="424" x2="720" y1="424" x1="440"/>
+  <text id="svg_23" fill="#e6edf3" font-size="16" font-family="monospace" y="416" x="456">UserService</text>
+  <text id="svg_24" fill="#8b949e" font-size="14" font-family="monospace" y="446" x="456">- findById(id: Long)</text>
+  <text id="svg_25" fill="#8b949e" font-size="14" font-family="monospace" y="470" x="456">+ save(user: User)</text>
+  <line id="svg_26" stroke-dasharray="6 4" stroke-width="2" stroke="#3fb950" y2="444" x2="260" y1="444" x1="440"/>
+ </g>
+</svg>
