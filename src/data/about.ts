@@ -1,3 +1,5 @@
+import { aboutAsciiArt, type AsciiArt } from '@data/ascii-art';
+
 export interface AboutSection {
   title: string;
   body: string;
@@ -8,6 +10,7 @@ export interface AboutContent {
   intro: string;
   sections: AboutSection[];
   cta: string;
+  asciiArt: AsciiArt;
 }
 
 export const aboutContent: AboutContent = {
@@ -33,4 +36,5 @@ export const aboutContent: AboutContent = {
   ],
   cta:
     'Si tenés un proyecto en mente o buscás colaboración, no dudes en contactarme.',
+  asciiArt: aboutAsciiArt,
 };

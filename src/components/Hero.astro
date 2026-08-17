@@ -2,12 +2,12 @@
 import InternalLinkButton from './InternalLinkButton.astro';
 import { Icon } from 'astro-icon/components';
 import { profile } from '@data/profile';
-import { asciiArt } from '@data/ascii-art';
+import { heroAsciiArt } from '@data/ascii-art';
 ---
 <section class="hero">
   <div class="hero__container">
     <div class="hero__ascii-wrapper">
-      <pre class="hero__ascii" aria-label={asciiArt.alt}>{asciiArt.art}</pre>
+      <pre class="hero__ascii" aria-label={heroAsciiArt.alt}>{heroAsciiArt.art}</pre>
     </div>
     <div class="hero__content">
       <p class="hero__greeting">Hola, soy</p>
@@ -75,7 +75,7 @@ import { asciiArt } from '@data/ascii-art';
     font-size: var(--font-size-xs);
     line-height: 1.4;
     white-space: pre;
-    color: var(--color-text);
+    color: var(--color-secondary);
     overflow-x: auto;
   }
 
