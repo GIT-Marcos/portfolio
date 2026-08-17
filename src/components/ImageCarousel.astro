@@ -1,0 +1,249 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface CarouselImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: CarouselImage[];
+  label?: string;
+}
+
+const { images, label = 'Galería de imágenes' } = Astro.props;
+---
+
+<div class="carousel" role="region" aria-label={label}>
+  <div class="carousel__track" tabindex="0">
+    {images.map((img) => (
+      <figure class="carousel__slide">
+        <img
+          class="carousel__image"
+          src={img.src}
+          alt={img.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    ))}
+  </div>
+
+  <button
+    class="carousel__button carousel__button--prev"
+    type="button"
+    aria-label="Imagen anterior"
+    data-carousel-prev
+  >
+    &lsaquo;
+  </button>
+  <button
+    class="carousel__button carousel__button--next"
+    type="button"
+    aria-label="Imagen siguiente"
+    data-carousel-next
+  >
+    &rsaquo;
+  </button>
+
+  <button
+    class="carousel__button carousel__button--expand"
+    type="button"
+    aria-label="Ver imagen en grande"
+    data-carousel-expand
+  >
+    <Icon name="mdi:magnify" aria-hidden="true" width={20} height={20} />
+  </button>
+
+  <dialog class="carousel__dialog" aria-label="Imagen ampliada" data-carousel-dialog>
+    <img class="carousel__dialog-image" alt="" data-carousel-dialog-image />
+    <button
+      class="carousel__dialog-close"
+      type="button"
+      aria-label="Cerrar imagen"
+      data-carousel-dialog-close
+    >
+      &times;
+    </button>
+  </dialog>
+</div>
+
+<style>
+  .carousel {
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .carousel__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(80%, 480px);
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: var(--spacing-md);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: var(--spacing-xs);
+    }
+  }
+
+  .carousel__slide {
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .carousel__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    color: var(--color-text);
+    font-size: var(--font-size-xl);
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: var(--spacing-xs);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+
+  .carousel__button--prev {
+    left: var(--spacing-sm);
+  }
+
+  .carousel__button--next {
+    right: var(--spacing-sm);
+  }
+
+  .carousel__button--expand {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    transform: none;
+  }
+
+  .carousel__dialog {
+    border: none;
+    margin: auto;
+    padding: 0;
+    max-width: min(90vw, 1000px);
+    width: 100%;
+
+    &::backdrop {
+      background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    }
+  }
+
+  .carousel__dialog-image {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .carousel__dialog-close {
+    position: absolute;
+    top: calc(-1 * var(--spacing-lg));
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.carousel__track');
+    const prevButton = carousel.querySelector('[data-carousel-prev]');
+    const nextButton = carousel.querySelector('[data-carousel-next]');
+
+    if (!track) return;
+
+    const updateButtons = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prevButton?.toggleAttribute('disabled', track.scrollLeft <= 0);
+      nextButton?.toggleAttribute('disabled', track.scrollLeft >= maxScroll - 1);
+    };
+
+    const scrollBySlide = (direction: number) => {
+      const slide = track.querySelector('.carousel__slide');
+      const slideWidth = slide
+        ? slide.getBoundingClientRect().width
+        : track.clientWidth;
+      track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+    };
+
+    prevButton?.addEventListener('click', () => scrollBySlide(-1));
+    nextButton?.addEventListener('click', () => scrollBySlide(1));
+    track.addEventListener('scroll', updateButtons, { passive: true });
+    updateButtons();
+
+    const expandButton = carousel.querySelector('[data-carousel-expand]');
+    const dialog = carousel.querySelector<HTMLDialogElement>(
+      '[data-carousel-dialog]'
+    );
+    const dialogImage = carousel.querySelector<HTMLImageElement>(
+      '[data-carousel-dialog-image]'
+    );
+
+    const getActiveSlide = () => {
+      const slides = track.querySelectorAll('.carousel__slide');
+      const slideWidth =
+        slides[0]?.getBoundingClientRect().width ?? track.clientWidth;
+      return slides[Math.round(track.scrollLeft / slideWidth)] ?? slides[0];
+    };
+
+    expandButton?.addEventListener('click', () => {
+      const img = getActiveSlide()?.querySelector('img');
+      if (!dialog || !dialogImage || !img) return;
+      dialogImage.src = img.src;
+      dialogImage.alt = img.alt;
+      dialog.showModal();
+    });
+
+    dialog
+      ?.querySelector('[data-carousel-dialog-close]')
+      ?.addEventListener('click', () => dialog.close());
+
+    dialog?.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>

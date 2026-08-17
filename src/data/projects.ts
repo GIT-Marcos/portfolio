@@ -3,6 +3,11 @@ import type { ExternalLinkCategory } from './externalLinks';
 
 export type ProjectCategory = 'freelance' | 'personal-academic';
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+}
+
 export interface ProjectLink {
   label?: string;
   url: string;
@@ -16,8 +21,7 @@ export interface Project {
   technologies: Technology[];
   links: ProjectLink[];
   isWIP?: boolean;
-  image: string;
-  imageAlt: string;
+  images: ProjectImage[];
   category: ProjectCategory;
 }
 
@@ -35,8 +39,11 @@ export const projects: Project[] = [
     links: [
       { url: 'https://github.com/placeholder/inventario', category: 'github' },
     ],
-    image: '/placeholder.svg',
-    imageAlt: 'Captura del sistema de gestión de inventarios',
+    images: [
+      { src: '/placeholder.svg', alt: 'Vista principal del sistema de gestión de inventarios' },
+      { src: '/placeholder.svg', alt: 'Vista de reportes del sistema de gestión de inventarios' },
+      { src: '/placeholder.svg', alt: 'Vista de movimientos de entrada y salida del inventario' },
+    ],
     category: 'personal-academic',
   },
   {
@@ -53,8 +60,10 @@ export const projects: Project[] = [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },
     ],
     isWIP: true,
-    image: '/placeholder.svg',
-    imageAlt: 'Captura del portfolio personal',
+    images: [
+      { src: '/placeholder.svg', alt: 'Captura del inicio del portfolio personal' },
+      { src: '/placeholder.svg', alt: 'Captura de la sección de proyectos del portfolio' },
+    ],
     category: 'personal-academic',
   },
   {
@@ -71,8 +80,10 @@ export const projects: Project[] = [
       { url: 'https://github.com/placeholder/api-rest', category: 'github' },
     ],
     isWIP: true,
-    image: '/placeholder.svg',
-    imageAlt: 'Captura de la API REST',
+    images: [
+      { src: '/placeholder.svg', alt: 'Captura de la documentación de la API REST' },
+      { src: '/placeholder.svg', alt: 'Captura de los endpoints de la API REST' },
+    ],
     category: 'freelance',
   },
 ];

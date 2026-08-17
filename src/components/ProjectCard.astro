@@ -2,6 +2,7 @@
 import type { Project } from '@data/projects';
 import TechItem from './TechItem.astro';
 import ExternalLinkButton from './ExternalLinkButton.astro';
+import ImageCarousel from './ImageCarousel.astro';
 
 interface Props {
   project: Project;
@@ -14,19 +15,13 @@ const {
   technologies,
   links,
   isWIP = false,
-  image,
-  imageAlt,
+  images,
 } = project;
 ---
 
 <article class="project-card">
   <div class="project-card__media">
-    <img
-      class="project-card__image"
-      src={image}
-      alt={imageAlt}
-      loading="lazy"
-    />
+    <ImageCarousel images={images} label={`Galería de capturas de ${title}`} />
     {isWIP && <span class="project-card__wip">Work in progress</span>}
   </div>
 
@@ -44,27 +39,8 @@ const {
       {links.map((link) => (
         <ExternalLinkButton {...link} />
       ))}
-      <button
-        class="project-card__image-trigger"
-        type="button"
-        data-project-image-button
-      >
-        Ver imagen
-      </button>
     </div>
   </div>
-
-  <dialog class="project-card__dialog" aria-label={`Imagen de ${title}`}>
-    <img class="project-card__dialog-image" src={image} alt={imageAlt} />
-    <button
-      class="project-card__dialog-close"
-      type="button"
-      aria-label="Cerrar imagen"
-      data-project-dialog-close
-    >
-      &times;
-    </button>
-  </dialog>
 </article>
 
 <style>
@@ -81,18 +57,12 @@ const {
 
   .project-card__media {
     flex: 0 0 40%;
+    min-width: 0;
     position: relative;
 
     @media (max-width: 768px) {
       flex: none;
     }
-  }
-
-  .project-card__image {
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-    object-fit: cover;
   }
 
   .project-card__wip {
@@ -131,58 +101,4 @@ const {
     gap: var(--spacing-sm);
     margin-top: auto;
   }
-
-  .project-card__image-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-    cursor: pointer;
-  }
-
-  .project-card__dialog {
-    border: none;
-    padding: 0;
-    max-width: min(80vw, 800px);
-    width: 100%;
-  }
-
-  .project-card__dialog-image {
-    width: 100%;
-  }
-
-  .project-card__dialog-close {
-    position: absolute;
-    top: calc(-1 * var(--spacing-lg));
-    right: 0;
-    width: 40px;
-    height: 40px;
-    border: none;
-    font-size: var(--font-size-xl);
-    cursor: pointer;
-  }
 </style>
-
-<script>
-  document.querySelectorAll('[data-project-image-button]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const dialog = button.closest('article')?.querySelector('dialog');
-      dialog?.showModal();
-    });
-  });
-
-  document.querySelectorAll('[data-project-dialog-close]').forEach((button) => {
-    button.addEventListener('click', () => {
-      button.closest('dialog')?.close();
-    });
-  });
-
-  document.querySelectorAll('dialog').forEach((dialog) => {
-    dialog.addEventListener('click', (event) => {
-      if (event.target === dialog) {
-        dialog.close();
-      }
-    });
-  });
-</script>
