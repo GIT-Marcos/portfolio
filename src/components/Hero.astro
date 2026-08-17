@@ -1,17 +1,12 @@
 ---
 import InternalLinkButton from './InternalLinkButton.astro';
 import { profile } from '@data/profile';
+import { asciiArt } from '@data/ascii-art';
 ---
 <section class="hero">
   <div class="hero__container">
-    <div class="hero__image-wrapper">
-      <img
-        class="hero__image"
-        src="/placeholder.svg"
-        alt="Foto de perfil del desarrollador"
-        width="400"
-        height="400"
-      />
+    <div class="hero__ascii-wrapper">
+      <pre class="hero__ascii" aria-label={asciiArt.alt}>{asciiArt.art}</pre>
     </div>
     <div class="hero__content">
       <p class="hero__greeting">Hola, soy</p>
@@ -76,7 +71,7 @@ import { profile } from '@data/profile';
     }
   }
 
-  .hero__image-wrapper {
+  .hero__ascii-wrapper {
     flex: 0 0 40%;
 
     @media (max-width: 768px) {
@@ -86,10 +81,13 @@ import { profile } from '@data/profile';
     }
   }
 
-  .hero__image {
-    width: 100%;
-    max-width: 400px;
-    object-fit: cover;
+  .hero__ascii {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    white-space: pre;
+    color: var(--color-text);
+    overflow-x: auto;
   }
 
   .hero__content {
@@ -110,6 +108,7 @@ import { profile } from '@data/profile';
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
+    color: var(--color-phosphor);
   }
 
   .hero__role {

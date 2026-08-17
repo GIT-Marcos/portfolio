@@ -6,7 +6,7 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: '[Tu Nombre]',
+  name: 'Marcos',
   location: 'Córdoba, Argentina',
   openToWork: true,
   availabilityLabel: 'Open to work',
