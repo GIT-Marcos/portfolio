@@ -1,5 +1,5 @@
 import type { Technology } from './technologies';
-import type { ExternalLinkCategory } from './externalLinks';
+import type { ExternalLink } from './externalLinks';
 
 export type ProjectCategory = 'freelance' | 'personal-academic';
 
@@ -8,11 +8,7 @@ export interface ProjectImage {
   alt: string;
 }
 
-export interface ProjectLink {
-  label?: string;
-  url: string;
-  category: ExternalLinkCategory;
-}
+export type ProjectLink = ExternalLink;
 
 export interface Project {
   id: string;
@@ -32,9 +28,9 @@ export const projects: Project[] = [
     description:
       'Aplicación web para control de stock, movimientos de entrada y salida, y reportes. Desarrollada con arquitectura MVC y base de datos relacional.',
     technologies: [
-      { name: 'Java', icon: 'logos:java', alt: 'Java' },
-      { name: 'Spring Boot', icon: 'logos:spring', alt: 'Spring Boot' },
-      { name: 'MySQL', icon: 'logos:mysql', alt: 'MySQL' },
+      { name: 'Java', icon: 'logos:java' },
+      { name: 'Spring Boot', icon: 'logos:spring' },
+      { name: 'MySQL', icon: 'logos:mysql' },
     ],
     links: [
       { url: 'https://github.com/placeholder/inventario', category: 'github' },
@@ -52,9 +48,9 @@ export const projects: Project[] = [
     description:
       'Sitio web estático para presentación profesional, construido con Astro para máximo rendimiento y SEO.',
     technologies: [
-      { name: 'Astro', icon: 'logos:astro', alt: 'Astro' },
-      { name: 'TypeScript', icon: 'logos:typescript', alt: 'TypeScript' },
-      { name: 'CSS', icon: 'logos:css-3', alt: 'CSS' },
+      { name: 'Astro', icon: 'logos:astro' },
+      { name: 'TypeScript', icon: 'logos:typescript' },
+      { name: 'CSS', icon: 'logos:css-3' },
     ],
     links: [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },
@@ -72,9 +68,9 @@ export const projects: Project[] = [
     description:
       'API RESTful con autenticación JWT, endpoints documentados y testing automatizado.',
     technologies: [
-      { name: 'Node.js', icon: 'logos:nodejs', alt: 'Node.js' },
-      { name: 'TypeScript', icon: 'logos:typescript', alt: 'TypeScript' },
-      { name: 'PostgreSQL', icon: 'logos:postgresql', alt: 'PostgreSQL' },
+      { name: 'Node.js', icon: 'logos:nodejs' },
+      { name: 'TypeScript', icon: 'logos:typescript' },
+      { name: 'PostgreSQL', icon: 'logos:postgresql' },
     ],
     links: [
       { url: 'https://github.com/placeholder/api-rest', category: 'github' },

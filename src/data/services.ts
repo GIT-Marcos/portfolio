@@ -1,4 +1,5 @@
 import type { ExternalLink } from './externalLinks';
+import { contactUrls } from './profile';
 
 export interface Service {
   title: string;
@@ -13,9 +14,36 @@ export interface ServicesPageContent {
   intro: string;
 }
 
-const contactLinks: ExternalLink[] = [
-  { label: 'Email', url: 'mailto:placeholder@email.com', category: 'email' },
-  { label: 'WhatsApp', url: 'https://wa.me/0000000000000', category: 'whatsapp' },
+const webDevContacts: ExternalLink[] = [
+  {
+    label: 'Email',
+    url: contactUrls.email,
+    category: 'email',
+    subject: 'Presupuesto de sitio web',
+    message: 'Hola Marcos, me interesa tu servicio de desarrollo web freelance. ¿Podemos conversar?',
+  },
+  {
+    label: 'WhatsApp',
+    url: contactUrls.whatsapp,
+    category: 'whatsapp',
+    message: 'Hola Marcos, me interesa tu servicio de desarrollo web freelance.',
+  },
+];
+
+const softwareContacts: ExternalLink[] = [
+  {
+    label: 'Email',
+    url: contactUrls.email,
+    category: 'email',
+    subject: 'Consulta sobre desarrollo de software',
+    message: 'Hola Marcos, me interesa tu servicio de desarrollo de software en general. ¿Podemos conversar?',
+  },
+  {
+    label: 'WhatsApp',
+    url: contactUrls.whatsapp,
+    category: 'whatsapp',
+    message: 'Hola Marcos, me interesa tu servicio de desarrollo de software en general.',
+  },
 ];
 
 export const servicesPageContent: ServicesPageContent = {
@@ -31,7 +59,7 @@ export const services: Service[] = [
       'Sitios web modernos, rápidos y accesibles con Astro y TypeScript: páginas institucionales, portfolios, landing pages y dashboards. Trabajo por etapas claras — análisis, diseño, implementación y validación — con comunicación constante y entregas a tiempo.',
     image: '/services/web-development.svg',
     imageAlt: 'Maqueta de ventana de navegador mostrando el esqueleto de una landing page',
-    contacts: contactLinks,
+    contacts: webDevContacts,
   },
   {
     title: 'Desarrollo de software en general',
@@ -39,6 +67,6 @@ export const services: Service[] = [
       'Como analista de sistemas con foco en backend Java y programación orientada a objetos, cubro la parte que sostiene todo: análisis de requisitos, diseño, implementación de lógica de negocio, bases de datos y pruebas. Ideal para empresas o equipos que necesitan código mantenible y bien documentado.',
     image: '/services/software-development.svg',
     imageAlt: 'Ilustración de terminal con build de Maven exitoso y cilindro de base de datos',
-    contacts: contactLinks,
+    contacts: softwareContacts,
   },
 ];

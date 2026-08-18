@@ -4,11 +4,9 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import ExternalLinkButton from '@components/ExternalLinkButton.astro';
 import { aboutContent } from '@data/about';
-import { socialItems } from '@data/social';
+import { getSocialItems } from '@data/social';
 
-const socialButtons = socialItems.filter(
-  (item) => item.category === 'github' || item.category === 'linkedin'
-);
+const socialButtons = getSocialItems('github', 'linkedin');
 ---
 
 <Layout
@@ -23,12 +21,7 @@ const socialButtons = socialItems.filter(
         <p class="about-page__intro">{aboutContent.intro}</p>
         <div class="about-page__social">
           {socialButtons.map((item) => (
-            <ExternalLinkButton
-              url={item.url}
-              category={item.category}
-              label={item.name}
-              icon={item.icon}
-            />
+            <ExternalLinkButton {...item} />
           ))}
         </div>
       </div>

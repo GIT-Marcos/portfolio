@@ -1,30 +1,21 @@
 ---
-import { socialItems } from '@data/social';
-import { Icon } from 'astro-icon/components';
+import { profile } from '@data/profile';
+import { getSocialItems } from '@data/social';
+import ExternalLinkButton from './ExternalLinkButton.astro';
 
-const socialButtons = socialItems.filter(
-  (item) => item.category === 'email' || item.category === 'whatsapp' || item.category === 'github'
-);
+const socialButtons = getSocialItems('email', 'whatsapp', 'github');
 ---
 
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__left">
-      <span>Marcos</span>
+      <span>{profile.name}</span>
       <span>|</span>
       <span>Build with <a class="footer__astro-link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
     </div>
     <div class="footer__social">
       {socialButtons.map((item) => (
-        <a
-          class:list={['footer__social-link', `footer__social-link--${item.category}`]}
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={item.name}
-        >
-          <Icon name={item.icon} class="footer__social-icon" aria-hidden="true" />
-        </a>
+        <ExternalLinkButton variant="icon" {...item} />
       ))}
     </div>
   </div>
@@ -61,36 +52,6 @@ const socialButtons = socialItems.filter(
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-  }
-
-  .footer__social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    transition: color 0.2s ease, box-shadow 0.2s ease;
-
-    &:hover {
-      color: var(--btn-accent);
-      box-shadow: 0 0 12px color-mix(in srgb, var(--btn-accent) 100%, transparent);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--btn-accent);
-      outline-offset: 2px;
-    }
-  }
-
-  .footer__social-link--github   { --btn-accent: var(--color-github); }
-  .footer__social-link--whatsapp { --btn-accent: var(--color-whatsapp); }
-  .footer__social-link--email    { --btn-accent: var(--color-email); }
-
-  .footer__social-icon {
-    width: 24px;
-    height: 24px;
   }
 
   .footer__astro-link {

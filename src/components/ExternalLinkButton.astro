@@ -1,31 +1,30 @@
 ---
-import { externalLinkCategories } from '@data/externalLinks';
-import type { ExternalLinkCategory } from '@data/externalLinks';
+import { buildContactUrl, externalLinkCategories } from '@data/externalLinks';
+import type { ExternalLink } from '@data/externalLinks';
 import { Icon } from 'astro-icon/components';
 
-export interface Props {
-  label?: string;
-  url: string;
-  category: ExternalLinkCategory;
-  icon?: string;
+export interface Props extends ExternalLink {
+  variant?: 'default' | 'icon';
 }
 
-const { url, category, icon } = Astro.props;
+const { url, category, icon, subject, message, variant = 'default' } = Astro.props;
 const config = externalLinkCategories[category];
 const label = Astro.props.label ?? config.defaultLabel;
 const iconSrc = icon ?? config.defaultIcon;
+const href = buildContactUrl({ url, category, subject, message });
 // mailto:/tel: no deben abrir en pestaña nueva; solo URLs http(s)
 const isExternal = /^https?:\/\//i.test(url);
 ---
 
 <a
-  class:list={['link-button', `link-button--${category}`]}
-  href={url}
+  class:list={['link-button', `link-button--${category}`, { 'link-button--icon': variant === 'icon' }]}
+  href={href}
   target={isExternal ? '_blank' : undefined}
   rel={isExternal ? 'noopener noreferrer' : undefined}
+  aria-label={variant === 'icon' ? label : undefined}
 >
   <Icon name={iconSrc} class="link-button__icon" aria-hidden="true" width={20} height={20} />
-  <span class="link-button__label">{label}</span>
+  {variant !== 'icon' && <span class="link-button__label">{label}</span>}
 </a>
 
 <style>
@@ -59,6 +58,10 @@ const isExternal = /^https?:\/\//i.test(url);
   .link-button--website  { --btn-accent: var(--color-website); }
   .link-button--email    { --btn-accent: var(--color-email); }
   .link-button--generic  { --btn-accent: var(--color-generic); }
+
+  .link-button--icon {
+    justify-content: center;
+  }
 
   .link-button__icon {
     flex-shrink: 0;

@@ -29,4 +29,27 @@ export interface ExternalLink {
   url: string;
   category: ExternalLinkCategory;
   icon?: string;
+  subject?: string;
+  message?: string;
+}
+
+export function buildContactUrl(link: ExternalLink): string {
+  const { url, category, subject, message } = link;
+
+  if (category === 'email' && (subject || message)) {
+    const params = new URLSearchParams();
+    if (subject) params.set('subject', subject);
+    if (message) params.set('body', message);
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}${params.toString()}`;
+  }
+
+  if (category === 'whatsapp' && message) {
+    const params = new URLSearchParams();
+    params.set('text', message);
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}${params.toString()}`;
+  }
+
+  return url;
 }

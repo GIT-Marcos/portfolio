@@ -1,15 +1,28 @@
-import type { ExternalLinkCategory } from './externalLinks';
+import type { ExternalLink, ExternalLinkCategory } from './externalLinks';
+import { contactUrls } from './profile';
 
-export interface SocialItem {
-  name: string;
-  url: string;
-  icon: string;
-  category: ExternalLinkCategory;
-}
+export type SocialItem = ExternalLink;
 
 export const socialItems: SocialItem[] = [
-  { name: 'WhatsApp', url: 'https://wa.me/5491100000000', icon: 'mdi:whatsapp', category: 'whatsapp' },
-  { name: 'GitHub', url: 'https://github.com/placeholder', icon: 'mdi:github', category: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/placeholder', icon: 'mdi:linkedin', category: 'linkedin' },
-  { name: 'Email', url: 'mailto:placeholder@email.com', icon: 'mdi:email-outline', category: 'email' },
+  {
+    label: 'WhatsApp',
+    url: contactUrls.whatsapp,
+    icon: 'mdi:whatsapp',
+    category: 'whatsapp',
+    message: 'Hola Marcos, te contacto desde tu portfolio.',
+  },
+  { label: 'GitHub', url: 'https://github.com/placeholder', icon: 'mdi:github', category: 'github' },
+  { label: 'LinkedIn', url: 'https://linkedin.com/in/placeholder', icon: 'mdi:linkedin', category: 'linkedin' },
+  {
+    label: 'Email',
+    url: contactUrls.email,
+    icon: 'mdi:email-outline',
+    category: 'email',
+    subject: 'Contacto desde tu portfolio',
+    message: 'Hola Marcos, te contacto desde tu portfolio.',
+  },
 ];
+
+export function getSocialItems(...categories: ExternalLinkCategory[]): SocialItem[] {
+  return socialItems.filter((item) => categories.includes(item.category));
+}
