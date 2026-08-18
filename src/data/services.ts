@@ -16,7 +16,6 @@ export interface ServicesPageContent {
 const contactLinks: ExternalLink[] = [
   { label: 'Email', url: 'mailto:placeholder@email.com', category: 'email' },
   { label: 'WhatsApp', url: 'https://wa.me/0000000000000', category: 'whatsapp' },
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/placeholder', category: 'linkedin' },
 ];
 
 export const servicesPageContent: ServicesPageContent = {

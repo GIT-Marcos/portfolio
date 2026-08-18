@@ -16,25 +16,29 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
   heading: 'Sobre mí',
   intro:
-    'Analista de Sistemas graduado con enfoque en desarrollo de software y arquitectura de aplicaciones web. Me interesa construir soluciones limpias, mantenibles y escalables.',
+    'Me apasiona la tecnología desde siempre y busco capitalizar esa pasión en soluciones que ayuden a los demás.',
   sections: [
     {
       title: 'Formación',
       body:
-        'Técnico Superior en Análisis de Sistemas. Durante mi formación adquirí bases sólidas en programación orientada a objetos, bases de datos, metodologías ágiles y diseño de software.',
+        'Técnico Superior en Análisis de Sistemas. Tengo formación en en programación orientada a objetos, bases de datos, diseño de software, desarrollo web, inteligencia artificial y metodologías ágiles. Tengo un perfil general cercano a un full-stack aunque me considero más preparado en el sector back-end.',
     },
     {
       title: 'Enfoque',
       body:
-        'Me especializo en desarrollo backend y frontend con tecnologías modernas. Creo en el código limpio, la documentación clara y las soluciones pragmáticas por sobre las sobre-ingenierías.',
+        'Simplemente que la solución informática entregada sea provechosa para los clientes y los usuarios. Esto se logra teniendo bien claros los requisitos del usuario, entendiendo las necesidades del negocio y produciendo un producto que cumpla con las mejores prácticas del desarrollo de software.',
     },
     {
       title: 'Habilidades blandas',
       body:
-        'Comunicación efectiva, trabajo en equipo, resolución de problemas y capacidad de aprendizaje continuo. Valoro la retroalimentación y la mejora continua.',
+        'Las ciencias tecnológicas están avanzando rápido y uno debe estar continuamente estudiándolas, el trabajo en equipo es una regla estándar en este rubro, y un sistema con problemas da problemas al usuario: capacidad de aprendizaje continuo, trabajo en equipo, comunicación efectiva, resolución de problemas son cualidades que siempre uno debe intentar mejorar si lo que busca es ser útil a un propósito sustancial como poblar el LinkedIn o pasar filtros ATS.',
+    },
+    {
+      title: 'Inteligencia artificial - IA',
+      body: 'Integro esta tecnología en el desarrollo de código y en la optimización de procesos de trabajo buscando darle un uso consciente con las necesidades de cada situación. La inteligencia artificial es una más de varias herramientas con las que el desarrollador cuenta para cumplir su función.'
     },
   ],
   cta:
-    'Si tenés un proyecto en mente o buscás colaboración, no dudes en contactarme.',
+    'Si usted tiene un proyecto en mente o busca un colaborador, no dude en contactarme.',
   asciiArt: aboutAsciiArt,
 };
