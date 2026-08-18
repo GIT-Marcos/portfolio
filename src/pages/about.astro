@@ -2,7 +2,13 @@
 import Layout from '@layouts/layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import ExternalLinkButton from '@components/ExternalLinkButton.astro';
 import { aboutContent } from '@data/about';
+import { socialItems } from '@data/social';
+
+const socialButtons = socialItems.filter(
+  (item) => item.category === 'github' || item.category === 'linkedin'
+);
 ---
 
 <Layout
@@ -15,6 +21,16 @@ import { aboutContent } from '@data/about';
       <div class="about-page__hero-content">
         <h1 class="about-page__title">{aboutContent.heading}</h1>
         <p class="about-page__intro">{aboutContent.intro}</p>
+        <div class="about-page__social">
+          {socialButtons.map((item) => (
+            <ExternalLinkButton
+              url={item.url}
+              category={item.category}
+              label={item.name}
+              icon={item.icon}
+            />
+          ))}
+        </div>
       </div>
       <div class="about-page__ascii-wrapper">
         <pre
@@ -71,6 +87,17 @@ import { aboutContent } from '@data/about';
   .about-page__intro {
     font-size: var(--font-size-lg);
     line-height: 1.6;
+  }
+
+  .about-page__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
   }
 
   .about-page__ascii-wrapper {

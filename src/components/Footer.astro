@@ -1,17 +1,21 @@
 ---
 import { socialItems } from '@data/social';
 import { Icon } from 'astro-icon/components';
+
+const socialButtons = socialItems.filter(
+  (item) => item.category === 'email' || item.category === 'whatsapp' || item.category === 'github'
+);
 ---
 
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__left">
-      <span class="footer__name">Tu Nombre</span>
-      <span class="footer__separator">|</span>
-      <span class="footer__built">Build with <a class="footer__astro-link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
+      <span>Marcos</span>
+      <span>|</span>
+      <span>Build with <a class="footer__astro-link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
     </div>
     <div class="footer__social">
-      {socialItems.map((item) => (
+      {socialButtons.map((item) => (
         <a
           class:list={['footer__social-link', `footer__social-link--${item.category}`]}
           href={item.url}
@@ -81,11 +85,15 @@ import { Icon } from 'astro-icon/components';
   }
 
   .footer__social-link--github   { --btn-accent: var(--color-github); }
-  .footer__social-link--linkedin { --btn-accent: var(--color-linkedin); }
+  .footer__social-link--whatsapp { --btn-accent: var(--color-whatsapp); }
   .footer__social-link--email    { --btn-accent: var(--color-email); }
 
   .footer__social-icon {
     width: 24px;
     height: 24px;
+  }
+
+  .footer__astro-link {
+    color: var(--color-secondary);
   }
 </style>
