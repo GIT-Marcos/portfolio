@@ -2,7 +2,7 @@
 import Layout from '@layouts/layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import ExternalLinkButton from '@components/ExternalLinkButton.astro';
+import PageHero from '@components/PageHero.astro';
 import { aboutContent } from '@data/about';
 import { getSocialItems } from '@data/social';
 
@@ -15,23 +15,12 @@ const socialButtons = getSocialItems('github', 'linkedin');
 >
   <Header />
   <main id="main" class="about-page">
-    <div class="about-page__hero">
-      <div class="about-page__hero-content">
-        <h1 class="about-page__title">{aboutContent.heading}</h1>
-        <p class="about-page__intro">{aboutContent.intro}</p>
-        <div class="about-page__social">
-          {socialButtons.map((item) => (
-            <ExternalLinkButton {...item} />
-          ))}
-        </div>
-      </div>
-      <div class="about-page__ascii-wrapper">
-        <pre
-          class="about-page__ascii"
-          aria-label={aboutContent.asciiArt.alt}
-        >{aboutContent.asciiArt.art}</pre>
-      </div>
-    </div>
+    <PageHero
+      title={aboutContent.heading}
+      intro={aboutContent.intro}
+      asciiArt={aboutContent.asciiArt}
+      socialItems={socialButtons}
+    />
 
     {aboutContent.sections.map((section) => (
       <section class="about-section">
@@ -54,62 +43,6 @@ const socialButtons = getSocialItems('github', 'linkedin');
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
-  }
-
-  .about-page__hero {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--spacing-3xl);
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  .about-page__hero-content {
-    flex: 1;
-    max-width: 60ch;
-  }
-
-  .about-page__title {
-    font-size: var(--font-size-3xl);
-  }
-
-  .about-page__intro {
-    font-size: var(--font-size-lg);
-    line-height: 1.6;
-  }
-
-  .about-page__social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
-  }
-
-  .about-page__ascii-wrapper {
-    flex: 0 0 35%;
-
-    @media (max-width: 768px) {
-      flex: none;
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-
-  .about-page__ascii {
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
-    line-height: 1.4;
-    white-space: pre;
-    color: var(--color-secondary);
-    overflow-x: auto;
   }
 
   .about-section {

@@ -2,8 +2,10 @@
 import Layout from '@layouts/layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import PageHero from '@components/PageHero.astro';
 import ServiceSection from '@components/ServiceSection.astro';
 import { services, servicesPageContent } from '@data/services';
+import { servicesAsciiArt } from '@data/ascii-art';
 ---
 
 <Layout
@@ -12,8 +14,11 @@ import { services, servicesPageContent } from '@data/services';
 >
   <Header />
   <main id="main" class="services-page">
-    <h1 class="services-page__title">{servicesPageContent.heading}</h1>
-    <p class="services-page__intro">{servicesPageContent.intro}</p>
+    <PageHero
+      title={servicesPageContent.heading}
+      intro={servicesPageContent.intro}
+      asciiArt={servicesAsciiArt}
+    />
 
     {services.map((service) => (
       <ServiceSection service={service} />
@@ -31,15 +36,5 @@ import { services, servicesPageContent } from '@data/services';
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
-  }
-
-  .services-page__title {
-    font-size: var(--font-size-3xl);
-  }
-
-  .services-page__intro {
-    font-size: var(--font-size-lg);
-    line-height: 1.6;
-    max-width: 60ch;
   }
 </style>

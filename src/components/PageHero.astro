@@ -1,0 +1,111 @@
+---
+import type { AsciiArt } from '@data/ascii-art';
+import type { SocialItem } from '@data/social';
+import ExternalLinkButton from './ExternalLinkButton.astro';
+
+// Renderiza el <h1> de la página: cada página debe tener un solo h1.
+export interface Props {
+  title: string;
+  intro?: string;
+  asciiArt?: AsciiArt;
+  socialItems?: SocialItem[];
+  asciiPosition?: 'left' | 'right';
+}
+
+const {
+  title,
+  intro,
+  asciiArt,
+  socialItems = [],
+  asciiPosition = 'right',
+} = Astro.props;
+---
+
+<section class:list={['page-hero', `page-hero--ascii-${asciiPosition}`]}>
+  <div class="page-hero__content">
+    <h1 class="page-hero__title">{title}</h1>
+    {intro && <p class="page-hero__intro">{intro}</p>}
+    {socialItems.length > 0 && (
+      <div class="page-hero__social">
+        {socialItems.map((item) => (
+          <ExternalLinkButton {...item} />
+        ))}
+      </div>
+    )}
+    <slot />
+  </div>
+  {asciiArt && (
+    <div class="page-hero__ascii-wrapper">
+      <pre
+        class="page-hero__ascii"
+        aria-label={asciiArt.alt}
+      >{asciiArt.art}</pre>
+    </div>
+  )}
+</section>
+
+<style>
+  .page-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-3xl);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .page-hero--ascii-left {
+    flex-direction: row-reverse;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .page-hero__content {
+    flex: 1;
+    max-width: 60ch;
+  }
+
+  .page-hero__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .page-hero__intro {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+  }
+
+  .page-hero__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+  }
+
+  .page-hero__ascii-wrapper {
+    flex: 0 0 35%;
+
+    @media (max-width: 768px) {
+      flex: none;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  .page-hero__ascii {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    white-space: pre;
+    color: var(--color-secondary);
+    overflow-x: auto;
+  }
+</style>
