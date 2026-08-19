@@ -21,7 +21,7 @@ export const aboutContent: AboutContent = {
     {
       title: 'Formación',
       body:
-        'Técnico Superior en Análisis de Sistemas. Tengo formación en en programación orientada a objetos, bases de datos, diseño de software, desarrollo web, inteligencia artificial y metodologías ágiles. Tengo un perfil general cercano a un full-stack aunque me considero más preparado en el sector back-end.',
+        'Técnico Superior en Análisis de Sistemas egresado del Instituto Superior Santo Domingo - ISSD. Tengo formación en en programación orientada a objetos, bases de datos, diseño de software, desarrollo web, inteligencia artificial y metodologías ágiles. Tengo un perfil general cercano a un full-stack aunque me considero más preparado en el sector back-end.',
     },
     {
       title: 'Enfoque',

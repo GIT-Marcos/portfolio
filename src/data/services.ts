@@ -1,72 +1,39 @@
-import type { ExternalLink } from './externalLinks';
-import { contactUrls } from './profile';
-
 export interface Service {
   title: string;
   description: string;
   image: string;
   imageAlt: string;
-  contacts: ExternalLink[];
 }
 
 export interface ServicesPageContent {
   heading: string;
   intro: string;
+  /** Mensaje y asunto para los botones de contacto del hero */
+  contactMessage: string;
+  contactSubject: string;
 }
-
-const webDevContacts: ExternalLink[] = [
-  {
-    label: 'Email',
-    url: contactUrls.email,
-    category: 'email',
-    subject: 'Presupuesto de sitio web',
-    message: 'Hola Marcos, me interesa tu servicio de desarrollo web freelance. ¿Podemos conversar?',
-  },
-  {
-    label: 'WhatsApp',
-    url: contactUrls.whatsapp,
-    category: 'whatsapp',
-    message: 'Hola Marcos, me interesa tu servicio de desarrollo web freelance.',
-  },
-];
-
-const softwareContacts: ExternalLink[] = [
-  {
-    label: 'Email',
-    url: contactUrls.email,
-    category: 'email',
-    subject: 'Consulta sobre desarrollo de software',
-    message: 'Hola Marcos, me interesa tu servicio de desarrollo de software en general. ¿Podemos conversar?',
-  },
-  {
-    label: 'WhatsApp',
-    url: contactUrls.whatsapp,
-    category: 'whatsapp',
-    message: 'Hola Marcos, me interesa tu servicio de desarrollo de software en general.',
-  },
-];
 
 export const servicesPageContent: ServicesPageContent = {
   heading: 'Servicios',
   intro:
-    'Ofrezco desarrollo de software de forma freelance y también como trabajo convencional: desde sitios web rápidos y accesibles hasta sistemas con lógica de negocio sólida. Elijo la tecnología según el problema, no al revés.',
+    'Ofresco servicios como analista de sistemas y/o desarrollador de software. Disponible para trabajar freelance bajo demanda o en relación de dependencia. Si lo cree conveniente, escríbame.',
+  contactMessage: 'Hola Marcos, me interesa tu servicio de desarrollo web.',
+  contactSubject: 'Consulta por servicios',
 };
 
 export const services: Service[] = [
   {
-    title: 'Desarrollo web freelance',
+    title: '¿Necesita un sitio web?',
     description:
       'Sitios web modernos, rápidos y accesibles con Astro y TypeScript: páginas institucionales, portfolios, landing pages y dashboards. Trabajo por etapas claras — análisis, diseño, implementación y validación — con comunicación constante y entregas a tiempo.',
     image: '/services/web-development.svg',
     imageAlt: 'Maqueta de ventana de navegador mostrando el esqueleto de una landing page',
-    contacts: webDevContacts,
   },
   {
-    title: 'Desarrollo de software en general',
+    title: '¿Está buscando personal?',
     description:
       'Como analista de sistemas con foco en backend Java y programación orientada a objetos, cubro la parte que sostiene todo: análisis de requisitos, diseño, implementación de lógica de negocio, bases de datos y pruebas. Ideal para empresas o equipos que necesitan código mantenible y bien documentado.',
     image: '/services/software-development.svg',
     imageAlt: 'Ilustración de terminal con build de Maven exitoso y cilindro de base de datos',
-    contacts: softwareContacts,
   },
 ];

@@ -1,6 +1,5 @@
 ---
 import type { Service } from '@data/services';
-import ExternalLinkButton from './ExternalLinkButton.astro';
 
 export interface Props {
   service: Service;
@@ -21,11 +20,6 @@ const { service } = Astro.props;
   <div class="service-section__content">
     <h2 class="service-section__title">{service.title}</h2>
     <p class="service-section__description">{service.description}</p>
-    <div class="service-section__actions">
-      {service.contacts.map((contact) => (
-        <ExternalLinkButton {...contact} />
-      ))}
-    </div>
   </div>
 </article>
 
@@ -70,15 +64,5 @@ const { service } = Astro.props;
   .service-section__description {
     font-size: var(--font-size-base);
     line-height: 1.6;
-  }
-
-  .service-section__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
   }
 </style>

@@ -6,6 +6,14 @@ import PageHero from '@components/PageHero.astro';
 import ServiceSection from '@components/ServiceSection.astro';
 import { services, servicesPageContent } from '@data/services';
 import { servicesAsciiArt } from '@data/ascii-art';
+import { getSocialItems } from '@data/social';
+import type { SocialItem } from '@data/social';
+
+const socialButtons: SocialItem[] = getSocialItems('email', 'whatsapp').map((item) => ({
+  ...item,
+  message: servicesPageContent.contactMessage,
+  ...(item.category === 'email' ? { subject: servicesPageContent.contactSubject } : {}),
+}));
 ---
 
 <Layout
@@ -18,6 +26,7 @@ import { servicesAsciiArt } from '@data/ascii-art';
       title={servicesPageContent.heading}
       intro={servicesPageContent.intro}
       asciiArt={servicesAsciiArt}
+      socialItems={socialButtons}
     />
 
     {services.map((service) => (

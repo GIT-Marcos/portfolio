@@ -38,6 +38,7 @@ const {
     <div class="page-hero__ascii-wrapper">
       <pre
         class="page-hero__ascii"
+        role="img"
         aria-label={asciiArt.alt}
       >{asciiArt.art}</pre>
     </div>
@@ -102,10 +103,12 @@ const {
 
   .page-hero__ascii {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
-    line-height: 1.4;
+    font-size: var(--font-size-sm);
+    line-height: 1;
     white-space: pre;
     color: var(--color-secondary);
     overflow-x: auto;
+    overflow-y: clip;
+    font-variant-ligatures: none;
   }
 </style>
