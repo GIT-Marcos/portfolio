@@ -11,7 +11,9 @@ const socialButtons = getSocialItems('email', 'whatsapp', 'github');
     <div class="footer__left">
       <span>{profile.name}</span>
       <span>|</span>
-      <span>Build with <a class="footer__astro-link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
+      <span>Build with <a class="footer__link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></span>
+      <span>|</span>
+      <span>ASCII art by <a class="footer__link" href="https://www.roysac.com/" target="_blank" rel="noopener noreferrer">Roy & SAC</a></span>
     </div>
     <div class="footer__social">
       {socialButtons.map((item) => (
@@ -46,15 +48,26 @@ const socialButtons = getSocialItems('email', 'whatsapp', 'github');
     align-items: center;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
+    font-size: var(--font-size-sm);
   }
 
   .footer__social {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
+
+    .link-button {
+      background-color: transparent;
+      border-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
   }
 
-  .footer__astro-link {
+  .footer__link {
     color: var(--color-secondary);
   }
 </style>
