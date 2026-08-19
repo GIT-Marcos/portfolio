@@ -83,6 +83,30 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-phosphor) var(--color-bg);
+  }
+
+  /* Enhancement: motores que soportan los pseudo-elementos webkit (Chromium, Safari).
+     Firefox ignora este bloque por completo y se queda con la versión estándar. */
+  @supports selector(::-webkit-scrollbar) {
+    html::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    html::-webkit-scrollbar-track {
+      background-color: var(--color-bg);
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background-color: var(--color-surface-raised);
+      border-radius: var(--radius-full);
+      border: 2px solid var(--color-bg);
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-primary);
+    }
   }
 
   main[id] {
