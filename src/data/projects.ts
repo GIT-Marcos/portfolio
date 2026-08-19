@@ -83,3 +83,14 @@ export const projects: Project[] = [
     category: 'freelance',
   },
 ];
+
+export interface ProjectsPageContent {
+  heading: string;
+  intro: string;
+}
+
+export const projectsPageContent: ProjectsPageContent = {
+  heading: 'Proyectos',
+  intro:
+    'Una selección de proyectos freelance, personales y académicos: aplicaciones web, APIs y sistemas donde aplico análisis, diseño e implementación de software.',
+};

@@ -3,7 +3,9 @@ import Layout from '@layouts/layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import ProjectCard from '@components/ProjectCard.astro';
-import { projects } from '@data/projects';
+import PageHero from '@components/PageHero.astro';
+import { projects, projectsPageContent } from '@data/projects';
+import { proyectAsciiArt } from '@data/ascii-art';
 
 const freelanceProjects = projects.filter((p) => p.category === 'freelance');
 const personalAcademicProjects = projects.filter(
@@ -14,7 +16,13 @@ const personalAcademicProjects = projects.filter(
 <Layout title="Portfolio | Proyectos" description="Proyectos freelance, personales y académicos">
   <Header />
   <main id="main" class="projects-page">
-    <h1 class="projects-page__title">Proyectos</h1>
+    <PageHero
+      title={projectsPageContent.heading}
+      intro={projectsPageContent.intro}
+      asciiArt={proyectAsciiArt}
+      asciiFlushTop
+      asciiFontSize="xs"
+    />
 
     <section class="projects-section">
       <h2 class="projects-section__title">Trabajos freelance</h2>
@@ -50,10 +58,6 @@ const personalAcademicProjects = projects.filter(
     display: flex;
     flex-direction: column;
     gap: var(--spacing-3xl);
-  }
-
-  .projects-page__title {
-    font-size: var(--font-size-3xl);
   }
 
   .projects-section {

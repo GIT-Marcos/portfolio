@@ -1,3 +1,5 @@
+/* Texto encerrado con "`" da problemas con "\", y texto encerrado con "String.raw" da problemas con "`".
+   Usar cada uno dependiendo del ASCII que vaya a contener */
 export interface AsciiArt {
   art: string;
   alt: string;
@@ -36,7 +38,7 @@ export const heroAsciiArt: AsciiArt = {
                       \`!9899fT|!^\"'
                         \`!^\"'
   `,
-  alt: 'Marcos, nombre del desarrollador en arte ASCII',
+  alt: 'Computadora de escritorio en ASCII',
 };
 
 export const aboutAsciiArt: AsciiArt = {
@@ -55,7 +57,7 @@ export const aboutAsciiArt: AsciiArt = {
   //  || ||                                                                         || ||
   //  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|
   // (_____)                                                                       (_____)`,
-  alt: 'Sobre mí - Marcos, desarrollador de software',
+  alt: 'Sobre mí - Arte en ASCII',
 };
 
 export const servicesAsciiArt: AsciiArt = {
@@ -71,5 +73,37 @@ export const servicesAsciiArt: AsciiArt = {
     // │                                                                             │
     // ╚────────────────────────────────────────────────────────────────────────────────────╝
   `,
-  alt: 'Servicios - Marcos, desarrollador de software',
+  alt: 'Servicios - Arte en ASCII',
+};
+
+export const proyectAsciiArt: AsciiArt = {
+  art: String.raw
+  `
+                    \V/                                                 \V/
+                     X                                                   X
+                    /Λ\                                                 /Λ\
+                   (| |)                                               (| |)
+                    \V/                                                 \V/
+                     X                                                   X
+                    /Λ\                                                 /Λ\
+                   (| |)                                               (| |)
+                    \V/                                                 \V/
+                     X                                                   X
+                    /Λ\                                                 /Λ\
+                   (| |)                                               (| |)
+                    \V/                                                 \V/
+  .==================S===================================================S===================.
+ /                                                                                             \
+|   /#######  /#######   /######  /##     /## /########  /######  /######## /######   /######   |
+|  | ##__  ##| ##__  ## /##__  ##|  ##   /##/| ##_____/ /##__  ##|__  ##__//##__  ## /##__  ##  |
+|  | ##  \ ##| ##  \ ##| ##  \ ## \  ## /##/ | ##      | ##  \__/   | ##  | ##  \ ##| ##  \__/  |
+|  | #######/| #######/| ##  | ##  \  ####/  | #####   | ##         | ##  | ##  | ##|  ######   |
+|  | ##____/ | ##__  ##| ##  | ##   \  ##/   | ##__/   | ##         | ##  | ##  | ## \____  ##  |
+|  | ##      | ##  \ ##| ##  | ##    | ##    | ##      | ##    ##   | ##  | ##  | ## /##  \ ##  |
+|  | ##      | ##  | ##|  ######/    | ##    | ########|  ######/   | ##  |  ######/|  ######/  |
+|  |__/      |__/  |__/ \______/     |__/    |________/ \______/    |__/   \______/  \______/   |
+ \                                                                                             /
+  '-=========================================================================================-'
+  `,
+  alt: 'Proyectos - Arte en ASCII',
 };
