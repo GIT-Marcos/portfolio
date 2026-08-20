@@ -1,8 +1,12 @@
 /* Texto encerrado con "`" da problemas con "\", y texto encerrado con "String.raw" da problemas con "`".
    Usar cada uno dependiendo del ASCII que vaya a contener */
+export type AsciiFontSize = `${number}rem` | `${number}px`;
+
 export interface AsciiArt {
   art: string;
   alt: string;
+  fontSize: AsciiFontSize;
+  flushTop?: boolean;
 }
 
 export const heroAsciiArt: AsciiArt = {
@@ -39,6 +43,7 @@ export const heroAsciiArt: AsciiArt = {
                         \`!^\"'
   `,
   alt: 'Computadora de escritorio en ASCII',
+  fontSize: '0.875rem',
 };
 
 export const aboutAsciiArt: AsciiArt = {
@@ -58,6 +63,7 @@ export const aboutAsciiArt: AsciiArt = {
   //  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|
   // (_____)                                                                       (_____)`,
   alt: 'Sobre mí - Arte en ASCII',
+  fontSize: '0.875rem',
 };
 
 export const servicesAsciiArt: AsciiArt = {
@@ -74,6 +80,7 @@ export const servicesAsciiArt: AsciiArt = {
     // ╚────────────────────────────────────────────────────────────────────────────────────╝
   `,
   alt: 'Servicios - Arte en ASCII',
+  fontSize: '0.875rem',
 };
 
 export const proyectAsciiArt: AsciiArt = {
@@ -106,4 +113,6 @@ export const proyectAsciiArt: AsciiArt = {
   '-=========================================================================================-'
   `,
   alt: 'Proyectos - Arte en ASCII',
+  fontSize: '0.6rem',
+  flushTop: true,
 };

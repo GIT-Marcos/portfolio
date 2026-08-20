@@ -29,6 +29,7 @@ El sitio usa **CSS nativo sin dependencias**: no hay Tailwind, SCSS, CSS-in-JS, 
 ### Reglas de oro
 
 1. **Todo valor de diseño vive en tokens.** Los únicos valores permitidos en componentes son `var(--…)` o valores estructurales puros (unidades de layout: `100%`, `auto`, `clamp()`, `1px`, `calc()`). NUNCA hardcodees un color, radio, sombra, tamaño de fuente o espaciado que tenga token equivalente.
+   - **Excepción (ASCII arts):** el tamaño de fuente de los ASCII arts se declara como medida literal en el campo `fontSize` de `src/data/ascii-art*.ts` (tipo `AsciiFontSize`) y se aplica vía custom property inline `--ascii-font-size`, consumida en el CSS como `var(--ascii-font-size, var(--font-size-sm))`. Es un valor de contenido, no de diseño: cada arte necesita su propia escala según su ancho en columnas, por lo que no tiene token equivalente por definición.
 
 2. **Tokens en `:root`, en la capa `tokens` de `src/styles/global.css`.** Escalas existentes:
    - Colores: `--color-*` (incl. `--color-primary`, `--color-text`, `--color-bg`, `--color-surface`, `--color-muted` y los de redes `--color-github`, `--color-linkedin`, …)

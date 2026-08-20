@@ -4,6 +4,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PageHero from '@components/PageHero.astro';
 import { aboutContent } from '@data/about';
+import { aboutAsciiArtMobile } from '@data/ascii-artMobile';
 import { getSocialItems } from '@data/social';
 
 const socialButtons = getSocialItems('github', 'linkedin');
@@ -19,6 +20,7 @@ const socialButtons = getSocialItems('github', 'linkedin');
       title={aboutContent.heading}
       intro={aboutContent.intro}
       asciiArt={aboutContent.asciiArt}
+      asciiArtMobile={aboutAsciiArtMobile}
       socialItems={socialButtons}
     />
 

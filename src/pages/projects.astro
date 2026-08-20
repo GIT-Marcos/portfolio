@@ -6,6 +6,7 @@ import ProjectCard from '@components/ProjectCard.astro';
 import PageHero from '@components/PageHero.astro';
 import { projects, projectsPageContent } from '@data/projects';
 import { proyectAsciiArt } from '@data/ascii-art';
+import { proyectAsciiArtMobile } from '@data/ascii-artMobile';
 
 const freelanceProjects = projects.filter((p) => p.category === 'freelance');
 const personalAcademicProjects = projects.filter(
@@ -20,8 +21,7 @@ const personalAcademicProjects = projects.filter(
       title={projectsPageContent.heading}
       intro={projectsPageContent.intro}
       asciiArt={proyectAsciiArt}
-      asciiFlushTop
-      asciiFontSize="xs"
+      asciiArtMobile={proyectAsciiArtMobile}
     />
 
     <section class="projects-section">

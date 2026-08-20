@@ -6,6 +6,7 @@ import PageHero from '@components/PageHero.astro';
 import ServiceSection from '@components/ServiceSection.astro';
 import { services, servicesPageContent } from '@data/services';
 import { servicesAsciiArt } from '@data/ascii-art';
+import { servicesAsciiArtMobile } from '@data/ascii-artMobile';
 import { getSocialItems } from '@data/social';
 import type { SocialItem } from '@data/social';
 
@@ -26,6 +27,7 @@ const socialButtons: SocialItem[] = getSocialItems('email', 'whatsapp').map((ite
       title={servicesPageContent.heading}
       intro={servicesPageContent.intro}
       asciiArt={servicesAsciiArt}
+      asciiArtMobile={servicesAsciiArtMobile}
       socialItems={socialButtons}
     />
 

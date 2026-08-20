@@ -3,11 +3,15 @@ import InternalLinkButton from './InternalLinkButton.astro';
 import { Icon } from 'astro-icon/components';
 import { profile } from '@data/profile';
 import { heroAsciiArt } from '@data/ascii-art';
+import { heroAsciiArtMobile } from '@data/ascii-artMobile';
 ---
 <section class="hero">
   <div class="hero__container">
     <div class="hero__ascii-wrapper">
-      <pre class="hero__ascii" role="img" aria-label={heroAsciiArt.alt}>{heroAsciiArt.art}</pre>
+      <pre class="hero__ascii hero__ascii--desktop" style={{ '--ascii-font-size': heroAsciiArt.fontSize }} role="img" aria-label={heroAsciiArt.alt}>{heroAsciiArt.art}</pre>
+      {heroAsciiArtMobile.art.trim() && (
+        <pre class="hero__ascii hero__ascii--mobile" style={{ '--ascii-font-size': heroAsciiArtMobile.fontSize }} role="img" aria-label={heroAsciiArtMobile.alt}>{heroAsciiArtMobile.art}</pre>
+      )}
     </div>
     <div class="hero__content">
       <p class="hero__greeting">Hola, soy</p>
@@ -71,13 +75,30 @@ import { heroAsciiArt } from '@data/ascii-art';
 
   .hero__ascii {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-sm);
+    font-size: var(--ascii-font-size, var(--font-size-sm));
     line-height: 1;
     white-space: pre;
     color: var(--color-secondary);
     overflow-x: auto;
     overflow-y: clip;
     font-variant-ligatures: none;
+  }
+
+  .hero__ascii--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .hero__ascii--mobile {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin-inline: auto;
+    }
   }
 
   .hero__content {
