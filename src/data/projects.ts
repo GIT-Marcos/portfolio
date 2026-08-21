@@ -1,10 +1,14 @@
 import type { Technology } from './technologies';
 import type { ExternalLink } from './externalLinks';
+import type { ImageMetadata } from 'astro';
+import lufitImg1 from '@assets/images/1.png';
+import lufitImg2 from '@assets/images/2.png';
+import lufitImg3 from '@assets/images/3.png';
 
 export type ProjectCategory = 'freelance' | 'personal-academic';
 
 export interface ProjectImage {
-  src: string;
+  src: ImageMetadata;
   alt: string;
 }
 
@@ -38,8 +42,9 @@ export const projects: Project[] = [
     ],
     isWIP: true,
     images: [
-      { src: '/placeholder.svg', alt: 'Página principal del sitio LudmiFit mostrando servicios de entrenamiento' },
-      { src: '/placeholder.svg', alt: 'Sección de testimonios de clientes de LudmiFit' },
+      { src: lufitImg1, alt: 'Captura de pantalla 1 del sitio LudmiFit' },
+      { src: lufitImg2, alt: 'Captura de pantalla 2 del sitio LudmiFit' },
+      { src: lufitImg3, alt: 'Captura de pantalla 3 del sitio LudmiFit' },
     ],
     category: 'freelance',
   },
@@ -58,9 +63,9 @@ export const projects: Project[] = [
       { url: 'https://github.com/GIT-Marcos/biblocat', category: 'github', label: 'Código fuente' },
     ],
     images: [
-      { src: '/placeholder.svg', alt: 'Vista principal del sistema de gestión de inventarios' },
-      { src: '/placeholder.svg', alt: 'Vista de reportes del sistema de gestión de inventarios' },
-      { src: '/placeholder.svg', alt: 'Vista de movimientos de entrada y salida del inventario' },
+      { src: lufitImg1, alt: 'Vista principal del sistema de gestión de inventarios' },
+      { src: lufitImg2, alt: 'Vista de reportes del sistema de gestión de inventarios' },
+      { src: lufitImg3, alt: 'Vista de movimientos de entrada y salida del inventario' },
     ],
     category: 'personal-academic',
   },
@@ -78,8 +83,8 @@ export const projects: Project[] = [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },
     ],
     images: [
-      { src: '/placeholder.svg', alt: 'Vista principal del portfolio con presentación profesional' },
-      { src: '/placeholder.svg', alt: 'Sección de proyectos del portfolio' },
+      { src: lufitImg1, alt: 'Vista principal del portfolio con presentación profesional' },
+      { src: lufitImg2, alt: 'Sección de proyectos del portfolio' },
     ],
     category: 'personal-academic',
   },
@@ -100,8 +105,8 @@ export const projects: Project[] = [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },
     ],
     images: [
-      { src: '/placeholder.svg', alt: 'Vista principal del portfolio con presentación profesional' },
-      { src: '/placeholder.svg', alt: 'Sección de proyectos del portfolio' },
+      { src: lufitImg1, alt: 'Vista principal del portfolio con presentación profesional' },
+      { src: lufitImg2, alt: 'Sección de proyectos del portfolio' },
     ],
     category: 'personal-academic',
   },
