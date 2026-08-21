@@ -1,7 +1,6 @@
 export interface Technology {
   name: string;
   icon: string;
-  iconSize?: number;
 }
 
 export const technologies: Technology[] = [
@@ -10,6 +9,6 @@ export const technologies: Technology[] = [
   { name: 'Tailwind',icon: 'tailwindcss-icon' },
   { name: 'Spring Boot', icon: 'logos:spring-icon' },
   { name: 'PostgreSQL', icon: 'logos:postgresql' },
-  { name: 'CSS', icon: 'logos:css-3' },
+  { name: 'CSS', icon: 'logos:css' },
   { name: 'Git', icon: 'logos:git' },
 ];

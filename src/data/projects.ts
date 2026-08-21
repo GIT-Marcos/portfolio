@@ -33,8 +33,8 @@ export const projects: Project[] = [
       'Sitio web de asesorías de entrenamiento personalizado para mujeres, con planes de entrenamiento, seguimiento por WhatsApp, SEO completo y diseño responsive. Desarrollado con Astro y desplegado en Netlify.',
     technologies: [
       /*{ name: 'Astro', icon: 'logos:astro' }, */
-      { name: 'TypeScript', icon: 'logos:typescript-icon', iconSize:50 },
-      { name: 'CSS', icon: 'logos:css-3' },
+      { name: 'TypeScript', icon: 'logos:typescript-icon' },
+      { name: 'CSS', icon: 'logos:css' },
     ],
     links: [
       { url: 'https://ludmi-fit.netlify.app/', category: 'website', label: 'Ver sitio en vivo' },
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     technologies: [
       /*{ name: 'Astro', icon: 'logos:astro' }, */
       { name: 'TypeScript', icon: 'logos:typescript-icon' },
-      { name: 'CSS', icon: 'logos:css-3' },
+      { name: 'CSS', icon: 'logos:css' },
     ],
     links: [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },

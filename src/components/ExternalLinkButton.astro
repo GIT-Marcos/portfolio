@@ -23,7 +23,7 @@ const isExternal = /^https?:\/\//i.test(url);
   rel={isExternal ? 'noopener noreferrer' : undefined}
   aria-label={variant === 'icon' ? label : undefined}
 >
-  <Icon name={iconSrc} class="link-button__icon" aria-hidden="true" width={20} height={20} />
+  <Icon name={iconSrc} class="link-button__icon" aria-hidden="true" />
   {variant !== 'icon' && <span class="link-button__label">{label}</span>}
 </a>
 
@@ -64,6 +64,8 @@ const isExternal = /^https?:\/\//i.test(url);
   }
 
   .link-button__icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
     flex-shrink: 0;
   }
 </style>

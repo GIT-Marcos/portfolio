@@ -53,7 +53,7 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
       aria-label="Ver imagen en grande"
       data-carousel-expand
     >
-      <Icon name="mdi:magnify" aria-hidden="true" width={20} height={20} />
+      <Icon name="mdi:magnify" class="carousel__expand-icon" aria-hidden="true" />
     </button>
 
     <dialog
@@ -162,6 +162,11 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
     top: var(--spacing-sm);
     right: var(--spacing-sm);
     transform: none;
+  }
+
+  .carousel__expand-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 
   .carousel__dialog {
