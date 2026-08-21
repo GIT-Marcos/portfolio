@@ -12,7 +12,7 @@ export default defineConfig({
     icon({
       include: {
         mdi: ['github', 'linkedin', 'email-outline', 'web', 'whatsapp', 'link-variant', 'arrow-right', 'map-marker-outline', 'magnify'],
-        logos: ['java', 'typescript', 'javascript', 'nodejs', 'spring', 'mysql', 'postgresql', 'astro', 'css-3', 'html-5', 'git', 'docker-icon'],
+        logos: ['java', 'typescript', 'javascript', 'nodejs', 'spring', 'mysql', 'postgresql', 'astro', 'css-3', 'html-5', 'git', 'docker-icon', 'react'],
       },
     }),
   ],

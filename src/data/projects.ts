@@ -23,17 +23,39 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'sistema-gestion',
-    title: 'Sistema de Gestión de Inventarios',
+    id: 'ludmi-fit',
+    title: 'LudmiFit — Sitio web de servicios de entrenamiento personalizado',
     description:
-      'Aplicación web para control de stock, movimientos de entrada y salida, y reportes. Desarrollada con arquitectura MVC y base de datos relacional.',
+      'Sitio web de asesorías de entrenamiento personalizado para mujeres, con planes de entrenamiento, seguimiento por WhatsApp, SEO completo y diseño responsive. Desarrollado con Astro y desplegado en Netlify.',
+    technologies: [
+      { name: 'Astro', icon: 'logos:astro' },
+      { name: 'TypeScript', icon: 'logos:typescript' },
+      { name: 'CSS', icon: 'logos:css-3' },
+    ],
+    links: [
+      { url: 'https://ludmi-fit.netlify.app/', category: 'website', label: 'Ver sitio en vivo' },
+      { url: 'https://github.com/GIT-Marcos/lufit', category: 'github', label: 'Código fuente' },
+    ],
+    isWIP: true,
+    images: [
+      { src: '/placeholder.svg', alt: 'Página principal del sitio LudmiFit mostrando servicios de entrenamiento' },
+      { src: '/placeholder.svg', alt: 'Sección de testimonios de clientes de LudmiFit' },
+    ],
+    category: 'freelance',
+  },
+  {
+    id: 'biblocat',
+    title: 'Sistema de gestión de back-up de biblioteca digital personal',
+    description:
+      'Sistema que permite llevar un inventario de una biblioteca digital y gestionar etiquetas para las fuentes.',
     technologies: [
       { name: 'Java', icon: 'logos:java' },
       { name: 'Spring Boot', icon: 'logos:spring' },
-      { name: 'MySQL', icon: 'logos:mysql' },
+      { name: 'PostgreSQL', icon: 'logos:postgresql' },
     ],
     links: [
-      { url: 'https://github.com/placeholder/inventario', category: 'github' },
+      { url: 'asd', category: 'website', label: 'Sitio' },
+      { url: 'https://github.com/GIT-Marcos/biblocat', category: 'github', label: 'Código fuente' },
     ],
     images: [
       { src: '/placeholder.svg', alt: 'Vista principal del sistema de gestión de inventarios' },
@@ -46,7 +68,7 @@ export const projects: Project[] = [
     id: 'portfolio-web',
     title: 'Portfolio Personal',
     description:
-      'Sitio web estático para presentación profesional, construido con Astro para máximo rendimiento y SEO.',
+      'Portfolio personal desarrollado con Astro 7 (SSG) y TypeScript, con arquitectura CSS nativa (BEM + tokens), sistema de componentes modulares y despliegue estático. Incluye secciones de perfil, proyectos, servicios y sobre mí.',
     technologies: [
       { name: 'Astro', icon: 'logos:astro' },
       { name: 'TypeScript', icon: 'logos:typescript' },
@@ -55,32 +77,33 @@ export const projects: Project[] = [
     links: [
       { url: 'https://github.com/placeholder/portfolio', category: 'github' },
     ],
-    isWIP: true,
     images: [
-      { src: '/placeholder.svg', alt: 'Captura del inicio del portfolio personal' },
-      { src: '/placeholder.svg', alt: 'Captura de la sección de proyectos del portfolio' },
+      { src: '/placeholder.svg', alt: 'Vista principal del portfolio con presentación profesional' },
+      { src: '/placeholder.svg', alt: 'Sección de proyectos del portfolio' },
     ],
     category: 'personal-academic',
   },
   {
-    id: 'api-rest',
-    title: 'API REST de Servicios',
+    id: 'flashcards',
+    title: 'Aplicación para estudiar - Flashcards',
     description:
-      'API RESTful con autenticación JWT, endpoints documentados y testing automatizado.',
+      'Aplicación web que permite al usuario estudiar usando el modelo de repetición espaciada SM-2.',
     technologies: [
-      { name: 'Node.js', icon: 'logos:nodejs' },
-      { name: 'TypeScript', icon: 'logos:typescript' },
+      { name: 'Java', icon: 'logos:java' },
+      { name: 'Spring Boot', icon: 'logos:spring' },
       { name: 'PostgreSQL', icon: 'logos:postgresql' },
+      { name: 'React', icon: 'logos:react' },
+      { name: 'TypeScript', icon: 'logos:typescript' },
+      { name: 'CSS', icon: 'logos:css-3' },
     ],
     links: [
-      { url: 'https://github.com/placeholder/api-rest', category: 'github' },
+      { url: 'https://github.com/placeholder/portfolio', category: 'github' },
     ],
-    isWIP: true,
     images: [
-      { src: '/placeholder.svg', alt: 'Captura de la documentación de la API REST' },
-      { src: '/placeholder.svg', alt: 'Captura de los endpoints de la API REST' },
+      { src: '/placeholder.svg', alt: 'Vista principal del portfolio con presentación profesional' },
+      { src: '/placeholder.svg', alt: 'Sección de proyectos del portfolio' },
     ],
-    category: 'freelance',
+    category: 'personal-academic',
   },
 ];
 
@@ -92,5 +115,5 @@ export interface ProjectsPageContent {
 export const projectsPageContent: ProjectsPageContent = {
   heading: 'Proyectos',
   intro:
-    'Una selección de proyectos freelance, personales y académicos: aplicaciones web, APIs y sistemas donde aplico análisis, diseño e implementación de software.',
+    'Sitios web, APIs y sistemas construidos con tecnologías modernas. Una selección de proyectos que he creado desde el análisis, pasando por el diseño y la implementación del software.',
 };
