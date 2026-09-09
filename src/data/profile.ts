@@ -9,10 +9,10 @@ export interface Profile {
 
 export const profile: Profile = {
   name: 'Marcos',
-  location: 'Córdoba, Argentina',
+  location: 'Argentina, Córdoba',
   openToWork: true,
   availabilityLabel: 'Open to work',
-  email: 'placeholder@email.com',
+  email: 'mpardo@issd.edu.ar',
   whatsappNumber: '5491100000000',
 };
 

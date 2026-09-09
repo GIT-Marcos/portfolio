@@ -11,8 +11,8 @@ export const socialItems: SocialItem[] = [
     category: 'whatsapp',
     message: 'Hola Marcos, te contacto desde tu portfolio.',
   },
-  { label: 'GitHub', url: 'https://github.com/placeholder', icon: 'mdi:github', category: 'github' },
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/placeholder', icon: 'mdi:linkedin', category: 'linkedin' },
+  { label: 'GitHub', url: 'https://github.com/GIT-Marcos', icon: 'mdi:github', category: 'github' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/marcos-agustin-pardo-varela-analista-sistemas/', icon: 'mdi:linkedin', category: 'linkedin' },
   {
     label: 'Email',
     url: contactUrls.email,
