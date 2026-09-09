@@ -11,4 +11,5 @@ export const technologies: Technology[] = [
   { name: 'PostgreSQL', icon: 'logos:postgresql' },
   { name: 'CSS', icon: 'logos:css' },
   { name: 'Git', icon: 'logos:git' },
+  { name: 'JUnit', icon: 'devicon:junit' },
 ];

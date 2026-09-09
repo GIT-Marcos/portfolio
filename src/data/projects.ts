@@ -4,6 +4,15 @@ import type { ImageMetadata } from 'astro';
 import lufitImg1 from '@assets/images/1.png';
 import lufitImg2 from '@assets/images/2.png';
 import lufitImg3 from '@assets/images/3.png';
+import superServiceImg1 from '@assets/images/s1.png';
+import superServiceImg2 from '@assets/images/s2.png';
+import superServiceImg3 from '@assets/images/s3.png';
+import superServiceImg4 from '@assets/images/s4.png';
+import superServiceImg5 from '@assets/images/s5.png';
+import flashcardsImg1 from '@assets/images/f1.png';
+import flashcardsImg2 from '@assets/images/f2.png';
+import flashcardsImg3 from '@assets/images/f3.png';
+import flashcardsImg4 from '@assets/images/f4.png';
 
 export type ProjectCategory = 'freelance' | 'personal-academic';
 
@@ -37,7 +46,7 @@ export const projects: Project[] = [
       { name: 'CSS', icon: 'logos:css' },
     ],
     links: [
-      { url: 'https://ludmi-fit.netlify.app/', category: 'website', label: 'Ver sitio en vivo' },
+      { url: 'https://ludmi-fit.netlify.app/', category: 'website', label: 'Ver sitio web' },
       { url: 'https://github.com/GIT-Marcos/lufit', category: 'github', label: 'Código fuente' },
     ],
     isWIP: true,
@@ -59,7 +68,7 @@ export const projects: Project[] = [
       { name: 'PostgreSQL', icon: 'logos:postgresql' },
     ],
     links: [
-      { url: 'asd', category: 'website', label: 'Sitio' },
+      { url: 'asd', category: 'website', label: 'Ver sitio web' },
       { url: 'https://github.com/GIT-Marcos/biblocat', category: 'github', label: 'Código fuente' },
     ],
     images: [
@@ -70,29 +79,10 @@ export const projects: Project[] = [
     category: 'personal-academic',
   },
   {
-    id: 'portfolio-web',
-    title: 'Portfolio Personal',
-    description:
-      'Portfolio personal desarrollado con Astro 7 (SSG) y TypeScript, con arquitectura CSS nativa (BEM + tokens), sistema de componentes modulares y despliegue estático. Incluye secciones de perfil, proyectos, servicios y sobre mí.',
-    technologies: [
-      /*{ name: 'Astro', icon: 'logos:astro' }, */
-      { name: 'TypeScript', icon: 'logos:typescript-icon' },
-      { name: 'CSS', icon: 'logos:css' },
-    ],
-    links: [
-      { url: 'https://github.com/placeholder/portfolio', category: 'github' },
-    ],
-    images: [
-      { src: lufitImg1, alt: 'Vista principal del portfolio con presentación profesional' },
-      { src: lufitImg2, alt: 'Sección de proyectos del portfolio' },
-    ],
-    category: 'personal-academic',
-  },
-  {
     id: 'flashcards',
-    title: 'Aplicación para estudiar - Flashcards',
+    title: 'Aplicación de estudio - Flashcards',
     description:
-      'Aplicación web que permite al usuario estudiar usando el modelo de repetición espaciada SM-2.',
+      'Aplicación web que permite al usuario estudiar usando el modelo de repetición espaciada SM-2. Permite crear mazos con tarjetas que el usuario debe memorizar y, en sesiones de estudio, este revisa las terjetas evaluando qué tanto pudo recordar.',
     technologies: [
       { name: 'Java', icon: 'logos:java' },
       { name: 'Spring Boot', icon: 'logos:spring-icon' },
@@ -102,11 +92,41 @@ export const projects: Project[] = [
       { name: 'Tailwind', icon: 'logos:tailwindcss-icon' },
     ],
     links: [
-      { url: 'https://github.com/placeholder/portfolio', category: 'github' },
+    { url: 'https://study-flashcards-web.vercel.app', category: 'website', label: 'Ver sitio web' },
+      { url: 'https://github.com/GIT-Marcos/flashcards', category: 'github', label: 'Código fuente' },
     ],
     images: [
-      { src: lufitImg1, alt: 'Vista principal del portfolio con presentación profesional' },
-      { src: lufitImg2, alt: 'Sección de proyectos del portfolio' },
+      { src: flashcardsImg1, alt: 'Lista de tarjetas dentro un mazo' },
+      { src: flashcardsImg2, alt: 'Gráfico de estadísticas de reviews' },
+      { src: flashcardsImg3, alt: 'Vista de lista de sesiones de estudio' },
+      { src: flashcardsImg4, alt: 'Vista de login de la aplicación' },
+    ],
+    category: 'personal-academic',
+  },
+  {
+    id: 'super-service',
+    title: 'Super Service — Aplicación de escritorio para gestión de taller mecánico',
+    description:
+      'Aplicación de escritorio empresarial construida con JavaFX 21 y PostgreSQL. Permite gestionar órdenes de trabajo, repuestos, historial de ventas y más. Genera reportes con gráficos y estadísticas. Este fue el proyecto de fin de carrera.',
+    technologies: [
+      { name: 'Java/JavaFx', icon: 'logos:java' },
+      { name: 'PostgreSQL', icon: 'logos:postgresql' },
+      { name: 'Hibernate', icon: 'logos:hibernate' },
+      { name: 'JUnit', icon: 'devicon:junit' },
+    ],
+    links: [
+      {
+        url: 'https://github.com/GIT-Marcos/super-service',
+        category: 'github',
+        label: 'Código fuente',
+      },
+    ],
+    images: [
+      { src: superServiceImg1, alt: 'Vista de productos del depósito' },
+      { src: superServiceImg2, alt: 'Vista de carga de nueva venta' },
+      { src: superServiceImg3, alt: 'Listado de services' },
+      { src: superServiceImg4, alt: 'Reporte de ingresos por repuesto' },
+      { src: superServiceImg5, alt: 'Detalles estadísticos de un cliente' },
     ],
     category: 'personal-academic',
   },
