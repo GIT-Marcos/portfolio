@@ -48,7 +48,7 @@ export const heroAsciiArtMobile: AsciiArt = {
 
 export const servicesAsciiArtMobile: AsciiArt = {
   art: `
-    // ╔────────────────────────────────────────────────────────────────────────────────────╗
+    // ╔───────────────────────────────────────────────────────────────────────────────╗
     // │                                                                             │
     // │ .d8888. d88888b d8888b. db    db d888888b  .o88b. d888888b  .d88b.  .d8888. │
     // │ 88'  YP 88'     88  \`8D 88    88   \`88'   d8P  Y8   \`88'   .8P  Y8. 88'  YP │
@@ -57,10 +57,10 @@ export const servicesAsciiArtMobile: AsciiArt = {
     // │ db   8D 88.     88 \`88.  \`8bd8'    .88.   Y8b  d8   .88.   \`8b  d8' db   8D │
     // │ \`8888Y' Y88888P 88   YD    YP    Y888888P  \`Y88P' Y888888P  \`Y88P'  \`8888Y' │
     // │                                                                             │
-    // ╚────────────────────────────────────────────────────────────────────────────────────╝
+    // ╚───────────────────────────────────────────────────────────────────────────────╝
   `,
   alt: 'Servicios - Arte en ASCII',
-  fontSize: '0.364rem',
+  fontSize: '0.363rem',
 };
 
 export const proyectAsciiArtMobile: AsciiArt = {
