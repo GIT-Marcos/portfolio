@@ -18,13 +18,16 @@ export default defineConfig({
   vite: {
     server: {
       watch: {
-        ignored: [
-          '**/node_modules/**',
-          /DumpStack\.log\.tmp/,
-          /hiberfil\.sys/,
-          /pagefile\.sys/,
-          /swapfile\.sys/,
-        ],
+        ignored: (path) => {
+          const normalized = path.replace(/\\/g, '/');
+          if (/^[A-Z]:\/(?:DumpStack\.log\.tmp|hiberfil\.sys|pagefile\.sys|swapfile\.sys)$/i.test(normalized)) {
+            return true;
+          }
+          if (normalized.includes('/node_modules/')) {
+            return true;
+          }
+          return false;
+        },
       },
     },
   },
