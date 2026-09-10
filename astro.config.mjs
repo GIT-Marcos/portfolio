@@ -38,7 +38,7 @@ export default defineConfig({
     sitemap(),
     icon({
       include: {
-        mdi: ['github', 'linkedin', 'email-outline', 'web', 'whatsapp', 'link-variant', 'arrow-right', 'map-marker-outline', 'magnify'],
+        mdi: ['github', 'linkedin', 'email-outline', 'web', 'whatsapp', 'link-variant', 'arrow-right', 'map-marker-outline', 'magnify', 'chevron-left', 'chevron-right', 'close'],
         logos: ['java', 'typescript-icon', 'tailwindcss-icon', 'postgresql', 'css', 'git', 'react', 'spring-icon', 'hibernate'],
         devicon: ['junit', 'sqlite'],
         'skill-icons': ['astro'],
