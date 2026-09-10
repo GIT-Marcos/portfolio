@@ -51,7 +51,6 @@ export const projects: Project[] = [
       { url: 'https://ludmi-fit.netlify.app/', category: 'website', label: 'Ver sitio web' },
       { url: 'https://github.com/GIT-Marcos/lufit', category: 'github', label: 'Código fuente' },
     ],
-    isWIP: true,
     images: [
       { src: lufitImg1, alt: 'Captura de pantalla 1 del sitio LudmiFit' },
       { src: lufitImg2, alt: 'Captura de pantalla 2 del sitio LudmiFit' },
@@ -80,6 +79,7 @@ export const projects: Project[] = [
       { src: biblosImg2, alt: 'Consola guardando fuentes' },
     ],
     category: 'personal-academic',
+    isWIP: true,
   },
   {
     id: 'flashcards',
@@ -105,6 +105,7 @@ export const projects: Project[] = [
       { src: flashcardsImg4, alt: 'Vista de login de la aplicación' },
     ],
     category: 'personal-academic',
+    isWIP: true,
   },
   {
     id: 'super-service',

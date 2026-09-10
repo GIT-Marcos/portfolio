@@ -69,8 +69,32 @@ const {
     position: absolute;
     top: var(--spacing-sm);
     left: var(--spacing-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-sm);
+    color: var(--color-warning);
+    background-color: var(--color-warning-bg);
+    border: 1px solid color-mix(in srgb, var(--color-warning) 40%, transparent);
+    border-radius: var(--radius-full);
+    isolation: isolate;
+
+    &::after {
+      content: '█';
+      animation: wip-blink 1s step-end infinite;
+    }
+  }
+
+  @keyframes wip-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-card__wip::after {
+      animation: none;
+    }
   }
 
   .project-card__content {
