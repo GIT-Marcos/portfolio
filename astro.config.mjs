@@ -31,6 +31,9 @@ export default defineConfig({
       },
     },
   },
+  prefetch: {
+    prefetchAll: true,
+  },
   integrations: [
     sitemap(),
     icon({
