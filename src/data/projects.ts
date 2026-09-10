@@ -60,8 +60,8 @@ export const projects: Project[] = [
     category: 'freelance',
   },
   {
-    id: 'biblocat',
-    title: 'Biblocat - Sistema de gestión de back-up de biblioteca digital personal',
+    id: 'biblos',
+    title: 'Biblos - Sistema de gestión de back-up de biblioteca digital personal',
     description:
       'Sistema que permite generar los metadatos de fuentes guardadas en una biblioteca digital local. Tiene 2 partes: el agente que scanea un directorio y crea el archivo de base de datos, y el sitio web que permite subir para leer, editar metadatos y descargar el archivo modificado.',
     technologies: [
@@ -72,8 +72,8 @@ export const projects: Project[] = [
       { name: 'CSS', icon: 'logos:css' },
     ],
     links: [
-      { url: 'https://biblocat-editor.vercel.app/', category: 'website', label: 'Ver sitio web' },
-      { url: 'https://github.com/GIT-Marcos/biblocat', category: 'github', label: 'Código fuente' },
+      { url: 'https://biblos-editor.vercel.app/', category: 'website', label: 'Ver sitio web' },
+      { url: 'https://github.com/GIT-Marcos/biblos', category: 'github', label: 'Código fuente' },
     ],
     images: [
       { src: biblosImg1, alt: 'Lista de fuentas guardadas en la base de datos' },
