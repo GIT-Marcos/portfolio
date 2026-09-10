@@ -13,6 +13,8 @@ import flashcardsImg1 from '@assets/images/f1.png';
 import flashcardsImg2 from '@assets/images/f2.png';
 import flashcardsImg3 from '@assets/images/f3.png';
 import flashcardsImg4 from '@assets/images/f4.png';
+import biblosImg1 from '@assets/images/b1.png';
+import biblosImg2 from '@assets/images/b2.png';
 
 export type ProjectCategory = 'freelance' | 'personal-academic';
 
@@ -41,7 +43,7 @@ export const projects: Project[] = [
     description:
       'Sitio web de asesorías de entrenamiento personalizado para mujeres, con planes de entrenamiento, seguimiento por WhatsApp, SEO completo y diseño responsive. Desarrollado con Astro y desplegado en Netlify.',
     technologies: [
-      /*{ name: 'Astro', icon: 'logos:astro' }, */
+      { name: 'Astro', icon: 'skill-icons:astro' },
       { name: 'TypeScript', icon: 'logos:typescript-icon' },
       { name: 'CSS', icon: 'logos:css' },
     ],
@@ -59,22 +61,23 @@ export const projects: Project[] = [
   },
   {
     id: 'biblocat',
-    title: 'Sistema de gestión de back-up de biblioteca digital personal',
+    title: 'Biblocat - Sistema de gestión de back-up de biblioteca digital personal',
     description:
-      'Sistema que permite llevar un inventario de una biblioteca digital y gestionar etiquetas para las fuentes.',
+      'Sistema que permite generar los metadatos de fuentes guardadas en una biblioteca digital local. Tiene 2 partes: el agente que scanea un directorio y crea el archivo de base de datos, y el sitio web que permite subir para leer, editar metadatos y descargar el archivo modificado.',
     technologies: [
       { name: 'Java', icon: 'logos:java' },
-      { name: 'Spring Boot', icon: 'logos:spring-icon' },
-      { name: 'PostgreSQL', icon: 'logos:postgresql' },
+      { name: 'SQLite', icon: 'devicon:sqlite' },
+      { name: 'React', icon: 'logos:react' },
+      { name: 'TypeScript', icon: 'logos:typescript-icon' },
+      { name: 'CSS', icon: 'logos:css' },
     ],
     links: [
-      { url: 'asd', category: 'website', label: 'Ver sitio web' },
+      { url: 'https://biblocat-editor.vercel.app/', category: 'website', label: 'Ver sitio web' },
       { url: 'https://github.com/GIT-Marcos/biblocat', category: 'github', label: 'Código fuente' },
     ],
     images: [
-      { src: lufitImg1, alt: 'Vista principal del sistema de gestión de inventarios' },
-      { src: lufitImg2, alt: 'Vista de reportes del sistema de gestión de inventarios' },
-      { src: lufitImg3, alt: 'Vista de movimientos de entrada y salida del inventario' },
+      { src: biblosImg1, alt: 'Lista de fuentas guardadas en la base de datos' },
+      { src: biblosImg2, alt: 'Consola guardando fuentes' },
     ],
     category: 'personal-academic',
   },

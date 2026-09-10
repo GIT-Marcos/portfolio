@@ -12,4 +12,6 @@ export const technologies: Technology[] = [
   { name: 'CSS', icon: 'logos:css' },
   { name: 'Git', icon: 'logos:git' },
   { name: 'JUnit', icon: 'devicon:junit' },
+  { name: 'SQLite', icon: 'devicon:sqlite' },
+  { name: 'Astro', icon: 'skill-icons:astro' },
 ];
