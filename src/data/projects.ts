@@ -109,7 +109,7 @@ export const projects: Project[] = [
   },
   {
     id: 'super-service',
-    title: 'Super Service',
+    title: 'Super Service - Sistema de gestión',
     description:
       'Aplicación de escritorio empresarial para la gestión de taller mecánico. Permite gestionar órdenes de trabajo, repuestos, historial de ventas y más. Genera reportes con gráficos y estadísticas. Este fue el proyecto de fin de carrera.',
     technologies: [

@@ -24,7 +24,7 @@ const {
 
 <section class:list={['page-hero', `page-hero--ascii-${asciiPosition}`]}>
   <div class="page-hero__content">
-    <h1 class="page-hero__title">{title}</h1>
+    <h1 class="page-hero__title text-gradient">{title}</h1>
     {intro && <p class="page-hero__intro">{intro}</p>}
     {socialItems.length > 0 && (
       <div class="page-hero__social">
@@ -82,7 +82,7 @@ const {
   }
 
   .page-hero__title {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
   }
 
   .page-hero__intro {
