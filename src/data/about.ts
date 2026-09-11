@@ -26,7 +26,7 @@ export const aboutContent: AboutContent = {
     {
       title: 'Enfoque',
       body:
-        'Simplemente que la solución informática entregada sea provechosa para los clientes y los usuarios. Esto se logra teniendo bien claros los requisitos del usuario, entendiendo las necesidades del negocio y produciendo un producto que cumpla con las mejores prácticas del desarrollo de software.',
+        'Simplemente que la solución informática entregada sea provechosa para los clientes y los usuarios. Esto se logra teniendo bien claros los requisitos del usuario, entendiendo las necesidades del negocio y brindando un servicio que cumpla con las mejores prácticas del desarrollo de software.',
     },
     {
       title: 'Habilidades blandas',
@@ -35,7 +35,7 @@ export const aboutContent: AboutContent = {
     },
     {
       title: 'Inteligencia artificial - IA',
-      body: 'Integro esta tecnología en el desarrollo de código y en la optimización de procesos de trabajo buscando darle un uso consciente con las necesidades de cada situación. La inteligencia artificial es una más de varias herramientas con las que el desarrollador cuenta para cumplir su función.'
+      body: 'Integro la IA en varias etapas durante el desarrollo para aumentar la productividad, automatizar procesos, varificaciones, entre otros. La inteligencia artificial es una más de varias herramientas con las que el desarrollador cuenta para cumplir su función y, es responsabilidad de este aplicarla de manera eficiente y en su justa medida. Si se usa por usar, sin controlar lo que la herramienta está haciendo, se terminarán generando más problemas, más costos y se pierde tiempo de trabajo en reparar los errores.'
     },
   ],
   cta:

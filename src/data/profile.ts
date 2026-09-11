@@ -13,7 +13,7 @@ export const profile: Profile = {
   openToWork: true,
   availabilityLabel: 'Open to work',
   email: 'mpardo@issd.edu.ar',
-  whatsappNumber: '5491100000000',
+  whatsappNumber: '5493512477639',
 };
 
 export const contactUrls = {

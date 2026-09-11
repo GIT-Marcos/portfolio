@@ -41,7 +41,7 @@ export const projects: Project[] = [
     id: 'ludmi-fit',
     title: 'LudmiFit — Sitio web de servicios de entrenamiento personalizado',
     description:
-      'Sitio web de asesorías de entrenamiento personalizado para mujeres, con planes de entrenamiento, seguimiento por WhatsApp, SEO completo y diseño responsive. Desarrollado con Astro y desplegado en Netlify.',
+      'Sitio web estático de asesorías y entrenamiento para mujeres. Integra lo necesario para un negocio: diseño personalizado, redes sociales, optimización para buscadores, SEO completo y diseño responsive.',
     technologies: [
       { name: 'Astro', icon: 'skill-icons:astro' },
       { name: 'TypeScript', icon: 'logos:typescript-icon' },
@@ -109,9 +109,9 @@ export const projects: Project[] = [
   },
   {
     id: 'super-service',
-    title: 'Super Service — Aplicación de escritorio para gestión de taller mecánico',
+    title: 'Super Service',
     description:
-      'Aplicación de escritorio empresarial construida con JavaFX 21 y PostgreSQL. Permite gestionar órdenes de trabajo, repuestos, historial de ventas y más. Genera reportes con gráficos y estadísticas. Este fue el proyecto de fin de carrera.',
+      'Aplicación de escritorio empresarial para la gestión de taller mecánico. Permite gestionar órdenes de trabajo, repuestos, historial de ventas y más. Genera reportes con gráficos y estadísticas. Este fue el proyecto de fin de carrera.',
     technologies: [
       { name: 'Java/JavaFx', icon: 'logos:java' },
       { name: 'PostgreSQL', icon: 'logos:postgresql' },

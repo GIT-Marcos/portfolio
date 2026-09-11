@@ -16,8 +16,8 @@ export interface ServicesPageContent {
 export const servicesPageContent: ServicesPageContent = {
   heading: 'Servicios',
   intro:
-    'Desarrollo de software y diseño web a medida: sitios rápidos, accesibles y sistemas con lógica sólida. Trabajo freelance por proyecto o como analista en relación de dependencia. Si tiene un proyecto en mente, no dude en escribirme.',
-  contactMessage: 'Hola Marcos, me interesa tu servicio de desarrollo web.',
+    'Desarrollo de software y diseño web estático a medida: sitios rápidos, accesibles y sistemas con lógica sólida. Disponible para trabajos freelance por proyecto o en relación de dependencia. Si tiene un proyecto en mente, no dude en escribirme.',
+  contactMessage: 'Hola Marcos, te contacto desde tu portfolio.',
   contactSubject: 'Consulta por servicios',
 };
 
@@ -32,14 +32,21 @@ export const services: Service[] = [
   {
     title: 'Desarrollo backend Java',
     description:
-      'APIs REST y lógica de negocio sólida con Java y programación orientada a objetos: diseño de bases de datos, implementación de servicios y pruebas automatizadas. Código mantenible, bien documentado y listo para integrarse con cualquier front-end.',
+      'APIs REST, lógica de negocio sólida y programación orientada a objetos. Desarrollo siguiendo las mejores prácticas y estándares en APIs, bases de datos e integración de servicios, siempre buscando un código mantenible, bien documentado y listo para integrarse con cualquier front-end.',
     image: '/services/software-development.svg',
     imageAlt: 'Ilustración de terminal con build de Maven exitoso y cilindro de base de datos',
   },
   {
+    title: 'Desarrollo e integración con inteligencia artificial',
+    description:
+      'Aplico esta tecnología en el desarrollo de código y en la optimización de procesos de trabajo buscando darle un uso consciente a las necesidades de cada situación.',
+    image: '/services/software-development.svg',
+    imageAlt: '',
+  },
+  {
     title: 'Análisis de sistemas y consultoría',
     description:
-      'Levantamiento de requisitos, diseño de software y documentación técnica clara. Convierto una idea o un problema de negocio en una especificación accionable que su equipo pueda implementar, aplicando metodologías ágiles.',
+      'Levantamiento de requisitos, diseño de software y documentación técnica clara. Convierto una idea o un problema de negocio en una especificación accionable que pueda implementarse, aplicando metodologías ágiles.',
     image: '/services/analisis-sistemas.svg',
     imageAlt: 'Ilustración de tablero ágil con columnas de pendiente, en curso y hecho',
   },
