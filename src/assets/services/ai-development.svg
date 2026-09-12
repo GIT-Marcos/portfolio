@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" fill="none">
+  <!-- Marco de ventana -->
+  <rect x="16" y="16" width="768" height="488" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <!-- Puntos de tráfico -->
+  <circle cx="48" cy="48" r="8" fill="#8b949e"/>
+  <circle cx="72" cy="48" r="8" fill="#8b949e"/>
+  <circle cx="96" cy="48" r="8" fill="#33ff33"/>
+  <!-- Separador de barra de título -->
+  <line x1="16" y1="80" x2="784" y2="80" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Panel izquierdo: Código -->
+  <rect x="40" y="104" width="340" height="392" rx="8" fill="#0a0e0a" stroke="#30363d" stroke-width="1.5"/>
+  <!-- Líneas de código -->
+  <text x="64" y="144" font-family="monospace" font-size="14" fill="#8b949e">1</text>
+  <text x="84" y="144" font-family="monospace" font-size="14" fill="#58a6ff">import</text>
+  <text x="138" y="144" font-family="monospace" font-size="14" fill="#e6edf3"> { AI } </text>
+  <text x="202" y="144" font-family="monospace" font-size="14" fill="#58a6ff">from</text>
+  <text x="242" y="144" font-family="monospace" font-size="14" fill="#3fb950">'ai-sdk'</text>
+
+  <text x="64" y="174" font-family="monospace" font-size="14" fill="#8b949e">2</text>
+  <text x="84" y="174" font-family="monospace" font-size="14" fill="#58a6ff">import</text>
+  <text x="138" y="174" font-family="monospace" font-size="14" fill="#e6edf3"> { generate } </text>
+  <text x="238" y="174" font-family="monospace" font-size="14" fill="#58a6ff">from</text>
+  <text x="278" y="174" font-family="monospace" font-size="14" fill="#3fb950">'./engine'</text>
+
+  <text x="64" y="214" font-family="monospace" font-size="14" fill="#8b949e">3</text>
+  <text x="84" y="214" font-family="monospace" font-size="14" fill="#58a6ff">async</text>
+  <text x="130" y="214" font-family="monospace" font-size="14" fill="#58a6ff">function</text>
+  <text x="202" y="214" font-family="monospace" font-size="14" fill="#d2a8ff">processData</text>
+  <text x="306" y="214" font-family="monospace" font-size="14" fill="#e6edf3">(input) {</text>
+
+  <text x="64" y="244" font-family="monospace" font-size="14" fill="#8b949e">4</text>
+  <text x="84" y="244" font-family="monospace" font-size="14" fill="#e6edf3">  </text>
+  <text x="100" y="244" font-family="monospace" font-size="14" fill="#58a6ff">const</text>
+  <text x="148" y="244" font-family="monospace" font-size="14" fill="#e6edf3"> model = </text>
+  <text x="236" y="244" font-family="monospace" font-size="14" fill="#d2a8ff">AI</text>
+  <text x="256" y="244" font-family="monospace" font-size="14" fill="#e6edf3">.</text>
+  <text x="264" y="244" font-family="monospace" font-size="14" fill="#d2a8ff">getModel</text>
+  <text x="340" y="244" font-family="monospace" font-size="14" fill="#e6edf3">()</text>
+
+  <text x="64" y="274" font-family="monospace" font-size="14" fill="#8b949e">5</text>
+  <text x="84" y="274" font-family="monospace" font-size="14" fill="#e6edf3">  </text>
+  <text x="100" y="274" font-family="monospace" font-size="14" fill="#58a6ff">const</text>
+  <text x="148" y="274" font-family="monospace" font-size="14" fill="#e6edf3"> result = </text>
+  <text x="248" y="274" font-family="monospace" font-size="14" fill="#58a6ff">await</text>
+  <text x="296" y="274" font-family="monospace" font-size="14" fill="#d2a8ff">generate</text>
+  <text x="368" y="274" font-family="monospace" font-size="14" fill="#e6edf3">(model, input)</text>
+
+  <text x="64" y="304" font-family="monospace" font-size="14" fill="#8b949e">6</text>
+  <text x="84" y="304" font-family="monospace" font-size="14" fill="#58a6ff">return</text>
+  <text x="138" y="304" font-family="monospace" font-size="14" fill="#e6edf3"> result.</text>
+  <text x="186" y="304" font-family="monospace" font-size="14" fill="#d2a8ff">optimize</text>
+  <text x="262" y="304" font-family="monospace" font-size="14" fill="#e6edf3">()</text>
+
+  <text x="64" y="334" font-family="monospace" font-size="14" fill="#8b949e">7</text>
+  <text x="84" y="334" font-family="monospace" font-size="14" fill="#e6edf3">}</text>
+
+  <!-- Barra de estado del terminal -->
+  <rect x="40" y="472" width="340" height="24" rx="0" fill="#21262d"/>
+  <text x="56" y="488" font-family="monospace" font-size="12" fill="#3fb950">✓ AI integrated</text>
+  <text x="280" y="488" font-family="monospace" font-size="12" fill="#8b949e">Ln 7, Col 1</text>
+
+  <!-- Panel derecho: Red neuronal / Diagrama de IA -->
+  <rect x="400" y="104" width="360" height="392" rx="8" fill="#0a0e0a" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Título del panel -->
+  <text x="424" y="140" font-family="monospace" font-size="16" fill="#8b949e">Neural Network</text>
+
+  <!-- Capa de entrada (input) -->
+  <circle cx="460" cy="220" r="20" fill="#21262d" stroke="#30363d" stroke-width="1.5"/>
+  <text x="460" y="225" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">x₁</text>
+
+  <circle cx="460" cy="280" r="20" fill="#21262d" stroke="#30363d" stroke-width="1.5"/>
+  <text x="460" y="285" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">x₂</text>
+
+  <circle cx="460" cy="340" r="20" fill="#21262d" stroke="#30363d" stroke-width="1.5"/>
+  <text x="460" y="345" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">x₃</text>
+
+  <!-- Capa oculta (hidden) -->
+  <circle cx="560" cy="200" r="20" fill="#3fb950" fill-opacity="0.2" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="560" y="205" text-anchor="middle" font-family="monospace" font-size="12" fill="#3fb950">h₁</text>
+
+  <circle cx="560" cy="260" r="20" fill="#3fb950" fill-opacity="0.2" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="560" y="265" text-anchor="middle" font-family="monospace" font-size="12" fill="#3fb950">h₂</text>
+
+  <circle cx="560" cy="320" r="20" fill="#3fb950" fill-opacity="0.2" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="560" y="325" text-anchor="middle" font-family="monospace" font-size="12" fill="#3fb950">h₃</text>
+
+  <circle cx="560" cy="380" r="20" fill="#3fb950" fill-opacity="0.2" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="560" y="385" text-anchor="middle" font-family="monospace" font-size="12" fill="#3fb950">h₄</text>
+
+  <!-- Capa de salida (output) -->
+  <circle cx="680" cy="260" r="24" fill="#3fb950" fill-opacity="0.3" stroke="#3fb950" stroke-width="2"/>
+  <text x="680" y="265" text-anchor="middle" font-family="monospace" font-size="14" font-weight="bold" fill="#3fb950">y</text>
+
+  <!-- Conexiones: Input → Hidden -->
+  <line x1="480" y1="220" x2="540" y2="200" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="220" x2="540" y2="260" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="220" x2="540" y2="320" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="220" x2="540" y2="380" stroke="#30363d" stroke-width="1"/>
+
+  <line x1="480" y1="280" x2="540" y2="200" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="280" x2="540" y2="260" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="280" x2="540" y2="320" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="280" x2="540" y2="380" stroke="#30363d" stroke-width="1"/>
+
+  <line x1="480" y1="340" x2="540" y2="200" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="340" x2="540" y2="260" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="340" x2="540" y2="320" stroke="#30363d" stroke-width="1"/>
+  <line x1="480" y1="340" x2="540" y2="380" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Conexiones: Hidden → Output (activas en verde) -->
+  <line x1="580" y1="200" x2="656" y2="260" stroke="#3fb950" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="580" y1="260" x2="656" y2="260" stroke="#3fb950" stroke-width="2" stroke-opacity="0.8"/>
+  <line x1="580" y1="320" x2="656" y2="260" stroke="#3fb950" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="580" y1="380" x2="656" y2="260" stroke="#3fb950" stroke-width="2" stroke-opacity="0.4"/>
+
+  <!-- Etiquetas de capas -->
+  <text x="460" y="420" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">Input</text>
+  <text x="560" y="420" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">Hidden</text>
+  <text x="680" y="420" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b949e">Output</text>
+
+  <!-- Barra de estado del panel -->
+  <rect x="400" y="472" width="360" height="24" rx="0" fill="#21262d"/>
+  <text x="416" y="488" font-family="monospace" font-size="12" fill="#3fb950">● Active</text>
+  <text x="520" y="488" font-family="monospace" font-size="12" fill="#8b949e">Epoch: 100</text>
+  <text x="640" y="488" font-family="monospace" font-size="12" fill="#8b949e">Loss: 0.02</text>
+</svg>
