@@ -15,7 +15,7 @@ import { heroAsciiArtMobile } from '@data/ascii-artMobile';
     </div>
     <div class="hero__content">
       <p class="hero__greeting">Hola, soy</p>
-      <h1 class="hero__title text-gradient">{profile.name}</h1>
+      <h1 class="hero__title">{profile.name}</h1>
       <p class="hero__role">Analista de Sistemas</p>
       <div class="hero__meta">
         <span class="hero__meta-item hero__location">
@@ -117,8 +117,10 @@ import { heroAsciiArtMobile } from '@data/ascii-artMobile';
 
   .hero__title {
     font-size: clamp(2.5rem, 5vw, var(--font-size-5xl));
+    color: var(--color-phosphor);
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
+    text-shadow: 0 3px 60px color-mix(in srgb, var(--color-phosphor) 90%, transparent);
   }
 
   .hero__role {
