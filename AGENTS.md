@@ -21,6 +21,7 @@ Definidas en `.opencode/agent/astro-planner.md` — seguirlas al construir:
 - Datos estáticos en `src/data/`.
 - Integración `@astrojs/sitemap` (ya instalada y configurada en `astro.config.mjs`).
 - Imports con alias (`@layouts/`, `@components/`, `@data/`, `@assets/`): usar alias para imports que cruzan directorios. Imports `./` entre archivos del mismo directorio son aceptables. Rutas relativas con `../` están prohibidas. Paths configurados en `tsconfig.json`.
+- **Navegación MPA pura** (sin `ClientRouter`): transiciones cross-document nativas vía `@view-transition { navigation: auto; }` en `global.css`. Los scripts cliente se inicializan con llamada directa (bundled = module/deferred). **No usar** eventos `astro:page-load`/`astro:after-swap` (requieren el router que ya no está).
 
 ## Estilos: arquitectura CSS
 

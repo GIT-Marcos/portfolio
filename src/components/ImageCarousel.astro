@@ -326,9 +326,5 @@ const { images, label = 'Galería de imágenes' } = Astro.props;
     document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(initCarousel);
   }
 
-  document.addEventListener('astro:page-load', initAll);
-
-  if (!document.querySelector('[data-astro-transition]')) {
-    initAll();
-  }
+  initAll();
 </script>
