@@ -1,13 +1,14 @@
 # AGENTS.md
 
-Portfolio personal para un desarrollador de software. Stack: Astro 7 (SSG) + TypeScript. Estado inicial: scaffold `minimal` de Astro sin contenido real. Contenido del sitio en español.
+Portfolio personal para un desarrollador de software. Stack: Astro 7 (SSG) + TypeScript. Contenido del sitio en español. Estado actual: sitio navegable con 4 páginas (`/`, `/about`, `/projects`, `/services`), 10 componentes en `src/components/`, datos estáticos en `src/data/` y assets en `src/assets/{images,services}/`.
 
 ## Comandos
 
 - `npm run dev` — servidor de desarrollo en `localhost:4321`
 - `npm run build` — build de producción a `dist/` (única verificación que funciona out-of-the-box; además regenera `.astro/types.d.ts`)
 - `npm run preview` — sirve `dist/` localmente
-- `npm run astro check` validar tipos
+- `npm run astro check` — validar tipos
+- `npm run icons` — regenera favicons (16x16, 32x32, apple-touch-icon) y actualiza `theme-color` en `layout.astro` desde `public/favicon.svg`. Ejecutar tras modificar el SVG fuente.
 - No hay lint, formatter ni tests configurados.
 
 **Node >= 22.12.0** (engines en `package.json`).
@@ -20,8 +21,14 @@ Definidas en `.opencode/agent/astro-planner.md` — seguirlas al construir:
 - Props de componentes con interfaces TypeScript exportadas.
 - Datos estáticos en `src/data/`.
 - Integración `@astrojs/sitemap` (ya instalada y configurada en `astro.config.mjs`).
+- Integración `astro-icon` con collections `mdi`, `logos`, `devicon`, `skill-icons` (definidas en `astro.config.mjs > integrations > icon.include`). Uso: `<Icon name="collection:name" />`. Iconos consumidos por los componentes; nunca añadir paquetes de iconos nuevos sin revisar esta lista primero.
+- Tipografía cargada vía `@fontsource/{inter,jetbrains-mono}` desde el frontmatter de `src/layouts/layout.astro`. **No** añadir `<link>` a Google Fonts ni fuentes remotas: ya están bundleadas en CSS y el layout ya las importa.
+- Assets de imagen y SVG en `src/assets/{images,services}/`, consumidos vía `<Image>` de `astro:assets` (ver `ImageCarousel.astro` como referencia). Las imágenes en `public/` son estáticas sin procesar (favicons).
+- Scripts cliente en bloques `<script>` dentro del mismo `.astro` (patrón de `ImageCarousel.astro`): import directo (bundled = module/deferred), selectores por `data-*`, llamada de inicialización al final del bloque (`initAll()`). **No** usar eventos `astro:page-load` (no hay router). Interactividad propia sólo cuando HTML/CSS estático no baste.
 - Imports con alias (`@layouts/`, `@components/`, `@data/`, `@assets/`): usar alias para imports que cruzan directorios. Imports `./` entre archivos del mismo directorio son aceptables. Rutas relativas con `../` están prohibidas. Paths configurados en `tsconfig.json`.
 - **Navegación MPA pura** (sin `ClientRouter`): transiciones cross-document nativas vía `@view-transition { navigation: auto; }` en `global.css`. Los scripts cliente se inicializan con llamada directa (bundled = module/deferred). **No usar** eventos `astro:page-load`/`astro:after-swap` (requieren el router que ya no está).
+- `prefetch` (de Astro 3.4+) está activado en `astro.config.mjs` con `prefetchAll: true` y `defaultStrategy: 'viewport'`: todos los `<a>` internos se prefetchan al entrar en viewport. No añadir scripts de prefetch manual ni atributos `data-astro-prefetch`.
+- `vite.server.watch.ignored` está configurado en `astro.config.mjs` para ignorar archivos del sistema de Windows en `C:\` (`DumpStack.log.tmp`, `hiberfil.sys`, `pagefile.sys`, `swapfile.sys`) que rompen chokidar con `EINVAL`. Es un workaround específico de plataforma — **no eliminar** aunque parezca innecesario en macOS/Linux; los desarrolladores en Windows lo necesitan para que el dev server arranque.
 
 ## Estilos: arquitectura CSS
 
@@ -72,5 +79,7 @@ El sitio usa **CSS nativo sin dependencias**: no hay Tailwind, SCSS, CSS-in-JS, 
 
 ## Repo
 
-- El directorio **aún no es un repositorio git** (no hay `.git`): `git status`/`git commit` fallarán hasta `git init`.
+- Es un repositorio git (`.git/` existe en la raíz). Estado verificado: `git status` funciona normalmente.
 - `.opencode/` es un contexto npm independiente (package.json y lockfile propios, ambos gitignored): no instalar ahí dependencias de la app ni tocar `.opencode/node_modules`.
+- `scripts/generate-favicons.mjs` (invocado por `npm run icons`) genera favicons a partir de `public/favicon.svg`. **No confundir** con la carpeta `scrips/` (typo de `scripts/`, actualmente vacía y pendiente de eliminar; no afecta a la build).
+- `dist/` y `.astro/` están en `.gitignore` y se regeneran con `npm run build` y `npm run astro check` respectivamente.
