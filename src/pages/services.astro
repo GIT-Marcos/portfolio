@@ -31,6 +31,8 @@ const socialButtons: SocialItem[] = getSocialItems('email', 'whatsapp').map((ite
       socialItems={socialButtons}
     />
 
+    <h2 class="services-section__title">En lo que puedo ayudarle</h2>
+
     {services.map((service) => (
       <ServiceSection service={service} />
     ))}
@@ -46,6 +48,21 @@ const socialButtons: SocialItem[] = getSocialItems('email', 'whatsapp').map((ite
     padding: var(--spacing-3xl) var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-sm);
+  }
+
+  .services-section__title {
+    font-size: var(--font-size-xl);
+    font-family: var(--font-family-mono);
+    padding-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-3xl);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-phosphor) 40%, transparent);
+    position: relative;
+
+    &::before {
+      content: '> ';
+      color: var(--color-phosphor);
+      text-shadow: 0 4px 10px color-mix(in srgb, var(--color-phosphor) 90%, transparent);
+    }
   }
 </style>

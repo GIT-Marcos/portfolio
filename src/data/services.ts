@@ -50,7 +50,7 @@ export const services: Service[] = [
     imageAlt: 'Terminal con código de integración de IA y diagrama de red neuronal',
   },
   {
-    title: 'Análisis de sistemas y consultoría',
+    title: 'Análisis de sistemas',
     description:
       'Levantamiento de requisitos, diseño de software y documentación técnica clara. Convierto una idea o un problema de negocio en una especificación accionable que pueda implementarse, aplicando metodologías ágiles.',
     image: analisisImg,
