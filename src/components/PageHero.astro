@@ -1,6 +1,7 @@
 ---
 import type { AsciiArt } from '@data/ascii-art';
 import type { SocialItem } from '@data/social';
+import AsciiFigure from './AsciiFigure.astro';
 import ExternalLinkButton from './ExternalLinkButton.astro';
 
 export interface Props {
@@ -35,24 +36,7 @@ const {
     )}
     <slot />
   </div>
-  {asciiArt && (
-    <div class="page-hero__ascii-wrapper">
-      <pre
-        class:list={['page-hero__ascii', 'page-hero__ascii--desktop', { 'page-hero__ascii--flush-top': asciiArt.flushTop }]}
-        style={{ '--ascii-font-size': asciiArt.fontSize }}
-        role="img"
-        aria-label={asciiArt.alt}
-      >{asciiArt.art}</pre>
-      {asciiArtMobile?.art.trim() && (
-        <pre
-          class:list={['page-hero__ascii', 'page-hero__ascii--mobile', { 'page-hero__ascii--flush-top': asciiArtMobile.flushTop }]}
-          style={{ '--ascii-font-size': asciiArtMobile.fontSize }}
-          role="img"
-          aria-label={asciiArtMobile.alt}
-        >{asciiArtMobile.art}</pre>
-      )}
-    </div>
-  )}
+  {asciiArt && <AsciiFigure art={asciiArt} artMobile={asciiArtMobile} />}
 </section>
 
 <style>
@@ -98,49 +82,6 @@ const {
 
     @media (max-width: 768px) {
       justify-content: center;
-    }
-  }
-
-  .page-hero__ascii-wrapper {
-    flex: 0 0 35%;
-
-    @media (max-width: 768px) {
-      flex: none;
-      width: 100%;
-      max-width: 300px;
-      order: -1;
-    }
-  }
-
-  .page-hero__ascii {
-    font-family: var(--font-family-mono);
-    font-size: var(--ascii-font-size, var(--font-size-sm));
-    line-height: 1;
-    white-space: pre;
-    color: var(--color-secondary);
-    overflow-x: auto;
-    overflow-y: clip;
-    font-variant-ligatures: none;
-  }
-
-  .page-hero__ascii--flush-top {
-    margin-top: calc(-1 * var(--spacing-3xl));
-  }
-
-  .page-hero__ascii--desktop {
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  .page-hero__ascii--mobile {
-    display: none;
-
-    @media (max-width: 768px) {
-      display: block;
-      width: fit-content;
-      max-width: 100%;
-      margin-inline: auto;
     }
   }
 </style>

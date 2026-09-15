@@ -1,0 +1,86 @@
+---
+import type { AsciiArt } from '@data/ascii-art';
+
+export interface Props {
+  art: AsciiArt;
+  artMobile?: AsciiArt;
+}
+
+const { art, artMobile } = Astro.props;
+
+// Variante mobile válida solo si tiene contenido real (no whitespace)
+const mobileArt = artMobile && artMobile.art.trim() ? artMobile : undefined;
+---
+
+<div class="ascii-figure">
+  <pre
+    class:list={[
+      'ascii-figure__pre',
+      // --desktop solo si existe variante mobile que la reemplace en <=768px
+      { 'ascii-figure__pre--desktop': Boolean(mobileArt), 'ascii-figure__pre--flush-top': art.flushTop },
+    ]}
+    style={{ '--ascii-font-size': art.fontSize }}
+    role="img"
+    aria-label={art.alt}
+  >{art.art}</pre>
+  {mobileArt && (
+    <pre
+      class:list={[
+        'ascii-figure__pre',
+        'ascii-figure__pre--mobile',
+        { 'ascii-figure__pre--flush-top': mobileArt.flushTop },
+      ]}
+      style={{ '--ascii-font-size': mobileArt.fontSize }}
+      role="img"
+      aria-label={mobileArt.alt}
+    >{mobileArt.art}</pre>
+  )}
+</div>
+
+<style>
+  /* Unidad ASCII reutilizable: debe ser hijo directo de un contenedor flex row.
+     Desktop: 35% del eje principal. Mobile (<=768px): columna completa (max 300px), antes del contenido.
+     --flush-top compensa un gap de --spacing-3xl en el padre. */
+  .ascii-figure {
+    flex: 0 0 35%;
+
+    @media (max-width: 768px) {
+      flex: none;
+      width: 100%;
+      max-width: 300px;
+      order: -1;
+    }
+  }
+
+  .ascii-figure__pre {
+    font-family: var(--font-family-mono);
+    font-size: var(--ascii-font-size, var(--font-size-sm));
+    line-height: 1;
+    white-space: pre;
+    color: var(--color-secondary);
+    overflow-x: auto;
+    overflow-y: clip;
+    font-variant-ligatures: none;
+  }
+
+  .ascii-figure__pre--flush-top {
+    margin-top: calc(-1 * var(--spacing-3xl));
+  }
+
+  .ascii-figure__pre--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .ascii-figure__pre--mobile {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin-inline: auto;
+    }
+  }
+</style>
