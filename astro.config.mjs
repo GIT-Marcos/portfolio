@@ -7,6 +7,8 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://marcos-portfolio-dev.vercel.app',
+  trailingSlash: 'always',
   // ── Vite watcher: ignorar archivos del sistema en raíz de Windows ──────────
   //
   // chokidar (file watcher de Vite) puede intentar observar la raíz del
@@ -36,7 +38,12 @@ export default defineConfig({
     defaultStrategy: 'viewport',
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname.replace(/\/+$/, '') || '/';
+        return pathname !== '/404' && pathname !== '/robots.txt';
+      },
+    }),
     icon({
       include: {
         mdi: ['github', 'linkedin', 'email-outline', 'web', 'whatsapp', 'link-variant', 'arrow-right', 'map-marker-outline', 'magnify', 'chevron-left', 'chevron-right', 'close'],

@@ -9,7 +9,7 @@ export interface Profile {
 
 export const profile: Profile = {
   name: 'Marcos',
-  location: 'Argentina, Córdoba',
+  location: 'Argentina - Córdoba',
   openToWork: true,
   availabilityLabel: 'Open to work',
   email: 'mpardo@issd.edu.ar',

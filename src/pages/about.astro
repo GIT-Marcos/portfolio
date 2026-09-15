@@ -3,17 +3,41 @@ import Layout from '@layouts/layout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PageHero from '@components/PageHero.astro';
+import StructuredData from '@components/StructuredData.astro';
 import { aboutContent } from '@data/about';
 import { aboutAsciiArtMobile } from '@data/ascii-artMobile';
+import { profile } from '@data/profile';
 import { getSocialItems } from '@data/social';
 
 const socialButtons = getSocialItems('github', 'linkedin');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const profileSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${canonicalURL}#profile`,
+  url: canonicalURL,
+  name: 'Portfolio | Sobre mí',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${canonicalURL}#person`,
+    name: profile.name,
+    jobTitle: 'Analista de Sistemas',
+    description: aboutContent.intro,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Córdoba',
+      addressCountry: 'AR',
+    },
+    sameAs: socialButtons.map((item) => item.url),
+  },
+};
 ---
 
 <Layout
   title="Portfolio | Sobre mí"
   description="Analista de sistemas con foco en backend Java y programación orientada a objetos"
 >
+  <StructuredData data={profileSchema} />
   <Header />
   <main id="main" class="about-page">
     <PageHero

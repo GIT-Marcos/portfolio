@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: 'biblos',
     title: 'Biblos - Sistema de gestión de back-up de biblioteca digital personal',
     description:
-      'Sistema que permite generar los metadatos de fuentes guardadas en una biblioteca digital local. Tiene 2 partes: el agente que scanea un directorio y crea el archivo de base de datos, y el sitio web que permite subir para leer, editar metadatos y descargar el archivo modificado.',
+      'Sistema que permite generar los metadatos de fuentes guardadas en una biblioteca digital local. Tiene 2 partes: el agente que escanea un directorio y crea el archivo de base de datos, y el sitio web que permite subir para leer, editar metadatos y descargar el archivo modificado.',
     technologies: [
       { name: 'Java', icon: 'logos:java' },
       { name: 'SQLite', icon: 'devicon:sqlite' },
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       { url: 'https://github.com/GIT-Marcos/biblos', category: 'github', label: 'Código fuente' },
     ],
     images: [
-      { src: biblosImg1, alt: 'Lista de fuentas guardadas en la base de datos' },
+      { src: biblosImg1, alt: 'Lista de fuentes guardadas en la base de datos' },
       { src: biblosImg2, alt: 'Consola guardando fuentes' },
     ],
     category: 'personal-academic',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     id: 'flashcards',
     title: 'Aplicación de estudio - Flashcards',
     description:
-      'Aplicación web que permite al usuario estudiar usando el modelo de repetición espaciada SM-2. Permite crear mazos con tarjetas que el usuario debe memorizar y, en sesiones de estudio, este revisa las terjetas evaluando qué tanto pudo recordar.',
+      'Aplicación web que permite al usuario estudiar usando el modelo de repetición espaciada SM-2. Permite crear mazos con tarjetas que el usuario debe memorizar y, en sesiones de estudio, este revisa las tarjetas evaluando qué tanto pudo recordar.',
     technologies: [
       { name: 'Java', icon: 'logos:java' },
       { name: 'Spring Boot', icon: 'logos:spring-icon' },
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     description:
       'Aplicación de escritorio empresarial para la gestión de taller mecánico. Permite gestionar órdenes de trabajo, repuestos, historial de ventas y más. Genera reportes con gráficos y estadísticas. Este fue el proyecto de fin de carrera.',
     technologies: [
-      { name: 'Java/JavaFx', icon: 'logos:java' },
+      { name: 'Java/JavaFX', icon: 'logos:java' },
       { name: 'PostgreSQL', icon: 'logos:postgresql' },
       { name: 'Hibernate', icon: 'logos:hibernate' },
       { name: 'JUnit', icon: 'devicon:junit' },

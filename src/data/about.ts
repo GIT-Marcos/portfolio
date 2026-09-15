@@ -21,7 +21,7 @@ export const aboutContent: AboutContent = {
     {
       title: 'Formación',
       body:
-        'Técnico Superior en Análisis de Sistemas egresado del Instituto Superior Santo Domingo - ISSD. Tengo formación en en programación orientada a objetos, bases de datos, diseño de software, desarrollo web, inteligencia artificial y metodologías ágiles. Tengo un perfil general cercano a un full-stack aunque me considero más preparado en el sector back-end.',
+        'Técnico Superior en Análisis de Sistemas egresado del Instituto Superior Santo Domingo - ISSD. Tengo formación en programación orientada a objetos, bases de datos, diseño de software, desarrollo web, inteligencia artificial y metodologías ágiles. Tengo un perfil general cercano a un full-stack aunque me considero más preparado en el sector back-end.',
     },
     {
       title: 'Enfoque',
@@ -35,7 +35,7 @@ export const aboutContent: AboutContent = {
     },
     {
       title: 'Inteligencia artificial - IA',
-      body: 'Integro la IA en varias etapas durante el desarrollo para aumentar la productividad, automatizar procesos, varificaciones, entre otros. La inteligencia artificial es una más de varias herramientas con las que el desarrollador cuenta para cumplir su función y, es responsabilidad de este aplicarla de manera eficiente y en su justa medida. Si se usa por usar, sin controlar lo que la herramienta está haciendo, se terminarán generando más problemas, más costos y se pierde tiempo de trabajo en reparar los errores.'
+      body: 'Integro la IA en varias etapas durante el desarrollo para aumentar la productividad, automatizar procesos, verificaciones, entre otros. La inteligencia artificial es una más de varias herramientas con las que el desarrollador cuenta para cumplir su función y, es responsabilidad de este aplicarla de manera eficiente y en su justa medida. Si se usa por usar, sin controlar lo que la herramienta está haciendo, se terminarán generando más problemas, más costos y se pierde tiempo de trabajo en reparar los errores.'
     },
   ],
   cta:
